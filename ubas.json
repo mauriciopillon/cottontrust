@@ -1,0 +1,50 @@
+[
+    {
+        "name": "UBA1",
+        "Codigo de Registro da UBA": "123",
+        "CNPJ": "123456789",
+        "Endereco - Rua": "Rua 123",
+        "Endereco - Bairro": "Bairro A",
+        "Endereco - Cidade": "Cidade X",
+        "Endereco - Estado": "Estado Y",
+        "Endereco - Pais": "Pais Z",
+        "wallet_config": "config_uba1",
+        "wallet_credentials": "credentials_uba1"
+    },
+    {
+        "name": "UBA2",
+        "Codigo de Registro da UBA": "456",
+        "CNPJ": "987654321",
+        "Endereco - Rua": "Rua 456",
+        "Endereco - Bairro": "Bairro B",
+        "Endereco - Cidade": "Cidade W",
+        "Endereco - Estado": "Estado X",
+        "Endereco - Pais": "Pais Y",
+        "wallet_config": "config_uba2",
+        "wallet_credentials": "credentials_uba2"
+    },
+    {
+        "name": "UBA3",
+        "Codigo de Registro da UBA": "789",
+        "CNPJ": "111223344",
+        "Endereco - Rua": "Rua 789",
+        "Endereco - Bairro": "Bairro C",
+        "Endereco - Cidade": "Cidade V",
+        "Endereco - Estado": "Estado W",
+        "Endereco - Pais": "Pais X",
+        "wallet_config": "config_uba3",
+        "wallet_credentials": "credentials_uba3"
+    },
+    {
+        "name": "UBA4",
+        "Codigo de Registro da UBA": "101",
+        "CNPJ": "998877665",
+        "Endereco - Rua": "Rua 101",
+        "Endereco - Bairro": "Bairro D",
+        "Endereco - Cidade": "Cidade U",
+        "Endereco - Estado": "Estado V",
+        "Endereco - Pais": "Pais W",
+        "wallet_config": "config_uba4",
+        "wallet_credentials": "credentials_uba4"
+    }
+]
