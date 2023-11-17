@@ -29,3 +29,9 @@ git clone https://github.com/bcgov/von-network
 cd von-network
 ./manage build
 ./manage start --logs
+
+./manage cli init-pool local_net http://<IP>:9000/genesis
+
+
+# para adicionar/modificar nodos
+https://github.com/bcgov/von-network/blob/main/docs/AddNewNode.md
