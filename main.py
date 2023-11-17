@@ -164,5 +164,7 @@ async def run():
     for item in Clientes:
         print(f"{item}\n")
 
+print("batata")
+
 loop = asyncio.get_event_loop()
 loop.run_until_complete(run())
