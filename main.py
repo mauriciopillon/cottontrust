@@ -1,5 +1,6 @@
 import asyncio
 import json
+import time
 
 from indy import pool, wallet, did
 from indy.error import ErrorCode, IndyError
@@ -33,6 +34,7 @@ def create_seed(contador, nome):
 async def create_cliente(pool_, cliente_data):
     global cont_Cli
     cont_Cli += 1
+    start_time = time.time()
     
     print(f"Criando Clientes {cont_Cli} - Cadastre")
 
@@ -53,10 +55,14 @@ async def create_cliente(pool_, cliente_data):
     CLIENTE["did_info"] = json.dumps({'seed': CLIENTE['seed']})
     CLIENTE['did'], CLIENTE['key'] = await did.create_and_store_my_did(CLIENTE['wallet'], CLIENTE['did_info'])
     Clientes.append(CLIENTE)
+    end_time = time.time()
+    total_time = end_time - start_time
+    print(f"Tempo de criacao do {CLIENTE['name']}: {total_time} segundos")
 
 async def create_fardinho(pool_, fardinho_data):
     global cont_Far
     cont_Far += 1
+    start_time = time.time()
 
     print(f"Criando Fardinho {cont_Far} - Cadastre")
 
@@ -81,10 +87,14 @@ async def create_fardinho(pool_, fardinho_data):
     FARDINHO["did_info"] = json.dumps({'seed': FARDINHO['seed']})
     FARDINHO['did'], FARDINHO['key'] = await did.create_and_store_my_did(FARDINHO['wallet'], FARDINHO['did_info'])
     Fardinhos.append(FARDINHO)
+    end_time = time.time()
+    total_time = end_time - start_time
+    print(f"Tempo de criacao do {FARDINHO['name']}: {total_time} segundos")
 
 async def create_uba(pool_, uba_data):
     global cont_Uba
     cont_Uba += 1
+    start_time = time.time()
 
     print(f"Criando UBA {cont_Uba} - Cadastre")
     
@@ -108,9 +118,15 @@ async def create_uba(pool_, uba_data):
     UBA["did_info"] = json.dumps({'seed': UBA['seed']})
     UBA['did'], UBA['key'] = await did.create_and_store_my_did(UBA['wallet'], UBA['did_info'])
     UBAs.append(UBA)
+    end_time = time.time()
+    total_time = end_time - start_time
+    print(f"Tempo de criacao do {UBA['name']}: {total_time} segundos")
 
 
 async def run():
+
+    start_time = time.time()
+
     pool_ = {
         'name': 'pool1'
     }
@@ -164,7 +180,10 @@ async def run():
     for item in Clientes:
         print(f"{item}\n")
 
-print("batata")
+    end_time = time.time()
+
+    total_time = end_time - start_time
+    print(f"Tempo total do codigo: {total_time} segundos")
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(run())
