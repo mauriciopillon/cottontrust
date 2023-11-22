@@ -8,35 +8,5 @@
         "Endereco - Pais": "Pais Z",
         "wallet_config": "config_CLIENTE1",
         "wallet_credentials": "credentials_CLIENTE1"
-    },
-    {
-        "name": "CLIENTE2",
-        "Endereco - Rua": "Rua 456",
-        "Endereco - Bairro": "Bairro B",
-        "Endereco - Cidade": "Cidade W",
-        "Endereco - Estado": "Estado X",
-        "Endereco - Pais": "Pais Y",
-        "wallet_config": "config_CLIENTE2",
-        "wallet_credentials": "credentials_CLIENTE2"
-    },
-    {
-        "name": "CLIENTE3",
-        "Endereco - Rua": "Rua 789",
-        "Endereco - Bairro": "Bairro C",
-        "Endereco - Cidade": "Cidade V",
-        "Endereco - Estado": "Estado W",
-        "Endereco - Pais": "Pais X",
-        "wallet_config": "config_CLIENTE3",
-        "wallet_credentials": "credentials_CLIENTE3"
-    },
-    {
-        "name": "CLIENTE4",
-        "Endereco - Rua": "Rua 101",
-        "Endereco - Bairro": "Bairro D",
-        "Endereco - Cidade": "Cidade U",
-        "Endereco - Estado": "Estado V",
-        "Endereco - Pais": "Pais W",
-        "wallet_config": "config_CLIENTE4",
-        "wallet_credentials": "credentials_CLIENTE4"
     }
 ]

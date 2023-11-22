@@ -8,6 +8,8 @@ from indy.error import ErrorCode, IndyError
 UBAs = []
 Fardinhos = []
 Clientes = []
+Tempo_Uba = []
+
 
 cont_Uba = 0
 cont_Far = 0
@@ -34,9 +36,11 @@ def create_seed(contador, nome):
 async def create_cliente(pool_, cliente_data):
     global cont_Cli
     cont_Cli += 1
-    start_time = time.time()
+    
     
     print(f"Criando Clientes {cont_Cli} - Cadastre")
+
+    start_time = time.time()
 
     CLIENTE = {
         'name': cliente_data['name'],
@@ -54,17 +58,19 @@ async def create_cliente(pool_, cliente_data):
     await create_wallet(CLIENTE)
     CLIENTE["did_info"] = json.dumps({'seed': CLIENTE['seed']})
     CLIENTE['did'], CLIENTE['key'] = await did.create_and_store_my_did(CLIENTE['wallet'], CLIENTE['did_info'])
-    Clientes.append(CLIENTE)
     end_time = time.time()
+    Clientes.append(CLIENTE)  
     total_time = end_time - start_time
     print(f"Tempo de criacao do {CLIENTE['name']}: {total_time} segundos")
 
 async def create_fardinho(pool_, fardinho_data):
     global cont_Far
     cont_Far += 1
-    start_time = time.time()
+    
 
     print(f"Criando Fardinho {cont_Far} - Cadastre")
+
+    start_time = time.time()
 
     FARDINHO = {
         'name': fardinho_data['name'],
@@ -86,15 +92,15 @@ async def create_fardinho(pool_, fardinho_data):
     await create_wallet(FARDINHO)
     FARDINHO["did_info"] = json.dumps({'seed': FARDINHO['seed']})
     FARDINHO['did'], FARDINHO['key'] = await did.create_and_store_my_did(FARDINHO['wallet'], FARDINHO['did_info'])
-    Fardinhos.append(FARDINHO)
     end_time = time.time()
+    Fardinhos.append(FARDINHO) 
     total_time = end_time - start_time
     print(f"Tempo de criacao do {FARDINHO['name']}: {total_time} segundos")
 
 async def create_uba(pool_, uba_data):
     global cont_Uba
     cont_Uba += 1
-    start_time = time.time()
+    #start_time = time.time()
 
     print(f"Criando UBA {cont_Uba} - Cadastre")
     
@@ -116,11 +122,14 @@ async def create_uba(pool_, uba_data):
 
     await create_wallet(UBA)
     UBA["did_info"] = json.dumps({'seed': UBA['seed']})
+    start_time = time.time()
     UBA['did'], UBA['key'] = await did.create_and_store_my_did(UBA['wallet'], UBA['did_info'])
-    UBAs.append(UBA)
     end_time = time.time()
+    UBAs.append(UBA)
+    #end_time = time.time()
     total_time = end_time - start_time
-    print(f"Tempo de criacao do {UBA['name']}: {total_time} segundos")
+    Tempo_Uba.append(total_time)
+    print(f"Tempo de criacao da DID do {UBA['name']}: {total_time} segundos")
 
 
 async def run():
@@ -145,7 +154,7 @@ async def run():
     pool_['handle'] = await pool.open_pool_ledger(pool_['name'], None)
 
     #UBAS -----------------------------------------------------------------------------------
-
+    
     with open('ubas.json', 'r') as file:
         ubas_data = json.load(file)
 
@@ -184,6 +193,8 @@ async def run():
 
     total_time = end_time - start_time
     print(f"Tempo total do codigo: {total_time} segundos")
+    print(Tempo_Uba)
+    print(len(Tempo_Uba))
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(run())

@@ -12,20 +12,6 @@
         "Peso": "10kg",
         "wallet_config": "config_fardinho1",
         "wallet_credentials": "credentials_fardinho1"
-    },
-    {
-        "name": "Fardinho2",
-        "Identificador do Fardinho": "ID2",
-        "Identificador da Fazenda": "Fazenda2",
-        "Identificador da UBA": "UBA2",
-        "Safra": "Safra2",
-        "Talhao": "Talhao2",
-        "Data da Colheita": "02/01/2023",
-        "Produto da Semente": "Semente2",
-        "Lote da Semente": "Lote2",
-        "Peso": "12kg",
-        "wallet_config": "config_fardinho2",
-        "wallet_credentials": "credentials_fardinho2"
     }
 ]
 
