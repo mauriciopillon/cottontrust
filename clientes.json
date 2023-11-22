@@ -1,0 +1,12 @@
+[
+    {
+        "name": "CLIENTE1",
+        "Endereco - Rua": "Rua 123",
+        "Endereco - Bairro": "Bairro A",
+        "Endereco - Cidade": "Cidade X",
+        "Endereco - Estado": "Estado Y",
+        "Endereco - Pais": "Pais Z",
+        "wallet_config": "config_CLIENTE1",
+        "wallet_credentials": "credentials_CLIENTE1"
+    }
+]
