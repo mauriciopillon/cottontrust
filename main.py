@@ -189,8 +189,9 @@ async def run():
     for item in Clientes:
         print(f"{item}\n")
 
-    end_time = time.time()
 
+    #FIM -----------------------------------------------------------------------------------------
+    end_time = time.time()
     total_time = end_time - start_time
     print(f"Tempo total do codigo: {total_time} segundos")
     print(Tempo_Uba)
