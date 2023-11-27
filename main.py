@@ -40,7 +40,7 @@ async def create_cliente(pool_, cliente_data):
     
     print(f"Criando Clientes {cont_Cli} - Cadastre")
 
-    start_time = time.time()
+    #start_time = time.time()
 
     CLIENTE = {
         'name': cliente_data['name'],
@@ -58,9 +58,9 @@ async def create_cliente(pool_, cliente_data):
     await create_wallet(CLIENTE)
     CLIENTE["did_info"] = json.dumps({'seed': CLIENTE['seed']})
     CLIENTE['did'], CLIENTE['key'] = await did.create_and_store_my_did(CLIENTE['wallet'], CLIENTE['did_info'])
-    end_time = time.time()
+    #end_time = time.time()
     Clientes.append(CLIENTE)  
-    total_time = end_time - start_time
+    #total_time = end_time - start_time
     print(f"Tempo de criacao do {CLIENTE['name']}: {total_time} segundos")
 
 async def create_fardinho(pool_, fardinho_data):
@@ -70,7 +70,7 @@ async def create_fardinho(pool_, fardinho_data):
 
     print(f"Criando Fardinho {cont_Far} - Cadastre")
 
-    start_time = time.time()
+    #start_time = time.time()
 
     FARDINHO = {
         'name': fardinho_data['name'],
@@ -92,9 +92,9 @@ async def create_fardinho(pool_, fardinho_data):
     await create_wallet(FARDINHO)
     FARDINHO["did_info"] = json.dumps({'seed': FARDINHO['seed']})
     FARDINHO['did'], FARDINHO['key'] = await did.create_and_store_my_did(FARDINHO['wallet'], FARDINHO['did_info'])
-    end_time = time.time()
+    #end_time = time.time()
     Fardinhos.append(FARDINHO) 
-    total_time = end_time - start_time
+    #total_time = end_time - start_time
     print(f"Tempo de criacao do {FARDINHO['name']}: {total_time} segundos")
 
 async def create_uba(pool_, uba_data):
@@ -134,7 +134,7 @@ async def create_uba(pool_, uba_data):
 
 async def run():
 
-    start_time = time.time()
+    #start_time = time.time()
 
     pool_ = {
         'name': 'pool1'
@@ -153,49 +153,71 @@ async def run():
             pass
     pool_['handle'] = await pool.open_pool_ledger(pool_['name'], None)
 
-    #UBAS -----------------------------------------------------------------------------------
-    
+    # UBAS -----------------------------------------------------------------------------------
+
     with open('ubas.json', 'r') as file:
-        ubas_data = json.load(file)
+        try:
+            ubas_data = json.load(file)
+        except json.JSONDecodeError:
+            print("Erro ao decodificar o JSON em ubas.json ou o arquivo está vazio.\n")
+            ubas_data = []
 
-    for uba_data in ubas_data:
-        await create_uba(pool_, uba_data)
+    if ubas_data:
+        for uba_data in ubas_data:
+            await create_uba(pool_, uba_data)
 
-    print("UBAs criados:\n")
-    for item in UBAs:
-        print(f"{item}\n")
+        print("UBAs criados:\n")
+        for item in UBAs:
+            print(f"{item}\n")
+    #else:
+        #print("Nenhum dado de UBAs encontrado no arquivo JSON. Pulando...\n")
 
-    #FARDINHOS -----------------------------------------------------------------------------------
+    # FARDINHOS -----------------------------------------------------------------------------------
 
     with open('fardinhos.json', 'r') as file:
-        fardinhos_data = json.load(file)
+        try:
+            fardinhos_data = json.load(file)
+        except json.JSONDecodeError:
+            print("Erro ao decodificar o JSON em fardinhos.json ou o arquivo está vazio.\n")
+            fardinhos_data = []
 
-    for fardinho_data in fardinhos_data:
-        await create_fardinho(pool_, fardinho_data)
+    if fardinhos_data:
+        for fardinho_data in fardinhos_data:
+            await create_fardinho(pool_, fardinho_data)
 
-    print("Fardinhos criados:\n")
-    for item in Fardinhos:
-        print(f"{item}\n")
+        print("Fardinhos criados:\n")
+        for item in Fardinhos:
+            print(f"{item}\n")
+    #else:
+        #print("Nenhum dado de Fardinhos encontrado no arquivo JSON.\n")
 
-    #FCLIENTES -----------------------------------------------------------------------------------
+    # FCLIENTES -----------------------------------------------------------------------------------
 
     with open('clientes.json', 'r') as file:
-        clientes_data = json.load(file)
+        try:
+            clientes_data = json.load(file)
+        except json.JSONDecodeError:
+            print("Erro ao decodificar o JSON em clientes.json ou o arquivo está vazio.\n")
+            clientes_data = []
 
-    for cliente_data in clientes_data:
-        await create_cliente(pool_, cliente_data)
+    if clientes_data:
+        for cliente_data in clientes_data:
+            await create_cliente(pool_, cliente_data)
 
-    print("Clientes do mercado externo criados:\n")
-    for item in Clientes:
-        print(f"{item}\n")
+        print("Clientes do mercado externo criados:\n")
+        for item in Clientes:
+            print(f"{item}\n")
+    #else:
+        #print("Nenhum dado de Clientes encontrado no arquivo JSON. Pulando...\n")
+
 
 
     #FIM -----------------------------------------------------------------------------------------
-    end_time = time.time()
-    total_time = end_time - start_time
-    print(f"Tempo total do codigo: {total_time} segundos")
+    #end_time = time.time()
+    #total_time = end_time - start_time
+    #print(f"Tempo total do codigo: {total_time} segundos")
     print(Tempo_Uba)
-    print(len(Tempo_Uba))
+    print(f"O tamanho de Ubas é {len(Tempo_Uba)}")
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(run())
