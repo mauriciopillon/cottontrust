@@ -61,7 +61,7 @@ async def create_cliente(pool_, cliente_data):
     #end_time = time.time()
     Clientes.append(CLIENTE)  
     #total_time = end_time - start_time
-    print(f"Tempo de criacao do {CLIENTE['name']}: {total_time} segundos")
+    #print(f"Tempo de criacao do {CLIENTE['name']}: {total_time} segundos")
 
 async def create_fardinho(pool_, fardinho_data):
     global cont_Far
@@ -95,12 +95,12 @@ async def create_fardinho(pool_, fardinho_data):
     #end_time = time.time()
     Fardinhos.append(FARDINHO) 
     #total_time = end_time - start_time
-    print(f"Tempo de criacao do {FARDINHO['name']}: {total_time} segundos")
+    #print(f"Tempo de criacao do {FARDINHO['name']}: {total_time} segundos")
 
 async def create_uba(pool_, uba_data):
     global cont_Uba
     cont_Uba += 1
-    #start_time = time.time()
+    
 
     print(f"Criando UBA {cont_Uba} - Cadastre")
     
@@ -126,7 +126,7 @@ async def create_uba(pool_, uba_data):
     UBA['did'], UBA['key'] = await did.create_and_store_my_did(UBA['wallet'], UBA['did_info'])
     end_time = time.time()
     UBAs.append(UBA)
-    #end_time = time.time()
+    
     total_time = end_time - start_time
     Tempo_Uba.append(total_time)
     print(f"Tempo de criacao da DID do {UBA['name']}: {total_time} segundos")
@@ -141,7 +141,7 @@ async def run():
     }
 
     print("Open Pool Ledger: {}".format(pool_['name']))
-    pool_['genesis_txn_path'] = "/home/indy/UBA-7.0/pool1.txn"
+    pool_['genesis_txn_path'] = "/home/indy/cottontrust/pool1.txn"
     pool_['config'] = json.dumps({"genesis_txn": str(pool_['genesis_txn_path'])})
 
     await pool.set_protocol_version(2)
@@ -188,8 +188,6 @@ async def run():
         print("Fardinhos criados:\n")
         for item in Fardinhos:
             print(f"{item}\n")
-    #else:
-        #print("Nenhum dado de Fardinhos encontrado no arquivo JSON.\n")
 
     # FCLIENTES -----------------------------------------------------------------------------------
 
@@ -207,15 +205,11 @@ async def run():
         print("Clientes do mercado externo criados:\n")
         for item in Clientes:
             print(f"{item}\n")
-    #else:
-        #print("Nenhum dado de Clientes encontrado no arquivo JSON. Pulando...\n")
 
 
 
     #FIM -----------------------------------------------------------------------------------------
-    #end_time = time.time()
-    #total_time = end_time - start_time
-    #print(f"Tempo total do codigo: {total_time} segundos")
+    
     print(Tempo_Uba)
     print(f"O tamanho de Ubas é {len(Tempo_Uba)}")
 

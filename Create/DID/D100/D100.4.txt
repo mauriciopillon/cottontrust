@@ -1,0 +1,509 @@
+Open Pool Ledger: pool1
+Criando UBA 1 - Cadastre
+"UBA1" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA1: 0.0004184246063232422 segundos
+Criando UBA 2 - Cadastre
+"UBA2" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA2: 0.0003333091735839844 segundos
+Criando UBA 3 - Cadastre
+"UBA3" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA3: 0.0003323554992675781 segundos
+Criando UBA 4 - Cadastre
+"UBA4" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA4: 0.0003352165222167969 segundos
+Criando UBA 5 - Cadastre
+"UBA5" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA5: 0.00033926963806152344 segundos
+Criando UBA 6 - Cadastre
+"UBA6" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA6: 0.0003497600555419922 segundos
+Criando UBA 7 - Cadastre
+"UBA7" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA7: 0.00033354759216308594 segundos
+Criando UBA 8 - Cadastre
+"UBA8" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA8: 0.00033211708068847656 segundos
+Criando UBA 9 - Cadastre
+"UBA9" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA9: 0.00033354759216308594 segundos
+Criando UBA 10 - Cadastre
+"UBA10" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA10: 0.000331878662109375 segundos
+Criando UBA 11 - Cadastre
+"UBA11" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA11: 0.0003323554992675781 segundos
+Criando UBA 12 - Cadastre
+"UBA12" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA12: 0.0003311634063720703 segundos
+Criando UBA 13 - Cadastre
+"UBA13" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA13: 0.0003707408905029297 segundos
+Criando UBA 14 - Cadastre
+"UBA14" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA14: 0.0003337860107421875 segundos
+Criando UBA 15 - Cadastre
+"UBA15" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA15: 0.0003669261932373047 segundos
+Criando UBA 16 - Cadastre
+"UBA16" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA16: 0.0003342628479003906 segundos
+Criando UBA 17 - Cadastre
+"UBA17" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA17: 0.0003306865692138672 segundos
+Criando UBA 18 - Cadastre
+"UBA18" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA18: 0.00034737586975097656 segundos
+Criando UBA 19 - Cadastre
+"UBA19" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA19: 0.0003418922424316406 segundos
+Criando UBA 20 - Cadastre
+"UBA20" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA20: 0.0003483295440673828 segundos
+Criando UBA 21 - Cadastre
+"UBA21" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA21: 0.0003342628479003906 segundos
+Criando UBA 22 - Cadastre
+"UBA22" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA22: 0.00033473968505859375 segundos
+Criando UBA 23 - Cadastre
+"UBA23" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA23: 0.0003352165222167969 segundos
+Criando UBA 24 - Cadastre
+"UBA24" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA24: 0.0003294944763183594 segundos
+Criando UBA 25 - Cadastre
+"UBA25" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA25: 0.0003306865692138672 segundos
+Criando UBA 26 - Cadastre
+"UBA26" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA26: 0.0003294944763183594 segundos
+Criando UBA 27 - Cadastre
+"UBA27" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA27: 0.0003306865692138672 segundos
+Criando UBA 28 - Cadastre
+"UBA28" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA28: 0.00033473968505859375 segundos
+Criando UBA 29 - Cadastre
+"UBA29" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA29: 0.00033211708068847656 segundos
+Criando UBA 30 - Cadastre
+"UBA30" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA30: 0.0002651214599609375 segundos
+Criando UBA 31 - Cadastre
+"UBA31" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA31: 0.0002739429473876953 segundos
+Criando UBA 32 - Cadastre
+"UBA32" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA32: 0.00026535987854003906 segundos
+Criando UBA 33 - Cadastre
+"UBA33" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA33: 0.0002753734588623047 segundos
+Criando UBA 34 - Cadastre
+"UBA34" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA34: 0.00036644935607910156 segundos
+Criando UBA 35 - Cadastre
+"UBA35" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA35: 0.00036525726318359375 segundos
+Criando UBA 36 - Cadastre
+"UBA36" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA36: 0.0003333091735839844 segundos
+Criando UBA 37 - Cadastre
+"UBA37" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA37: 0.00033354759216308594 segundos
+Criando UBA 38 - Cadastre
+"UBA38" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA38: 0.0003306865692138672 segundos
+Criando UBA 39 - Cadastre
+"UBA39" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA39: 0.00032806396484375 segundos
+Criando UBA 40 - Cadastre
+"UBA40" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA40: 0.00033211708068847656 segundos
+Criando UBA 41 - Cadastre
+"UBA41" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA41: 0.0003540515899658203 segundos
+Criando UBA 42 - Cadastre
+"UBA42" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA42: 0.0003349781036376953 segundos
+Criando UBA 43 - Cadastre
+"UBA43" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA43: 0.0003325939178466797 segundos
+Criando UBA 44 - Cadastre
+"UBA44" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA44: 0.0003325939178466797 segundos
+Criando UBA 45 - Cadastre
+"UBA45" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA45: 0.0003063678741455078 segundos
+Criando UBA 46 - Cadastre
+"UBA46" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA46: 0.0003437995910644531 segundos
+Criando UBA 47 - Cadastre
+"UBA47" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA47: 0.0003409385681152344 segundos
+Criando UBA 48 - Cadastre
+"UBA48" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA48: 0.00028324127197265625 segundos
+Criando UBA 49 - Cadastre
+"UBA49" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA49: 0.0002663135528564453 segundos
+Criando UBA 50 - Cadastre
+"UBA50" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA50: 0.0003101825714111328 segundos
+Criando UBA 51 - Cadastre
+"UBA51" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA51: 0.00033783912658691406 segundos
+Criando UBA 52 - Cadastre
+"UBA52" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA52: 0.00028395652770996094 segundos
+Criando UBA 53 - Cadastre
+"UBA53" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA53: 0.00027680397033691406 segundos
+Criando UBA 54 - Cadastre
+"UBA54" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA54: 0.0003540515899658203 segundos
+Criando UBA 55 - Cadastre
+"UBA55" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA55: 0.0003573894500732422 segundos
+Criando UBA 56 - Cadastre
+"UBA56" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA56: 0.0003330707550048828 segundos
+Criando UBA 57 - Cadastre
+"UBA57" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA57: 0.0003323554992675781 segundos
+Criando UBA 58 - Cadastre
+"UBA58" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA58: 0.0003407001495361328 segundos
+Criando UBA 59 - Cadastre
+"UBA59" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA59: 0.0003345012664794922 segundos
+Criando UBA 60 - Cadastre
+"UBA60" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA60: 0.0003292560577392578 segundos
+Criando UBA 61 - Cadastre
+"UBA61" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA61: 0.0002884864807128906 segundos
+Criando UBA 62 - Cadastre
+"UBA62" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA62: 0.0003371238708496094 segundos
+Criando UBA 63 - Cadastre
+"UBA63" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA63: 0.00033545494079589844 segundos
+Criando UBA 64 - Cadastre
+"UBA64" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA64: 0.00034737586975097656 segundos
+Criando UBA 65 - Cadastre
+"UBA65" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA65: 0.00034165382385253906 segundos
+Criando UBA 66 - Cadastre
+"UBA66" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA66: 0.00028514862060546875 segundos
+Criando UBA 67 - Cadastre
+"UBA67" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA67: 0.0002675056457519531 segundos
+Criando UBA 68 - Cadastre
+"UBA68" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA68: 0.00027751922607421875 segundos
+Criando UBA 69 - Cadastre
+"UBA69" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA69: 0.000331878662109375 segundos
+Criando UBA 70 - Cadastre
+"UBA70" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA70: 0.0003352165222167969 segundos
+Criando UBA 71 - Cadastre
+"UBA71" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA71: 0.00033473968505859375 segundos
+Criando UBA 72 - Cadastre
+"UBA72" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA72: 0.0003337860107421875 segundos
+Criando UBA 73 - Cadastre
+"UBA73" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA73: 0.00027680397033691406 segundos
+Criando UBA 74 - Cadastre
+"UBA74" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA74: 0.00042057037353515625 segundos
+Criando UBA 75 - Cadastre
+"UBA75" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA75: 0.0003409385681152344 segundos
+Criando UBA 76 - Cadastre
+"UBA76" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA76: 0.0002841949462890625 segundos
+Criando UBA 77 - Cadastre
+"UBA77" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA77: 0.00026798248291015625 segundos
+Criando UBA 78 - Cadastre
+"UBA78" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA78: 0.00026345252990722656 segundos
+Criando UBA 79 - Cadastre
+"UBA79" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA79: 0.0002658367156982422 segundos
+Criando UBA 80 - Cadastre
+"UBA80" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA80: 0.0002644062042236328 segundos
+Criando UBA 81 - Cadastre
+"UBA81" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA81: 0.00026297569274902344 segundos
+Criando UBA 82 - Cadastre
+"UBA82" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA82: 0.00027632713317871094 segundos
+Criando UBA 83 - Cadastre
+"UBA83" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA83: 0.0002644062042236328 segundos
+Criando UBA 84 - Cadastre
+"UBA84" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA84: 0.0002734661102294922 segundos
+Criando UBA 85 - Cadastre
+"UBA85" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA85: 0.000263214111328125 segundos
+Criando UBA 86 - Cadastre
+"UBA86" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA86: 0.0002799034118652344 segundos
+Criando UBA 87 - Cadastre
+"UBA87" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA87: 0.00026535987854003906 segundos
+Criando UBA 88 - Cadastre
+"UBA88" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA88: 0.0003540515899658203 segundos
+Criando UBA 89 - Cadastre
+"UBA89" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA89: 0.0003387928009033203 segundos
+Criando UBA 90 - Cadastre
+"UBA90" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA90: 0.0003325939178466797 segundos
+Criando UBA 91 - Cadastre
+"UBA91" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA91: 0.0003287792205810547 segundos
+Criando UBA 92 - Cadastre
+"UBA92" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA92: 0.0003323554992675781 segundos
+Criando UBA 93 - Cadastre
+"UBA93" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA93: 0.0002715587615966797 segundos
+Criando UBA 94 - Cadastre
+"UBA94" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA94: 0.00028777122497558594 segundos
+Criando UBA 95 - Cadastre
+"UBA95" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA95: 0.0003199577331542969 segundos
+Criando UBA 96 - Cadastre
+"UBA96" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA96: 0.000331878662109375 segundos
+Criando UBA 97 - Cadastre
+"UBA97" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA97: 0.00032830238342285156 segundos
+Criando UBA 98 - Cadastre
+"UBA98" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA98: 0.00032901763916015625 segundos
+Criando UBA 99 - Cadastre
+"UBA99" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA99: 0.00032639503479003906 segundos
+Criando UBA 100 - Cadastre
+"UBA100" -> Criando ou Abrindo Carteira(wallet)
+Tempo de criacao da DID do UBA100: 0.0003333091735839844 segundos
+UBAs criados:
+
+{'name': 'UBA1', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba1"}', 'wallet_credentials': '{"key": "credentials_uba1"}', 'pool': 2, 'seed': 'UBA11A00000000000000000000000000', 'wallet': 5, 'did_info': '{"seed": "UBA11A00000000000000000000000000"}', 'did': 'MYt6aJf21tixw3L3AjKWQN', 'key': 'CCci1UK9iZ6xb4CieBVkcmSYmNmTd1xvhfPrQ9H9EYNT'}
+
+{'name': 'UBA2', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba2"}', 'wallet_credentials': '{"key": "credentials_uba2"}', 'pool': 2, 'seed': 'UBA22A00000000000000000000000000', 'wallet': 7, 'did_info': '{"seed": "UBA22A00000000000000000000000000"}', 'did': 'QAKaFiXn48kAF3P9FKTtNi', 'key': 'DdA13GULxV5PgEtCYMTE4eG5brZaUfjyfEhZPQw1Q6jt'}
+
+{'name': 'UBA3', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba3"}', 'wallet_credentials': '{"key": "credentials_uba3"}', 'pool': 2, 'seed': 'UBA33A00000000000000000000000000', 'wallet': 9, 'did_info': '{"seed": "UBA33A00000000000000000000000000"}', 'did': 'EHeuvT8TAgm9aUTBru7TW1', 'key': '8F2t8VLvpcewcdJ6qgNSMPgDeVM6J3o3WEgsXuic1Zao'}
+
+{'name': 'UBA4', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba4"}', 'wallet_credentials': '{"key": "credentials_uba4"}', 'pool': 2, 'seed': 'UBA44A00000000000000000000000000', 'wallet': 11, 'did_info': '{"seed": "UBA44A00000000000000000000000000"}', 'did': 'WNYxa5KFhpQKYzucYzvtoP', 'key': 'H1Vc7zSxpt6LZDMhFWR1z3GMvwN52KL9iLKqMeSLR2sF'}
+
+{'name': 'UBA5', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba5"}', 'wallet_credentials': '{"key": "credentials_uba5"}', 'pool': 2, 'seed': 'UBA55A00000000000000000000000000', 'wallet': 13, 'did_info': '{"seed": "UBA55A00000000000000000000000000"}', 'did': 'Ar5zadeKSLsNkwnzgZ4UkX', 'key': '6NGA6ks9evtwBHpGNAE7Xu4iitj2sv74bCK6o77y5o6w'}
+
+{'name': 'UBA6', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba6"}', 'wallet_credentials': '{"key": "credentials_uba6"}', 'pool': 2, 'seed': 'UBA66A00000000000000000000000000', 'wallet': 15, 'did_info': '{"seed": "UBA66A00000000000000000000000000"}', 'did': 'AXji8r1xVmoDLwEYyhHSgC', 'key': '6CG5zw3zWCtFcvfh6f4dFpMpAQ9x32hfp17szFN4HApX'}
+
+{'name': 'UBA7', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba7"}', 'wallet_credentials': '{"key": "credentials_uba7"}', 'pool': 2, 'seed': 'UBA77A00000000000000000000000000', 'wallet': 17, 'did_info': '{"seed": "UBA77A00000000000000000000000000"}', 'did': 'UnyESKMSMa9qwWLQPbjWLD', 'key': 'G9aXycojKwYUfkE9bz4Uq1gAyQHW9D4o1iec8PZFUt7n'}
+
+{'name': 'UBA8', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba8"}', 'wallet_credentials': '{"key": "credentials_uba8"}', 'pool': 2, 'seed': 'UBA88A00000000000000000000000000', 'wallet': 19, 'did_info': '{"seed": "UBA88A00000000000000000000000000"}', 'did': '3Pf9z5Ae59psBxzgpafosT', 'key': '2JaFNVH4EPJHpLmBDxvMChpJT7S21iXJzKi9hb4RDkDg'}
+
+{'name': 'UBA9', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba9"}', 'wallet_credentials': '{"key": "credentials_uba9"}', 'pool': 2, 'seed': 'UBA99A00000000000000000000000000', 'wallet': 21, 'did_info': '{"seed": "UBA99A00000000000000000000000000"}', 'did': 'A36D4vjkNQUw2yH4C1Duer', 'key': '5veWfx5EwF1oy7PDkYaLcS1TmRyQwuJdbp3CKPeDMyti'}
+
+{'name': 'UBA10', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba10"}', 'wallet_credentials': '{"key": "credentials_uba10"}', 'pool': 2, 'seed': 'UBA1010A000000000000000000000000', 'wallet': 23, 'did_info': '{"seed": "UBA1010A000000000000000000000000"}', 'did': '8PBGWxV2pBhfGogHmhVBGd', 'key': '52NX9xWGkrZR2Ho1AGtsbvRMx7A5x4Gtu5vizKGNszEh'}
+
+{'name': 'UBA11', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba11"}', 'wallet_credentials': '{"key": "credentials_uba11"}', 'pool': 2, 'seed': 'UBA1111A000000000000000000000000', 'wallet': 25, 'did_info': '{"seed": "UBA1111A000000000000000000000000"}', 'did': 'XFN3c5AEx8r2Px5RKJFhHW', 'key': 'HVBsLxgzZnu32g6ZndoDhdyFy9V1vbtmYybU95rNwDaH'}
+
+{'name': 'UBA12', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba12"}', 'wallet_credentials': '{"key": "credentials_uba12"}', 'pool': 2, 'seed': 'UBA1212A000000000000000000000000', 'wallet': 27, 'did_info': '{"seed": "UBA1212A000000000000000000000000"}', 'did': 'DEkjNqfvweVRMKfbpAkAry', 'key': '7fqiu8W8P6D7YpUPWnDE9nzfVAgKGpo5XsPqyyKmTRZW'}
+
+{'name': 'UBA13', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba13"}', 'wallet_credentials': '{"key": "credentials_uba13"}', 'pool': 2, 'seed': 'UBA1313A000000000000000000000000', 'wallet': 29, 'did_info': '{"seed": "UBA1313A000000000000000000000000"}', 'did': 'MBKFAgLxxf8nXmvaoUsDBG', 'key': 'Bzrx7gYXCjpF1YXYRMASG8YAKFfyf4ZHtVc2Qc1HBBAn'}
+
+{'name': 'UBA14', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba14"}', 'wallet_credentials': '{"key": "credentials_uba14"}', 'pool': 2, 'seed': 'UBA1414A000000000000000000000000', 'wallet': 31, 'did_info': '{"seed": "UBA1414A000000000000000000000000"}', 'did': 'KJhcMNCpJTnazikHBZhMvs', 'key': 'AyfSF1nBQ9VFYN2qBtGjc6FPNYhJ9XhMW8wCKkDFTx59'}
+
+{'name': 'UBA15', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba15"}', 'wallet_credentials': '{"key": "credentials_uba15"}', 'pool': 2, 'seed': 'UBA1515A000000000000000000000000', 'wallet': 33, 'did_info': '{"seed": "UBA1515A000000000000000000000000"}', 'did': 'P11csT79yrEfE18YY8cpLg', 'key': 'CzUDL4bSaaM6uoAKioHMg66T9wCCERsbqUrohTcwkDfY'}
+
+{'name': 'UBA16', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba16"}', 'wallet_credentials': '{"key": "credentials_uba16"}', 'pool': 2, 'seed': 'UBA1616A000000000000000000000000', 'wallet': 35, 'did_info': '{"seed": "UBA1616A000000000000000000000000"}', 'did': 'Tsn12nM1bFDzvTyWboePra', 'key': 'Feayjo5Bmoq7XpeucGZyYQojoiWYoDFtrhzYEhYy56mr'}
+
+{'name': 'UBA17', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba17"}', 'wallet_credentials': '{"key": "credentials_uba17"}', 'pool': 2, 'seed': 'UBA1717A000000000000000000000000', 'wallet': 37, 'did_info': '{"seed": "UBA1717A000000000000000000000000"}', 'did': '6cQ6oNTmgSRSMe78ZeCQMQ', 'key': '44MUu29sjioaqGJQEn48Xnve6SYJrYeqqjsRTgDGipkE'}
+
+{'name': 'UBA18', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba18"}', 'wallet_credentials': '{"key": "credentials_uba18"}', 'pool': 2, 'seed': 'UBA1818A000000000000000000000000', 'wallet': 39, 'did_info': '{"seed": "UBA1818A000000000000000000000000"}', 'did': 'PDhsrvs4z32sLMTjYvVyP9', 'key': 'D7PVunvuh6EDgho112fKF9v5G4zRzdhFpokzkyf1Cqjc'}
+
+{'name': 'UBA19', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba19"}', 'wallet_credentials': '{"key": "credentials_uba19"}', 'pool': 2, 'seed': 'UBA1919A000000000000000000000000', 'wallet': 41, 'did_info': '{"seed": "UBA1919A000000000000000000000000"}', 'did': 'DD2KKNEburNU8p1PLP7pRR', 'key': '7etzb7g5SUYDQfvW5pYt5suaiQbxQsJgabuvzAft42FQ'}
+
+{'name': 'UBA20', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba20"}', 'wallet_credentials': '{"key": "credentials_uba20"}', 'pool': 2, 'seed': 'UBA2020A000000000000000000000000', 'wallet': 43, 'did_info': '{"seed": "UBA2020A000000000000000000000000"}', 'did': 'XuGB9QydyNrWoCJSTpLN5Y', 'key': 'HqqvZtR9nULoYayLoK2G3sg15paneH6g1X5cTBLUkzaQ'}
+
+{'name': 'UBA21', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba21"}', 'wallet_credentials': '{"key": "credentials_uba21"}', 'pool': 2, 'seed': 'UBA2121A000000000000000000000000', 'wallet': 45, 'did_info': '{"seed": "UBA2121A000000000000000000000000"}', 'did': 'WbMRDfLfPUEsBvwoQszXFM', 'key': 'H8UGjBvVJghiTyVWv5aczXyk3uoBuJXViC16upa86W8K'}
+
+{'name': 'UBA22', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba22"}', 'wallet_credentials': '{"key": "credentials_uba22"}', 'pool': 2, 'seed': 'UBA2222A000000000000000000000000', 'wallet': 47, 'did_info': '{"seed": "UBA2222A000000000000000000000000"}', 'did': 'QoqbsWEJ7uxQjvv7EKKudE', 'key': 'Dyc1a51U3F83t6NZ9VNZcTzLLhMVVQFJvsYJfnJMBEWn'}
+
+{'name': 'UBA23', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba23"}', 'wallet_credentials': '{"key": "credentials_uba23"}', 'pool': 2, 'seed': 'UBA2323A000000000000000000000000', 'wallet': 49, 'did_info': '{"seed": "UBA2323A000000000000000000000000"}', 'did': 'WCNa7VCFG3iHWYm4fWCzH', 'key': 'GuwppNjcL8rdkC8QupxofZvwrQeYdHY3JGGjr5KwUBV'}
+
+{'name': 'UBA24', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba24"}', 'wallet_credentials': '{"key": "credentials_uba24"}', 'pool': 2, 'seed': 'UBA2424A000000000000000000000000', 'wallet': 51, 'did_info': '{"seed": "UBA2424A000000000000000000000000"}', 'did': 'Pk6FeeVb7HtQmRDt7iK1SE', 'key': 'DPx45b9rVHvMnhurhbCaCNncvE1TWSKMwdWqAEjkT37A'}
+
+{'name': 'UBA25', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba25"}', 'wallet_credentials': '{"key": "credentials_uba25"}', 'pool': 2, 'seed': 'UBA2525A000000000000000000000000', 'wallet': 53, 'did_info': '{"seed": "UBA2525A000000000000000000000000"}', 'did': 'Wigg7sM1V7NKDbm4m3Cyzz', 'key': 'HCU3wJhdeMqXG4qr2L1UcNZkU3pejA1aNQ39qehvys5w'}
+
+{'name': 'UBA26', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba26"}', 'wallet_credentials': '{"key": "credentials_uba26"}', 'pool': 2, 'seed': 'UBA2626A000000000000000000000000', 'wallet': 55, 'did_info': '{"seed": "UBA2626A000000000000000000000000"}', 'did': 'N6M7MiNem8R6aM57J5CMfY', 'key': 'CVmQHPiKFKhw7JsBgWmDTypKgsQYebDjpqqUuvZvs3a2'}
+
+{'name': 'UBA27', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba27"}', 'wallet_credentials': '{"key": "credentials_uba27"}', 'pool': 2, 'seed': 'UBA2727A000000000000000000000000', 'wallet': 57, 'did_info': '{"seed": "UBA2727A000000000000000000000000"}', 'did': 'AQ9cahSRx51hs2416xnxym', 'key': '688Dhqkj7SPd8R4HBN7ftfFGLVVb6x4E7G4QHRxaTU6e'}
+
+{'name': 'UBA28', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba28"}', 'wallet_credentials': '{"key": "credentials_uba28"}', 'pool': 2, 'seed': 'UBA2828A000000000000000000000000', 'wallet': 59, 'did_info': '{"seed": "UBA2828A000000000000000000000000"}', 'did': '2LhKy9rjb4i97kGkMMMGX5', 'key': 'jM6t7srKgyWu9tBfqYHnvoCn9kr2D1HL1pgTdwupRbm'}
+
+{'name': 'UBA29', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba29"}', 'wallet_credentials': '{"key": "credentials_uba29"}', 'pool': 2, 'seed': 'UBA2929A000000000000000000000000', 'wallet': 61, 'did_info': '{"seed": "UBA2929A000000000000000000000000"}', 'did': 'PwWBDQqGmg4Zi4pn2Am4AC', 'key': 'DWApne8GcGd769Q9VYgBQFM47wwiBxJqVBVcQUj8GeLC'}
+
+{'name': 'UBA30', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba30"}', 'wallet_credentials': '{"key": "credentials_uba30"}', 'pool': 2, 'seed': 'UBA3030A000000000000000000000000', 'wallet': 63, 'did_info': '{"seed": "UBA3030A000000000000000000000000"}', 'did': 'Mb33SWUD6bziEenV2uWHAe', 'key': 'CDnooBLnFNtp8pjFB5x2uUz3wf1YNaK5VjBk3WyQbJ5D'}
+
+{'name': 'UBA31', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba31"}', 'wallet_credentials': '{"key": "credentials_uba31"}', 'pool': 2, 'seed': 'UBA3131A000000000000000000000000', 'wallet': 65, 'did_info': '{"seed": "UBA3131A000000000000000000000000"}', 'did': 'APhKcEjbVKHkWLc6t18Dhx', 'key': '67stYRZ8usMtJjjgAYYt3J2vwcaEDgmrfzJSPCLnS9K8'}
+
+{'name': 'UBA32', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba32"}', 'wallet_credentials': '{"key": "credentials_uba32"}', 'pool': 2, 'seed': 'UBA3232A000000000000000000000000', 'wallet': 67, 'did_info': '{"seed": "UBA3232A000000000000000000000000"}', 'did': '8oRTLivWVFevVGmCM9UwgD', 'key': '5FawV9uTK3gEJTbNydXULi9hVpjbVGexiGJwExLMyg9z'}
+
+{'name': 'UBA33', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba33"}', 'wallet_credentials': '{"key": "credentials_uba33"}', 'pool': 2, 'seed': 'UBA3333A000000000000000000000000', 'wallet': 69, 'did_info': '{"seed": "UBA3333A000000000000000000000000"}', 'did': 'Cjgc5ETbamT1vhD9bJujC', 'key': '7Pzj8ntLFPV76skQghrYkt9n2gHu6Pu4AKwCviuvtES'}
+
+{'name': 'UBA34', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba34"}', 'wallet_credentials': '{"key": "credentials_uba34"}', 'pool': 2, 'seed': 'UBA3434A000000000000000000000000', 'wallet': 71, 'did_info': '{"seed": "UBA3434A000000000000000000000000"}', 'did': '8w4Gd12Dji4uuKkjeiDzJo', 'key': '5KkHkHcgUYXz7wvxkHvW97JSEaxui5h2kQjENu7ztZHi'}
+
+{'name': 'UBA35', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba35"}', 'wallet_credentials': '{"key": "credentials_uba35"}', 'pool': 2, 'seed': 'UBA3535A000000000000000000000000', 'wallet': 73, 'did_info': '{"seed": "UBA3535A000000000000000000000000"}', 'did': 'S5xUzVpgZnNULiK8ugefYF', 'key': 'Eg13gmSTtmvShRPkFDDBXDkBDhkjS1ew5zG13y88wLQ3'}
+
+{'name': 'UBA36', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba36"}', 'wallet_credentials': '{"key": "credentials_uba36"}', 'pool': 2, 'seed': 'UBA3636A000000000000000000000000', 'wallet': 75, 'did_info': '{"seed": "UBA3636A000000000000000000000000"}', 'did': 'CVXEF83PxMUeMxarTNTfRy', 'key': '7GH3os8WQB2fgPYGJARfYBAF9NpSXDSXby8RqcsgGVg4'}
+
+{'name': 'UBA37', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba37"}', 'wallet_credentials': '{"key": "credentials_uba37"}', 'pool': 2, 'seed': 'UBA3737A000000000000000000000000', 'wallet': 77, 'did_info': '{"seed": "UBA3737A000000000000000000000000"}', 'did': 'KPsBiTEYXKEkRVehrQoLNV', 'key': 'B2UiQWY86BucFA2JUwtDhEU8LFWRAJ4R1tUZqwCruLat'}
+
+{'name': 'UBA38', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba38"}', 'wallet_credentials': '{"key": "credentials_uba38"}', 'pool': 2, 'seed': 'UBA3838A000000000000000000000000', 'wallet': 79, 'did_info': '{"seed": "UBA3838A000000000000000000000000"}', 'did': 'Gc1kAoshg1oJFd9XDTXa1L', 'key': '9WGEubBQw8onbAQyvQgHNmVaRZwn4r7MGHfKL7GPrCJK'}
+
+{'name': 'UBA39', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba39"}', 'wallet_credentials': '{"key": "credentials_uba39"}', 'pool': 2, 'seed': 'UBA3939A000000000000000000000000', 'wallet': 81, 'did_info': '{"seed": "UBA3939A000000000000000000000000"}', 'did': 'ShYbn9LnQjMbnF6cQkqZWz', 'key': 'F1Q4VdsfQLkhBNXRR2yMUyV7F8WohMHKKtUnpjzPnrca'}
+
+{'name': 'UBA40', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba40"}', 'wallet_credentials': '{"key": "credentials_uba40"}', 'pool': 2, 'seed': 'UBA4040A000000000000000000000000', 'wallet': 83, 'did_info': '{"seed": "UBA4040A000000000000000000000000"}', 'did': '2TRNBCuE4vLv3qbYiszcvY', 'key': 'o1gkhrBQeeZrYJTXUDUD4z5sKHYaio3rfHwEtsATNFu'}
+
+{'name': 'UBA41', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba41"}', 'wallet_credentials': '{"key": "credentials_uba41"}', 'pool': 2, 'seed': 'UBA4141A000000000000000000000000', 'wallet': 85, 'did_info': '{"seed": "UBA4141A000000000000000000000000"}', 'did': 'Cz1s8RberwsWQ2cB58RX9o', 'key': '7XontWRkiTBQDmQDibRnyWRMvFxrBNLxNvwoWtpXni6J'}
+
+{'name': 'UBA42', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba42"}', 'wallet_credentials': '{"key": "credentials_uba42"}', 'pool': 2, 'seed': 'UBA4242A000000000000000000000000', 'wallet': 87, 'did_info': '{"seed": "UBA4242A000000000000000000000000"}', 'did': '8MU6Eah6CpHoMWkGq6r8hz', 'key': '51STxyPbd48aewuNG2TTyLbv2esTggKH3PJv74o55XTs'}
+
+{'name': 'UBA43', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba43"}', 'wallet_credentials': '{"key": "credentials_uba43"}', 'pool': 2, 'seed': 'UBA4343A000000000000000000000000', 'wallet': 89, 'did_info': '{"seed": "UBA4343A000000000000000000000000"}', 'did': 'XEWRiEjhUUtrWGTgSjqafK', 'key': 'HUipo4sRRVuNNXkXL9D4UvNfP4Tz6URw92tDgMQBEfKC'}
+
+{'name': 'UBA44', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba44"}', 'wallet_credentials': '{"key": "credentials_uba44"}', 'pool': 2, 'seed': 'UBA4444A000000000000000000000000', 'wallet': 91, 'did_info': '{"seed": "UBA4444A000000000000000000000000"}', 'did': 'MGt7moUTpyQSd9vMogPSzc', 'key': 'C3tvkbsHEUSLMDUrp5w8YVDSsZSB3Av5hKpHctFSMpRk'}
+
+{'name': 'UBA45', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba45"}', 'wallet_credentials': '{"key": "credentials_uba45"}', 'pool': 2, 'seed': 'UBA4545A000000000000000000000000', 'wallet': 93, 'did_info': '{"seed": "UBA4545A000000000000000000000000"}', 'did': 'Csmt2PQLpfPCGbHGWbrxVn', 'key': '7UQVqst8BAu6NoPND7cG7zhLYGhsWvYKkErcjNrPN2tP'}
+
+{'name': 'UBA46', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba46"}', 'wallet_credentials': '{"key": "credentials_uba46"}', 'pool': 2, 'seed': 'UBA4646A000000000000000000000000', 'wallet': 95, 'did_info': '{"seed": "UBA4646A000000000000000000000000"}', 'did': '7iiEMrpuS4RWxApUP54fxA', 'key': '4fQXfuGFNuSmHtj6yoAJZ4T73mSV4V5VVJyXPmY6cwWt'}
+
+{'name': 'UBA47', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba47"}', 'wallet_credentials': '{"key": "credentials_uba47"}', 'pool': 2, 'seed': 'UBA4747A000000000000000000000000', 'wallet': 97, 'did_info': '{"seed": "UBA4747A000000000000000000000000"}', 'did': 'EuHuUQr452xSL4Gwqy9Hgg', 'key': '8aTTq6gfuqSNMrdjdxNEY6iboipJgPbogiugdw8eabuH'}
+
+{'name': 'UBA48', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba48"}', 'wallet_credentials': '{"key": "credentials_uba48"}', 'pool': 2, 'seed': 'UBA4848A000000000000000000000000', 'wallet': 99, 'did_info': '{"seed": "UBA4848A000000000000000000000000"}', 'did': '5FbXar9PNKjfYEEyMRfQ9o', 'key': '3KQN5s6ooYmt9qpdaWMwJv9skVthPEuLRYEbDNQbtyxN'}
+
+{'name': 'UBA49', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba49"}', 'wallet_credentials': '{"key": "credentials_uba49"}', 'pool': 2, 'seed': 'UBA4949A000000000000000000000000', 'wallet': 101, 'did_info': '{"seed": "UBA4949A000000000000000000000000"}', 'did': 'L1CNyFtJTSxHms8WYB9oHR', 'key': 'BMjbUDNcrBoWv3j5PhYrPZtYhFy4XsJ9KrLNU2VRpZxj'}
+
+{'name': 'UBA50', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba50"}', 'wallet_credentials': '{"key": "credentials_uba50"}', 'pool': 2, 'seed': 'UBA5050A000000000000000000000000', 'wallet': 103, 'did_info': '{"seed": "UBA5050A000000000000000000000000"}', 'did': 'YKPwMikeiYzhh3F8ohqbnr', 'key': 'J4zqp6yGV5wDKXh6iiP61G7264fL75XZgU7cBg4VmdrG'}
+
+{'name': 'UBA51', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba51"}', 'wallet_credentials': '{"key": "credentials_uba51"}', 'pool': 2, 'seed': 'UBA5151A000000000000000000000000', 'wallet': 105, 'did_info': '{"seed": "UBA5151A000000000000000000000000"}', 'did': 'L1urTcukcAzZQhYDhP1V2w', 'key': 'BN8CYTreYFMZKkGzJcG6vwusrvQ7V7zpt9ioW5LoqfMo'}
+
+{'name': 'UBA52', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba52"}', 'wallet_credentials': '{"key": "credentials_uba52"}', 'pool': 2, 'seed': 'UBA5252A000000000000000000000000', 'wallet': 107, 'did_info': '{"seed": "UBA5252A000000000000000000000000"}', 'did': 'HgGGJATq6iy81N7Ni8ASa', 'key': 'A6C6YXWiuSnqcAZ337n3QA2sx3Q5vwrf4W1LT6nss3o'}
+
+{'name': 'UBA53', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba53"}', 'wallet_credentials': '{"key": "credentials_uba53"}', 'pool': 2, 'seed': 'UBA5353A000000000000000000000000', 'wallet': 109, 'did_info': '{"seed": "UBA5353A000000000000000000000000"}', 'did': 'SgDfJWEskxdTr2Pw7T8WXP', 'key': 'Ezg8HxP8SLGR8WFfYjX4fUzC4CBsmBJnTFsyefPd37wk'}
+
+{'name': 'UBA54', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba54"}', 'wallet_credentials': '{"key": "credentials_uba54"}', 'pool': 2, 'seed': 'UBA5454A000000000000000000000000', 'wallet': 111, 'did_info': '{"seed": "UBA5454A000000000000000000000000"}', 'did': '7NZwPVD7VWVPx5t4zqo4sZ', 'key': '4URmdzhoRR76SZncAofzhBH7jvvLea5aiBrzYqr8Hndk'}
+
+{'name': 'UBA55', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba55"}', 'wallet_credentials': '{"key": "credentials_uba55"}', 'pool': 2, 'seed': 'UBA5555A000000000000000000000000', 'wallet': 113, 'did_info': '{"seed": "UBA5555A000000000000000000000000"}', 'did': 'RLZjo4EiCvr3qUyRQ58nys', 'key': 'EGMLRTPzx4EG6WvT7ASoBS8wSgbsEbjtPnVkV7Mjk3RE'}
+
+{'name': 'UBA56', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba56"}', 'wallet_credentials': '{"key": "credentials_uba56"}', 'pool': 2, 'seed': 'UBA5656A000000000000000000000000', 'wallet': 115, 'did_info': '{"seed": "UBA5656A000000000000000000000000"}', 'did': 'A5ZdeouZuUwy5XVTJUAz8m', 'key': '5wzgao5gpVEJdEGZ7HAhDxyi14whDM9DNSrhfrGqJ49E'}
+
+{'name': 'UBA57', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba57"}', 'wallet_credentials': '{"key": "credentials_uba57"}', 'pool': 2, 'seed': 'UBA5757A000000000000000000000000', 'wallet': 117, 'did_info': '{"seed": "UBA5757A000000000000000000000000"}', 'did': 'AX2Zar9zhRv1AHGUmYFrS9', 'key': '6BsfFL3mjKTDV5woeW21eE3WW8Snjn3F19BWUyNe5F8o'}
+
+{'name': 'UBA58', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba58"}', 'wallet_credentials': '{"key": "credentials_uba58"}', 'pool': 2, 'seed': 'UBA5858A000000000000000000000000', 'wallet': 119, 'did_info': '{"seed": "UBA5858A000000000000000000000000"}', 'did': 'U81rawfhtJgHctaL5jsA1p', 'key': 'FnM6d99bDURoFcf5v3WGTV8miADdLGV7N15JM896touf'}
+
+{'name': 'UBA59', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba59"}', 'wallet_credentials': '{"key": "credentials_uba59"}', 'pool': 2, 'seed': 'UBA5959A000000000000000000000000', 'wallet': 121, 'did_info': '{"seed": "UBA5959A000000000000000000000000"}', 'did': 'NtuaT24KLcF2MN5CuoSFYi', 'key': 'Cw9FNXU8Wb8HAu1egzM4V6GEdTm1w6uUBd4BpPbkWp1Z'}
+
+{'name': 'UBA60', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba60"}', 'wallet_credentials': '{"key": "credentials_uba60"}', 'pool': 2, 'seed': 'UBA6060A000000000000000000000000', 'wallet': 123, 'did_info': '{"seed": "UBA6060A000000000000000000000000"}', 'did': 'B9VKvDXChbS5xshiRtAPUC', 'key': '6XkH7r94fAYsDjeJhU6oa5wSzuT6JVcbjkpzFxTscD7A'}
+
+{'name': 'UBA61', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba61"}', 'wallet_credentials': '{"key": "credentials_uba61"}', 'pool': 2, 'seed': 'UBA6161A000000000000000000000000', 'wallet': 125, 'did_info': '{"seed": "UBA6161A000000000000000000000000"}', 'did': 'GRmzU2YZ7vnmAwccZKPixh', 'key': '9QgdBuPoQLYZpCtGvKR4K4rUVUYbPNuB2QBAXBgaTJ37'}
+
+{'name': 'UBA62', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba62"}', 'wallet_credentials': '{"key": "credentials_uba62"}', 'pool': 2, 'seed': 'UBA6262A000000000000000000000000', 'wallet': 127, 'did_info': '{"seed": "UBA6262A000000000000000000000000"}', 'did': 'Kf9Ebqbb7tu76Yx6csCdui', 'key': 'BAoeBj6DVG4PwQBefuAcX4dYSEp4pos6JS82pnw9ytdt'}
+
+{'name': 'UBA63', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba63"}', 'wallet_credentials': '{"key": "credentials_uba63"}', 'pool': 2, 'seed': 'UBA6363A000000000000000000000000', 'wallet': 129, 'did_info': '{"seed": "UBA6363A000000000000000000000000"}', 'did': '5bjshhUeByNYiPNxdf4fkk', 'key': '3WP9qE9M78z8vNbuMvwG6cVNUdpULHEg1db6iBhPvRk8'}
+
+{'name': 'UBA64', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba64"}', 'wallet_credentials': '{"key": "credentials_uba64"}', 'pool': 2, 'seed': 'UBA6464A000000000000000000000000', 'wallet': 131, 'did_info': '{"seed": "UBA6464A000000000000000000000000"}', 'did': 'T36XkvLLZofMYUTMWuPNo1', 'key': 'FC46H6xG3sRx2t5i65DudfjeRKDN9udgCkcseyxG2MLK'}
+
+{'name': 'UBA65', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba65"}', 'wallet_credentials': '{"key": "credentials_uba65"}', 'pool': 2, 'seed': 'UBA6565A000000000000000000000000', 'wallet': 133, 'did_info': '{"seed": "UBA6565A000000000000000000000000"}', 'did': 'YSR9MBeorGPDGF2ZNuQQkY', 'key': 'J8pnRMMNbWWMqcRVSf5m2LBkaozfZy5NDECDdz2LAxX6'}
+
+{'name': 'UBA66', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba66"}', 'wallet_credentials': '{"key": "credentials_uba66"}', 'pool': 2, 'seed': 'UBA6666A000000000000000000000000', 'wallet': 135, 'did_info': '{"seed": "UBA6666A000000000000000000000000"}', 'did': 'DZjhkaHtuTGQyA9ccVQc28', 'key': '7rBno2BjE8UykfdBo7e7hKF9JKvCn1tpVuNUzEEGasa4'}
+
+{'name': 'UBA67', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba67"}', 'wallet_credentials': '{"key": "credentials_uba67"}', 'pool': 2, 'seed': 'UBA6767A000000000000000000000000', 'wallet': 137, 'did_info': '{"seed": "UBA6767A000000000000000000000000"}', 'did': '8bhvYBrNpXoU1kvEGEgfFM', 'key': '59CaAmshU3wFvKGjFKqmk3kcdancCP6ymvyeAqgoFMhA'}
+
+{'name': 'UBA68', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba68"}', 'wallet_credentials': '{"key": "credentials_uba68"}', 'pool': 2, 'seed': 'UBA6868A000000000000000000000000', 'wallet': 139, 'did_info': '{"seed": "UBA6868A000000000000000000000000"}', 'did': 'EkmThfMBt4XhEeM9apBJNy', 'key': '8VoyUCrFsdFFfyV1yNkcwep3atLG3XFs7VKwKSMjCcBM'}
+
+{'name': 'UBA69', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba69"}', 'wallet_credentials': '{"key": "credentials_uba69"}', 'pool': 2, 'seed': 'UBA6969A000000000000000000000000', 'wallet': 141, 'did_info': '{"seed": "UBA6969A000000000000000000000000"}', 'did': 'QEjVcpnxTqYN2nCXFk9A71', 'key': 'DfZVBGENfXL3aUe7ydqa2n6zQBeZ5MGe74GcU6dqMbTn'}
+
+{'name': 'UBA70', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba70"}', 'wallet_credentials': '{"key": "credentials_uba70"}', 'pool': 2, 'seed': 'UBA7070A000000000000000000000000', 'wallet': 143, 'did_info': '{"seed": "UBA7070A000000000000000000000000"}', 'did': 'FxNoXuBmfqX3D4muMgXLcA', 'key': '99kTomzTrNtLZC3enfGHRim8hC4cLLb6Z4VhDE12K9hf'}
+
+{'name': 'UBA71', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba71"}', 'wallet_credentials': '{"key": "credentials_uba71"}', 'pool': 2, 'seed': 'UBA7171A000000000000000000000000', 'wallet': 145, 'did_info': '{"seed": "UBA7171A000000000000000000000000"}', 'did': 'X55h7F7bKW5R8cuotbaNhM', 'key': 'HPaqSP832geavD4f2aqQT3nuVrbqBMHohXRsuCNLmTiP'}
+
+{'name': 'UBA72', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba72"}', 'wallet_credentials': '{"key": "credentials_uba72"}', 'pool': 2, 'seed': 'UBA7272A000000000000000000000000', 'wallet': 147, 'did_info': '{"seed": "UBA7272A000000000000000000000000"}', 'did': 'DKLEtLS8kPwPL3FP6cjtaM', 'key': '7iLS9xGtGDD1k1XToZMWqF4pZHcJKiBcfUHRmjNcQY6T'}
+
+{'name': 'UBA73', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba73"}', 'wallet_credentials': '{"key": "credentials_uba73"}', 'pool': 2, 'seed': 'UBA7373A000000000000000000000000', 'wallet': 149, 'did_info': '{"seed": "UBA7373A000000000000000000000000"}', 'did': 'YNncte5kyixPYoJjpMFPdH', 'key': 'J6r3JiLY3kjUsUXqouFLXpT8j69i7YwHQBJka7SJ7Jds'}
+
+{'name': 'UBA74', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba74"}', 'wallet_credentials': '{"key": "credentials_uba74"}', 'pool': 2, 'seed': 'UBA7474A000000000000000000000000', 'wallet': 151, 'did_info': '{"seed": "UBA7474A000000000000000000000000"}', 'did': 'HU2pre4q7vB56PZrMYQoQ5', 'key': '9yXRnq2CaVcMzzi3c8vzap441GtmkbKNT2oBaqxqHvjE'}
+
+{'name': 'UBA75', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba75"}', 'wallet_credentials': '{"key": "credentials_uba75"}', 'pool': 2, 'seed': 'UBA7575A000000000000000000000000', 'wallet': 153, 'did_info': '{"seed": "UBA7575A000000000000000000000000"}', 'did': 'V1YHUPY14anQM8SiN3pvLD', 'key': 'GGRtkxVe49ZyK3pBnDfLdGqtXfFWfnGj9nsuTiZNYULQ'}
+
+{'name': 'UBA76', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba76"}', 'wallet_credentials': '{"key": "credentials_uba76"}', 'pool': 2, 'seed': 'UBA7676A000000000000000000000000', 'wallet': 155, 'did_info': '{"seed": "UBA7676A000000000000000000000000"}', 'did': 'NXPtz3BC8WnjbS7uBfCgU6', 'key': 'CjRDjWcMVZysJyznJ8gmtrvxMBxbHdQqQTu9EZqRCnVm'}
+
+{'name': 'UBA77', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba77"}', 'wallet_credentials': '{"key": "credentials_uba77"}', 'pool': 2, 'seed': 'UBA7777A000000000000000000000000', 'wallet': 157, 'did_info': '{"seed": "UBA7777A000000000000000000000000"}', 'did': 'GvCKu7V43NfZM2eRmnnYJX', 'key': '9gB2Jsp6bT9QCqRmwHGTTtVe1H6NPTb779GEhc2mXC31'}
+
+{'name': 'UBA78', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba78"}', 'wallet_credentials': '{"key": "credentials_uba78"}', 'pool': 2, 'seed': 'UBA7878A000000000000000000000000', 'wallet': 159, 'did_info': '{"seed": "UBA7878A000000000000000000000000"}', 'did': 'K8tgMaGK2HW2tVaFiVtf4B', 'key': 'AtKMDJ7CqD9tvKyK3g29MGhD4R2YFLDiym17GLy7BnWc'}
+
+{'name': 'UBA79', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba79"}', 'wallet_credentials': '{"key": "credentials_uba79"}', 'pool': 2, 'seed': 'UBA7979A000000000000000000000000', 'wallet': 161, 'did_info': '{"seed": "UBA7979A000000000000000000000000"}', 'did': 'HNfxTjncdqu2DaSwWi7G8m', 'key': '9vbzcW77SNUJXsYgnqX6keskj2zTCyxFfKuaWRspgbUc'}
+
+{'name': 'UBA80', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba80"}', 'wallet_credentials': '{"key": "credentials_uba80"}', 'pool': 2, 'seed': 'UBA8080A000000000000000000000000', 'wallet': 163, 'did_info': '{"seed": "UBA8080A000000000000000000000000"}', 'did': 'YPtL1nq4rmh8nXjEhKgRjz', 'key': 'J7SmGqybKeMexRgzSbogC94LZ4QwPCcqBVLyCJ6apnC9'}
+
+{'name': 'UBA81', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba81"}', 'wallet_credentials': '{"key": "credentials_uba81"}', 'pool': 2, 'seed': 'UBA8181A000000000000000000000000', 'wallet': 165, 'did_info': '{"seed": "UBA8181A000000000000000000000000"}', 'did': 'DqueHBjJvScqw643iWu2a5', 'key': '7zzzvwyjDYCuxX7XkMDQqEzowgAFfcPNGxAPu98nRjd4'}
+
+{'name': 'UBA82', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba82"}', 'wallet_credentials': '{"key": "credentials_uba82"}', 'pool': 2, 'seed': 'UBA8282A000000000000000000000000', 'wallet': 167, 'did_info': '{"seed": "UBA8282A000000000000000000000000"}', 'did': 'A3S3whspy7pi1t7TPoThFK', 'key': '5vqKwPmQXW4pqYvRk9nuScExPUWgbAJng1BzkeX3SR3n'}
+
+{'name': 'UBA83', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba83"}', 'wallet_credentials': '{"key": "credentials_uba83"}', 'pool': 2, 'seed': 'UBA8383A000000000000000000000000', 'wallet': 169, 'did_info': '{"seed": "UBA8383A000000000000000000000000"}', 'did': 'RaC7ysYQnhMibZcdYHzdBk', 'key': 'EPn7yLrToGqFUtW2hyFe58TGokGubHWJCLF28VhCtKzq'}
+
+{'name': 'UBA84', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba84"}', 'wallet_credentials': '{"key": "credentials_uba84"}', 'pool': 2, 'seed': 'UBA8484A000000000000000000000000', 'wallet': 171, 'did_info': '{"seed": "UBA8484A000000000000000000000000"}', 'did': 'Dh2xSQN6bCYj1wm5J3LZGZ', 'key': '7vAUfQKezjiNFdg4nXx6fSkz6qACwibRDz1NdJCz7gag'}
+
+{'name': 'UBA85', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba85"}', 'wallet_credentials': '{"key": "credentials_uba85"}', 'pool': 2, 'seed': 'UBA8585A000000000000000000000000', 'wallet': 173, 'did_info': '{"seed": "UBA8585A000000000000000000000000"}', 'did': '2WFUfENmGTcz3wBNTyyGAe', 'key': 'pZ8eivJk2eAFADZGUrMPmWqY3tw8RAHTtc1eCjWzUhV'}
+
+{'name': 'UBA86', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba86"}', 'wallet_credentials': '{"key": "credentials_uba86"}', 'pool': 2, 'seed': 'UBA8686A000000000000000000000000', 'wallet': 175, 'did_info': '{"seed": "UBA8686A000000000000000000000000"}', 'did': 'Knmiz6dFtFg7fArGTFV1nn', 'key': 'BExp9VVq87qRvjbEM6JYSTGQWgvt6r3TfDgHC56FNFnG'}
+
+{'name': 'UBA87', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba87"}', 'wallet_credentials': '{"key": "credentials_uba87"}', 'pool': 2, 'seed': 'UBA8787A000000000000000000000000', 'wallet': 177, 'did_info': '{"seed": "UBA8787A000000000000000000000000"}', 'did': 'GC8gDTpYvhL4Vdb2jTBy9M', 'key': '9HFLAvk26Lmjseps4wPpLF8pzZQiLmoWmfbNpXH6VWPA'}
+
+{'name': 'UBA88', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba88"}', 'wallet_credentials': '{"key": "credentials_uba88"}', 'pool': 2, 'seed': 'UBA8888A000000000000000000000000', 'wallet': 179, 'did_info': '{"seed": "UBA8888A000000000000000000000000"}', 'did': '6nNMQ4NdZMsAi3C9QuLkER', 'key': '49neaDuKtb3irGkyWPTH2KZBgWL9GwQD4HtYbDGQUkto'}
+
+{'name': 'UBA89', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba89"}', 'wallet_credentials': '{"key": "credentials_uba89"}', 'pool': 2, 'seed': 'UBA8989A000000000000000000000000', 'wallet': 181, 'did_info': '{"seed": "UBA8989A000000000000000000000000"}', 'did': 'D2uyBGUqC2da7vrny9gmQB', 'key': '7ZPQzn7X8ARcRyEJTbCvVrFkwDAwVWwSMzb3ptgKK8uc'}
+
+{'name': 'UBA90', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba90"}', 'wallet_credentials': '{"key": "credentials_uba90"}', 'pool': 2, 'seed': 'UBA9090A000000000000000000000000', 'wallet': 183, 'did_info': '{"seed": "UBA9090A000000000000000000000000"}', 'did': '2pKLTtKCHTN9eSRciQVxJb', 'key': 'zQFXiHdH759dcSF184qFxvDV84wgQ1MJdwZuwVbpVo8'}
+
+{'name': 'UBA91', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba91"}', 'wallet_credentials': '{"key": "credentials_uba91"}', 'pool': 2, 'seed': 'UBA9191A000000000000000000000000', 'wallet': 185, 'did_info': '{"seed": "UBA9191A000000000000000000000000"}', 'did': 'RoDYMYg8XVGNn6sJ8Ehw8g', 'key': 'EWsrJ54jKYGMXAz9MSNVXe6DHQjzpTeLVmwtvpBxKo1g'}
+
+{'name': 'UBA92', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba92"}', 'wallet_credentials': '{"key": "credentials_uba92"}', 'pool': 2, 'seed': 'UBA9292A000000000000000000000000', 'wallet': 187, 'did_info': '{"seed": "UBA9292A000000000000000000000000"}', 'did': 'FssSJz26UuqntknYpke86', 'key': '97J1WrxrD7JynFkLYmYCYbcYh2XjmLnrbEEjnKn7nCW'}
+
+{'name': 'UBA93', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba93"}', 'wallet_credentials': '{"key": "credentials_uba93"}', 'pool': 2, 'seed': 'UBA9393A000000000000000000000000', 'wallet': 189, 'did_info': '{"seed": "UBA9393A000000000000000000000000"}', 'did': 'JoPY5eoVjzyeuRggMLrXJD', 'key': 'AhgqZd6GkkTFHHzubswmudb7VCYDzy75kfSmZkWUhNqw'}
+
+{'name': 'UBA94', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba94"}', 'wallet_credentials': '{"key": "credentials_uba94"}', 'pool': 2, 'seed': 'UBA9494A000000000000000000000000', 'wallet': 191, 'did_info': '{"seed": "UBA9494A000000000000000000000000"}', 'did': '7kKh7kAC8Vx9kjuJqSGdM3', 'key': '4gHUAht5nzwyst2kkJsszFDzSFxtwnPyrDVaJHnBZsiA'}
+
+{'name': 'UBA95', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba95"}', 'wallet_credentials': '{"key": "credentials_uba95"}', 'pool': 2, 'seed': 'UBA9595A000000000000000000000000', 'wallet': 193, 'did_info': '{"seed": "UBA9595A000000000000000000000000"}', 'did': '5nxj18eYiZxMNSEPmNhRqN', 'key': '3cVtV388aEgcCwcU7QR4kx84CLtmnwJodNJ48C79xM32'}
+
+{'name': 'UBA96', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba96"}', 'wallet_credentials': '{"key": "credentials_uba96"}', 'pool': 2, 'seed': 'UBA9696A000000000000000000000000', 'wallet': 195, 'did_info': '{"seed": "UBA9696A000000000000000000000000"}', 'did': 'MVgHHcYSXmetqrG5kAVz7v', 'key': 'CAsS2A9neQVhsDbzjGtebpnp87HCkqsucT83sEMF2onB'}
+
+{'name': 'UBA97', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba97"}', 'wallet_credentials': '{"key": "credentials_uba97"}', 'pool': 2, 'seed': 'UBA9797A000000000000000000000000', 'wallet': 197, 'did_info': '{"seed": "UBA9797A000000000000000000000000"}', 'did': 'UZLa4Je2xzVinSR2PxqwjX', 'key': 'G29bbqVRxRZHod9M2pRa7wi7VuW3PuBotJpcy9ptNmkW'}
+
+{'name': 'UBA98', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba98"}', 'wallet_credentials': '{"key": "credentials_uba98"}', 'pool': 2, 'seed': 'UBA9898A000000000000000000000000', 'wallet': 199, 'did_info': '{"seed": "UBA9898A000000000000000000000000"}', 'did': 'VrTEpuQJ3kWe1HqmjoQnfs', 'key': 'Gj68UkGXz3QptPbaU95rd9vuh54uGg8Qd1XZuQABDX2G'}
+
+{'name': 'UBA99', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba99"}', 'wallet_credentials': '{"key": "credentials_uba99"}', 'pool': 2, 'seed': 'UBA9999A000000000000000000000000', 'wallet': 201, 'did_info': '{"seed": "UBA9999A000000000000000000000000"}', 'did': '1CBoTBFn3bdCPNkhZo59v', 'key': '176cskXmhYQXRDRBeUJCjkFzdRYjXS6q6xonk3LbMua'}
+
+{'name': 'UBA100', 'Codigo de Registro da UBA': '123', 'CNPJ': '123456789', 'Endereco - Rua': 'Rua 123', 'Endereco - Bairro': 'Bairro A', 'Endereco - Cidade': 'Cidade X', 'Endereco - Estado': 'Estado Y', 'Endereco - Pais': 'Pais Z', 'wallet_config': '{"id": "config_uba100"}', 'wallet_credentials': '{"key": "credentials_uba100"}', 'pool': 2, 'seed': 'UBA100100A0000000000000000000000', 'wallet': 203, 'did_info': '{"seed": "UBA100100A0000000000000000000000"}', 'did': 'J8EKvMVJwMdLytiAwCSg2j', 'key': 'ALLx9ZgcGg6oBm2VtNz5mgtKCA1cgcsWqX4McfFkMvAr'}
+
+Erro ao decodificar o JSON em fardinhos.json ou o arquivo está vazio.
+
+Erro ao decodificar o JSON em clientes.json ou o arquivo está vazio.
+
+[0.0004184246063232422, 0.0003333091735839844, 0.0003323554992675781, 0.0003352165222167969, 0.00033926963806152344, 0.0003497600555419922, 0.00033354759216308594, 0.00033211708068847656, 0.00033354759216308594, 0.000331878662109375, 0.0003323554992675781, 0.0003311634063720703, 0.0003707408905029297, 0.0003337860107421875, 0.0003669261932373047, 0.0003342628479003906, 0.0003306865692138672, 0.00034737586975097656, 0.0003418922424316406, 0.0003483295440673828, 0.0003342628479003906, 0.00033473968505859375, 0.0003352165222167969, 0.0003294944763183594, 0.0003306865692138672, 0.0003294944763183594, 0.0003306865692138672, 0.00033473968505859375, 0.00033211708068847656, 0.0002651214599609375, 0.0002739429473876953, 0.00026535987854003906, 0.0002753734588623047, 0.00036644935607910156, 0.00036525726318359375, 0.0003333091735839844, 0.00033354759216308594, 0.0003306865692138672, 0.00032806396484375, 0.00033211708068847656, 0.0003540515899658203, 0.0003349781036376953, 0.0003325939178466797, 0.0003325939178466797, 0.0003063678741455078, 0.0003437995910644531, 0.0003409385681152344, 0.00028324127197265625, 0.0002663135528564453, 0.0003101825714111328, 0.00033783912658691406, 0.00028395652770996094, 0.00027680397033691406, 0.0003540515899658203, 0.0003573894500732422, 0.0003330707550048828, 0.0003323554992675781, 0.0003407001495361328, 0.0003345012664794922, 0.0003292560577392578, 0.0002884864807128906, 0.0003371238708496094, 0.00033545494079589844, 0.00034737586975097656, 0.00034165382385253906, 0.00028514862060546875, 0.0002675056457519531, 0.00027751922607421875, 0.000331878662109375, 0.0003352165222167969, 0.00033473968505859375, 0.0003337860107421875, 0.00027680397033691406, 0.00042057037353515625, 0.0003409385681152344, 0.0002841949462890625, 0.00026798248291015625, 0.00026345252990722656, 0.0002658367156982422, 0.0002644062042236328, 0.00026297569274902344, 0.00027632713317871094, 0.0002644062042236328, 0.0002734661102294922, 0.000263214111328125, 0.0002799034118652344, 0.00026535987854003906, 0.0003540515899658203, 0.0003387928009033203, 0.0003325939178466797, 0.0003287792205810547, 0.0003323554992675781, 0.0002715587615966797, 0.00028777122497558594, 0.0003199577331542969, 0.000331878662109375, 0.00032830238342285156, 0.00032901763916015625, 0.00032639503479003906, 0.0003333091735839844]
+O tamanho de Ubas é 100
