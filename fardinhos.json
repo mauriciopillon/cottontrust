@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Fardinho1",
+        "Identificador do Fardinho": "ID1",
+        "Identificador da Fazenda": "Fazenda1",
+        "Identificador da UBA": "UBA1",
+        "Safra": "Safra1",
+        "Talhao": "Talhao1",
+        "Data da Colheita": "01/01/2023",
+        "Produto da Semente": "Semente1",
+        "Lote da Semente": "Lote1",
+        "Peso": "10kg",
+        "wallet_config": "config_fardinho1",
+        "wallet_credentials": "credentials_fardinho1"
+    }
+]
+
