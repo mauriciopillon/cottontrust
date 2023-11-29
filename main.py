@@ -218,21 +218,16 @@ async def run():
 
 
     #FIM -----------------------------------------------------------------------------------------
-    
-    print("Tempo das Wallets do UBA:")
-    print(Tempo_WALLET_Uba)
-
     print("\nTempo das DIDs do UBA:")
     print(Tempo_DID_Uba)
+
+    print("\nTempo das Wallets do UBA:")
+    print(Tempo_WALLET_Uba)
 
     print("\nTempo dos Objetos UBAs")
     print(Tempo_OBJ_Uba)
 
     print(f"\nA quantidade de UBAs é {len(Tempo_DID_Uba)}")
-
-    
-
-    
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(run())
