@@ -8,15 +8,17 @@ from indy.error import ErrorCode, IndyError
 UBAs = []
 Fardinhos = []
 Clientes = []
-Tempo_Uba = []
-
+Tempo_DID_Uba = []
+Tempo_WALLET_Uba=[]
+Tempo_OBJ_Cliente=[]
+Tempo_OBJ_Uba=[]
 
 cont_Uba = 0
 cont_Far = 0
 cont_Cli = 0
 
 async def create_wallet(Entidade):
-    print("\"{}\" -> Criando ou Abrindo Carteira(wallet)".format(Entidade['name']))
+    print("\"{}\" -> Criando Carteira(wallet)".format(Entidade['name']))
     try:
         await wallet.create_wallet(Entidade['wallet_config'],
                                    Entidade['wallet_credentials'])
@@ -38,7 +40,7 @@ async def create_cliente(pool_, cliente_data):
     cont_Cli += 1
     
     
-    print(f"Criando Clientes {cont_Cli} - Cadastre")
+    print(f"\nCriando Clientes {cont_Cli} - Cadastre")
 
     #start_time = time.time()
 
@@ -57,11 +59,15 @@ async def create_cliente(pool_, cliente_data):
 
     await create_wallet(CLIENTE)
     CLIENTE["did_info"] = json.dumps({'seed': CLIENTE['seed']})
-    CLIENTE['did'], CLIENTE['key'] = await did.create_and_store_my_did(CLIENTE['wallet'], CLIENTE['did_info'])
+    CLIENTE['did'], CLIENTE['key'] = await did.create_and_store_my_did(CLIENTE['wallet'], CLIENTE['did_info']) 
+
     #end_time = time.time()
-    Clientes.append(CLIENTE)  
     #total_time = end_time - start_time
-    #print(f"Tempo de criacao do {CLIENTE['name']}: {total_time} segundos")
+    #print(f"Tempo de criacao do OBJETO {CLIENTE['name']}: {total_time} segundos")
+    #Tempo_OBJ_Cliente.append(total_time)
+    Clientes.append(CLIENTE)  
+    
+    
 
 async def create_fardinho(pool_, fardinho_data):
     global cont_Far
@@ -69,8 +75,6 @@ async def create_fardinho(pool_, fardinho_data):
     
 
     print(f"Criando Fardinho {cont_Far} - Cadastre")
-
-    #start_time = time.time()
 
     FARDINHO = {
         'name': fardinho_data['name'],
@@ -92,18 +96,16 @@ async def create_fardinho(pool_, fardinho_data):
     await create_wallet(FARDINHO)
     FARDINHO["did_info"] = json.dumps({'seed': FARDINHO['seed']})
     FARDINHO['did'], FARDINHO['key'] = await did.create_and_store_my_did(FARDINHO['wallet'], FARDINHO['did_info'])
-    #end_time = time.time()
     Fardinhos.append(FARDINHO) 
-    #total_time = end_time - start_time
-    #print(f"Tempo de criacao do {FARDINHO['name']}: {total_time} segundos")
 
 async def create_uba(pool_, uba_data):
     global cont_Uba
     cont_Uba += 1
     
 
-    print(f"Criando UBA {cont_Uba} - Cadastre")
+    print(f"\nCriando UBA {cont_Uba} - Cadastre")
     
+
     UBA = {
         'name': uba_data['name'],
         'Codigo de Registro da UBA': uba_data['Codigo de Registro da UBA'],
@@ -119,22 +121,27 @@ async def create_uba(pool_, uba_data):
         'seed': create_seed(cont_Uba, uba_data['name'])
     }
 
-
+    start_time = time.time()
     await create_wallet(UBA)
+    end_time = time.time()
+    total_time = end_time - start_time
+    Tempo_WALLET_Uba.append(total_time)
+    print(f"Tempo de criacao da WALLET do {UBA['name']}: {total_time} segundos")
+
     UBA["did_info"] = json.dumps({'seed': UBA['seed']})
+
     start_time = time.time()
     UBA['did'], UBA['key'] = await did.create_and_store_my_did(UBA['wallet'], UBA['did_info'])
     end_time = time.time()
+
     UBAs.append(UBA)
     
     total_time = end_time - start_time
-    Tempo_Uba.append(total_time)
+    Tempo_DID_Uba.append(total_time)
     print(f"Tempo de criacao da DID do {UBA['name']}: {total_time} segundos")
 
 
 async def run():
-
-    #start_time = time.time()
 
     pool_ = {
         'name': 'pool1'
@@ -159,18 +166,20 @@ async def run():
         try:
             ubas_data = json.load(file)
         except json.JSONDecodeError:
-            print("Erro ao decodificar o JSON em ubas.json ou o arquivo está vazio.\n")
+            print("Arquivo UBA está vazio.\n")
             ubas_data = []
 
     if ubas_data:
         for uba_data in ubas_data:
+            start_time = time.time()
             await create_uba(pool_, uba_data)
+            end_time = time.time()
+            total_time = end_time - start_time
+            Tempo_OBJ_Uba.append(total_time)
 
         print("UBAs criados:\n")
         for item in UBAs:
             print(f"{item}\n")
-    #else:
-        #print("Nenhum dado de UBAs encontrado no arquivo JSON. Pulando...\n")
 
     # FARDINHOS -----------------------------------------------------------------------------------
 
@@ -178,7 +187,7 @@ async def run():
         try:
             fardinhos_data = json.load(file)
         except json.JSONDecodeError:
-            print("Erro ao decodificar o JSON em fardinhos.json ou o arquivo está vazio.\n")
+            print("Arquivo FARDINHOS está vazio.\n")
             fardinhos_data = []
 
     if fardinhos_data:
@@ -195,7 +204,7 @@ async def run():
         try:
             clientes_data = json.load(file)
         except json.JSONDecodeError:
-            print("Erro ao decodificar o JSON em clientes.json ou o arquivo está vazio.\n")
+            print("Arquivo CLIENTES está vazio.\n")
             clientes_data = []
 
     if clientes_data:
@@ -210,8 +219,20 @@ async def run():
 
     #FIM -----------------------------------------------------------------------------------------
     
-    print(Tempo_Uba)
-    print(f"O tamanho de Ubas é {len(Tempo_Uba)}")
+    print("Tempo das Wallets do UBA:")
+    print(Tempo_WALLET_Uba)
+
+    print("\nTempo das DIDs do UBA:")
+    print(Tempo_DID_Uba)
+
+    print("\nTempo dos Objetos UBAs")
+    print(Tempo_OBJ_Uba)
+
+    print(f"\nA quantidade de UBAs é {len(Tempo_DID_Uba)}")
+
+    
+
+    
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(run())
