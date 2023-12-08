@@ -2,21 +2,27 @@ import asyncio
 import json
 import time
 
-from indy import pool, wallet, did
+from indy import pool, wallet, did, ledger
 from indy.error import ErrorCode, IndyError
 
 UBAs = []
 Fardinhos = []
 Clientes = []
-Tempo_DID_Uba = []
-Tempo_WALLET_Uba=[]
-Tempo_OBJ_Cliente=[]
-Tempo_OBJ_Uba=[]
 
 cont_Uba = 0
 cont_Far = 0
 cont_Cli = 0
 
+
+async def setup_identity(identity, trustee):
+    print('cheguei no setup identity')
+    did_safe = 'V4SGRU86Z58d6TV7PBUe6f'
+    verkey_safe = '~CoRER63DVYnWZtK8uAzNbx'
+    (identity['did'], identity['key']) = await did.create_and_store_my_did(identity['wallet'], "{}")
+    nym_req = await ledger.build_nym_request(did_safe, identity['did'],identity['key'],None, None)
+    await ledger.sign_and_submit_request(identity['pool'], trustee['wallet'], did_safe, nym_req)
+    
+    
 async def create_wallet(Entidade):
     print("\"{}\" -> Criando Carteira(wallet)".format(Entidade['name']))
     try:
@@ -42,8 +48,6 @@ async def create_cliente(pool_, cliente_data):
     
     print(f"\nCriando Clientes {cont_Cli} - Cadastre")
 
-    #start_time = time.time()
-
     CLIENTE = {
         'name': cliente_data['name'],
         'Endereco - Rua': cliente_data['Endereco - Rua'],
@@ -61,10 +65,6 @@ async def create_cliente(pool_, cliente_data):
     CLIENTE["did_info"] = json.dumps({'seed': CLIENTE['seed']})
     CLIENTE['did'], CLIENTE['key'] = await did.create_and_store_my_did(CLIENTE['wallet'], CLIENTE['did_info']) 
 
-    #end_time = time.time()
-    #total_time = end_time - start_time
-    #print(f"Tempo de criacao do OBJETO {CLIENTE['name']}: {total_time} segundos")
-    #Tempo_OBJ_Cliente.append(total_time)
     Clientes.append(CLIENTE)  
     
     
@@ -98,7 +98,7 @@ async def create_fardinho(pool_, fardinho_data):
     FARDINHO['did'], FARDINHO['key'] = await did.create_and_store_my_did(FARDINHO['wallet'], FARDINHO['did_info'])
     Fardinhos.append(FARDINHO) 
 
-async def create_uba(pool_, uba_data):
+async def create_uba(pool_, uba_data, trustee):
     global cont_Uba
     cont_Uba += 1
     
@@ -121,24 +121,15 @@ async def create_uba(pool_, uba_data):
         'seed': create_seed(cont_Uba, uba_data['name'])
     }
 
-    start_time = time.time()
+    
     await create_wallet(UBA)
-    end_time = time.time()
-    total_time = end_time - start_time
-    Tempo_WALLET_Uba.append(total_time)
-    print(f"Tempo de criacao da WALLET do {UBA['name']}: {total_time} segundos")
 
     UBA["did_info"] = json.dumps({'seed': UBA['seed']})
-
-    start_time = time.time()
     UBA['did'], UBA['key'] = await did.create_and_store_my_did(UBA['wallet'], UBA['did_info'])
-    end_time = time.time()
-
+    # AQUI EH A FUNCAO DE SUBMETER PARA O LEDGER
+    await setup_identity(UBA, trustee)
     UBAs.append(UBA)
     
-    total_time = end_time - start_time
-    Tempo_DID_Uba.append(total_time)
-    print(f"Tempo de criacao da DID do {UBA['name']}: {total_time} segundos")
 
 
 async def run():
@@ -148,7 +139,7 @@ async def run():
     }
 
     print("Open Pool Ledger: {}".format(pool_['name']))
-    pool_['genesis_txn_path'] = "/home/indy/cottontrust/pool1.txn"
+    pool_['genesis_txn_path'] = "/home/indy/sandbox/cottontrust/genesis.txn"
     pool_['config'] = json.dumps({"genesis_txn": str(pool_['genesis_txn_path'])})
 
     await pool.set_protocol_version(2)
@@ -160,22 +151,37 @@ async def run():
             pass
     pool_['handle'] = await pool.open_pool_ledger(pool_['name'], None)
 
+    with open('teste.json', 'r') as file:
+        teste_data = json.load(file)
+
+    trustee = {
+        'name': 'trustworthy_agent',
+        'seed': '000000000000000000000000Trustee1',
+        'wallet_config': json.dumps({'id': teste_data['wallet_config']}),
+        'wallet_credentials': json.dumps({'key': teste_data['wallet_credentials']}),
+        'pool': pool_['handle'],
+        'role': 'TRUSTEE'
+    }
+
+    # CRIANDO O TRUSTEE CONFIA EM DEUS E VAI
+    await create_wallet(trustee)
+    (trustee['did'], trustee['key']) = await did.create_and_store_my_did(trustee['wallet'], json.dumps({"seed": trustee['seed']}))
+    await setup_identity(trustee,trustee)
+
+
     # UBAS -----------------------------------------------------------------------------------
 
     with open('ubas.json', 'r') as file:
         try:
             ubas_data = json.load(file)
         except json.JSONDecodeError:
-            print("Arquivo UBA está vazio.\n")
+            print("Arquivo UBA esta vazio.\n")
             ubas_data = []
 
     if ubas_data:
         for uba_data in ubas_data:
-            start_time = time.time()
-            await create_uba(pool_, uba_data)
-            end_time = time.time()
-            total_time = end_time - start_time
-            Tempo_OBJ_Uba.append(total_time)
+            await create_uba(pool_, uba_data, trustee)
+        
 
         print("UBAs criados:\n")
         for item in UBAs:
@@ -187,7 +193,7 @@ async def run():
         try:
             fardinhos_data = json.load(file)
         except json.JSONDecodeError:
-            print("Arquivo FARDINHOS está vazio.\n")
+            print("Arquivo FARDINHOS esta vazio.\n")
             fardinhos_data = []
 
     if fardinhos_data:
@@ -198,13 +204,13 @@ async def run():
         for item in Fardinhos:
             print(f"{item}\n")
 
-    # FCLIENTES -----------------------------------------------------------------------------------
+    # CLIENTES -----------------------------------------------------------------------------------
 
     with open('clientes.json', 'r') as file:
         try:
             clientes_data = json.load(file)
         except json.JSONDecodeError:
-            print("Arquivo CLIENTES está vazio.\n")
+            print("Arquivo CLIENTES esta vazio.\n")
             clientes_data = []
 
     if clientes_data:
@@ -215,19 +221,19 @@ async def run():
         for item in Clientes:
             print(f"{item}\n")
 
+    # FIM -----------------------------------------------------------------------------------------
 
+    if UBAs and Clientes:
+        num_transacoes = 2  # Quantidade de transações
 
-    #FIM -----------------------------------------------------------------------------------------
-    print("\nTempo das DIDs do UBA:")
-    print(Tempo_DID_Uba)
+        for _ in range(num_transacoes):
+            sender_uba = random.choice(UBAs)
+            receiver_cliente = random.choice(Clientes)
 
-    print("\nTempo das Wallets do UBA:")
-    print(Tempo_WALLET_Uba)
+            #amount = 15
+            #await asyncio.sleep(10)  # Adiciona uma pausa para garantir que o pool esteja aberto
+            #await sign_and_submit_transaction(pool_['handle'], sender_uba['wallet'], sender_uba['did'], receiver_cliente['did'], amount)
 
-    print("\nTempo dos Objetos UBAs")
-    print(Tempo_OBJ_Uba)
-
-    print(f"\nA quantidade de UBAs é {len(Tempo_DID_Uba)}")
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(run())
