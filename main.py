@@ -158,7 +158,7 @@ async def create_transaction(sender, receiver, amount):
     # Assine e envie a solicitação de atributo para o destinatário
     await ledger.sign_and_submit_request(receiver['pool'], receiver['wallet'], receiver['did'], receiver_attr_req)
 
-    print(f"Transacao concluida: {sender['name']} enviou {amount} para {receiver['name']}")
+    print(f"Transacao concluida: {sender['name']} enviou R${amount},00 para {receiver['name']}")
 
 async def run():
 
@@ -258,7 +258,7 @@ async def run():
             sender_uba = random.choice(UBAs)
             receiver_cliente = random.choice(Clientes)
 
-            amount = 15
+            amount = random.randint(200, 1000)
             await asyncio.sleep(10)  # Adiciona uma pausa para garantir que o pool esteja aberto
             await create_transaction(sender_uba, receiver_cliente, amount)
 
