@@ -1,7 +1,7 @@
 import asyncio
 import json
 import time
-
+import random
 from indy import pool, wallet, did, ledger
 from indy.error import ErrorCode, IndyError
 
@@ -58,7 +58,8 @@ async def create_cliente(pool_, cliente_data):
         'wallet_config': json.dumps({'id': cliente_data['wallet_config']}),
         'wallet_credentials': json.dumps({'key': cliente_data['wallet_credentials']}),
         'pool': pool_['handle'],
-        'seed': create_seed(cont_Cli, cliente_data['name'])
+        'seed': create_seed(cont_Cli, cliente_data['name']),
+        "balance": cliente_data['balance']
     }
 
     await create_wallet(CLIENTE)
@@ -90,7 +91,8 @@ async def create_fardinho(pool_, fardinho_data):
         'wallet_config': json.dumps({'id': fardinho_data['wallet_config']}),
         'wallet_credentials': json.dumps({'key': fardinho_data['wallet_credentials']}),
         'pool': pool_['handle'],
-        'seed': create_seed(cont_Far, fardinho_data['name']) 
+        'seed': create_seed(cont_Far, fardinho_data['name']),
+        "balance": 1000
     }
 
     await create_wallet(FARDINHO)
@@ -118,7 +120,8 @@ async def create_uba(pool_, uba_data, trustee):
         'wallet_config': json.dumps({'id': uba_data['wallet_config']}),
         'wallet_credentials': json.dumps({'key': uba_data['wallet_credentials']}),
         'pool': pool_['handle'],
-        'seed': create_seed(cont_Uba, uba_data['name'])
+        'seed': create_seed(cont_Uba, uba_data['name']),
+        "balance": uba_data['balance']
     }
 
     
@@ -126,11 +129,36 @@ async def create_uba(pool_, uba_data, trustee):
 
     UBA["did_info"] = json.dumps({'seed': UBA['seed']})
     UBA['did'], UBA['key'] = await did.create_and_store_my_did(UBA['wallet'], UBA['did_info'])
+
     # AQUI EH A FUNCAO DE SUBMETER PARA O LEDGER
     await setup_identity(UBA, trustee)
     UBAs.append(UBA)
     
+async def create_transaction(sender, receiver, amount):
+    # Verifique se o remetente tem saldo suficiente
+    if sender['balance'] < amount:
+        print(f"{sender['name']} nao tem saldo suficiente para a transacao")
+        return
 
+    # Atualize o saldo do remetente
+    sender['balance'] -= amount
+
+    # Construa a solicitação de atributo para o remetente
+    sender_attr_req = await ledger.build_attrib_request(sender['did'], sender['did'], None, json.dumps({'balance': sender['balance']}), None)
+
+    # Assine e envie a solicitação de atributo para o remetente
+    await ledger.sign_and_submit_request(sender['pool'], sender['wallet'], sender['did'], sender_attr_req)
+
+    # Atualize o saldo do destinatário
+    receiver['balance'] += amount
+
+    # Construa a solicitação de atributo para o destinatário
+    receiver_attr_req = await ledger.build_attrib_request(receiver['did'], receiver['did'], None, json.dumps({'balance': receiver['balance']}), None)
+
+    # Assine e envie a solicitação de atributo para o destinatário
+    await ledger.sign_and_submit_request(receiver['pool'], receiver['wallet'], receiver['did'], receiver_attr_req)
+
+    print(f"Transacao concluida: {sender['name']} enviou {amount} para {receiver['name']}")
 
 async def run():
 
@@ -224,15 +252,15 @@ async def run():
     # FIM -----------------------------------------------------------------------------------------
 
     if UBAs and Clientes:
-        num_transacoes = 2  # Quantidade de transações
+        num_transacoes = 10  # Quantidade de transações
 
         for _ in range(num_transacoes):
             sender_uba = random.choice(UBAs)
             receiver_cliente = random.choice(Clientes)
 
-            #amount = 15
-            #await asyncio.sleep(10)  # Adiciona uma pausa para garantir que o pool esteja aberto
-            #await sign_and_submit_transaction(pool_['handle'], sender_uba['wallet'], sender_uba['did'], receiver_cliente['did'], amount)
+            amount = 15
+            await asyncio.sleep(10)  # Adiciona uma pausa para garantir que o pool esteja aberto
+            await create_transaction(sender_uba, receiver_cliente, amount)
 
 
 loop = asyncio.get_event_loop()

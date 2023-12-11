@@ -9,6 +9,7 @@ for i in $(seq 1 10); do
         \"Endereco - Estado\": \"Estado Y\",
         \"Endereco - Pais\": \"Pais Z\",
         \"wallet_config\": \"config_CLIENTE$i\",
-        \"wallet_credentials\": \"credentials_CLIENTE$i\"
+        \"wallet_credentials\": \"credentials_CLIENTE$i\",
+        \"balance\": $((i * 10))
     },"
 done
