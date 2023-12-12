@@ -59,7 +59,9 @@ async def create_cliente(pool_, cliente_data):
         'wallet_credentials': json.dumps({'key': cliente_data['wallet_credentials']}),
         'pool': pool_['handle'],
         'seed': create_seed(cont_Cli, cliente_data['name']),
-        "balance": cliente_data['balance']
+        "balance": cliente_data['balance'],
+        "quero_fardinho": cliente_data['quero_fardinho'],
+        "quant_fardinho": cliente_data['quant_fardinho']
     }
 
     await create_wallet(CLIENTE)
@@ -121,7 +123,9 @@ async def create_uba(pool_, uba_data, trustee):
         'wallet_credentials': json.dumps({'key': uba_data['wallet_credentials']}),
         'pool': pool_['handle'],
         'seed': create_seed(cont_Uba, uba_data['name']),
-        "balance": uba_data['balance']
+        "balance": uba_data['balance'],
+        "preco_fardinho": uba_data['preco_fardinho'],#add
+        "quant_fardinho": uba_data['quant_fardinho'] #add
     }
 
     
@@ -134,17 +138,30 @@ async def create_uba(pool_, uba_data, trustee):
     await setup_identity(UBA, trustee)
     UBAs.append(UBA)
     
-async def create_transaction(sender, receiver, amount):
+async def create_transaction(sender, receiver, custo_far, quant_far):
+    amount = custo_far * quant_far
+
+    print(f"\nIniciando trasacao:")
+    print(f"Saldo atual de {sender['name']}: R${sender['balance']},00")
+    print(f"Saldo atual de {receiver['name']}: R${receiver['balance']},00")
+    print(f"Quantidade de Fardinhos disponiveis em {receiver['name']}: {receiver['quant_fardinho']}")
+    print(f"Quantidade de Fardinhos que {sender['name']} quer comprar: {quant_far}")
+    print(f"Preco de cada Fardinho: R${custo_far},00")
+    print(f"Valor total da transacao: R${amount},00")
+
     # Verifique se o remetente tem saldo suficiente
     if sender['balance'] < amount:
-        print(f"{sender['name']} nao tem saldo suficiente para a transacao")
+        print(f"{sender['name']} nao tem saldo suficiente para a transacao de compra dos fardinhos")
         return
 
     # Atualize o saldo do remetente
     sender['balance'] -= amount
 
+    # Atualize a quantidade de Fardinhos do remetente
+    sender['quant_fardinho'] += quant_far
+
     # Construa a solicitação de atributo para o remetente
-    sender_attr_req = await ledger.build_attrib_request(sender['did'], sender['did'], None, json.dumps({'balance': sender['balance']}), None)
+    sender_attr_req = await ledger.build_attrib_request(sender['did'], sender['did'], None, json.dumps({'balance': sender['balance'], 'quant_fardinho': sender['quant_fardinho']}), None)
 
     # Assine e envie a solicitação de atributo para o remetente
     await ledger.sign_and_submit_request(sender['pool'], sender['wallet'], sender['did'], sender_attr_req)
@@ -152,13 +169,19 @@ async def create_transaction(sender, receiver, amount):
     # Atualize o saldo do destinatário
     receiver['balance'] += amount
 
+    # Atualize a quantidade de Fardinhos do destinatário
+    receiver['quant_fardinho'] -= quant_far
+
     # Construa a solicitação de atributo para o destinatário
-    receiver_attr_req = await ledger.build_attrib_request(receiver['did'], receiver['did'], None, json.dumps({'balance': receiver['balance']}), None)
+    receiver_attr_req = await ledger.build_attrib_request(receiver['did'], receiver['did'], None, json.dumps({'balance': receiver['balance'], 'quant_fardinho': receiver['quant_fardinho']}), None)
 
     # Assine e envie a solicitação de atributo para o destinatário
     await ledger.sign_and_submit_request(receiver['pool'], receiver['wallet'], receiver['did'], receiver_attr_req)
 
-    print(f"Transacao concluida: {sender['name']} enviou R${amount},00 para {receiver['name']}")
+    print(f"Transacao concluida: {sender['name']} enviou R${amount},00 para {receiver['name']} e recebeu {quant_far} Fardinhos")
+    print(f"Saldo atual de {sender['name']}: R${sender['balance']},00 e {sender['quant_fardinho']} Fardinhos")
+    print(f"Saldo atual de {receiver['name']}: R${receiver['balance']},00 e {receiver['quant_fardinho']} Fardinhos")
+
 
 async def run():
 
@@ -252,15 +275,16 @@ async def run():
     # FIM -----------------------------------------------------------------------------------------
 
     if UBAs and Clientes:
-        num_transacoes = 10  # Quantidade de transações
+        num_transacoes = 2  # Quantidade de transações
 
         for _ in range(num_transacoes):
-            sender_uba = random.choice(UBAs)
-            receiver_cliente = random.choice(Clientes)
 
-            amount = random.randint(200, 1000)
+            sender= random.choice(Clientes)
+            receiver = random.choice(UBAs)
+            custo_far = receiver['preco_fardinho']
+            quant_far = sender['quero_fardinho']
             await asyncio.sleep(10)  # Adiciona uma pausa para garantir que o pool esteja aberto
-            await create_transaction(sender_uba, receiver_cliente, amount)
+            await create_transaction(sender, receiver, custo_far, quant_far)
 
 
 loop = asyncio.get_event_loop()
