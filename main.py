@@ -22,8 +22,7 @@ async def setup_identity(identity, trustee):
     (identity['did'], identity['key']) = await did.create_and_store_my_did(identity['wallet'], "{}")
     nym_req = await ledger.build_nym_request(did_safe, identity['did'],identity['key'],None, None)
     await ledger.sign_and_submit_request(identity['pool'], trustee['wallet'], did_safe, nym_req)
-    
-    
+      
 async def create_wallet(Entidade):
     print("\"{}\" -> Criando Carteira(wallet)".format(Entidade['name']))
     try:
@@ -71,8 +70,6 @@ async def create_cliente(pool_, cliente_data):
 
     Clientes.append(CLIENTE)  
     
-    
-
 async def create_fardinho(pool_, fardinho_data):
     global cont_Far
     cont_Far += 1
