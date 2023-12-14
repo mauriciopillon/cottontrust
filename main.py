@@ -179,7 +179,7 @@ async def run():
             pass
     pool_['handle'] = await pool.open_pool_ledger(pool_['name'], None)
 
-    with open('teste.json', 'r') as file:
+    with open('teste.json', 'r') as file
         teste_data = json.load(file)
 
     trustee = {
