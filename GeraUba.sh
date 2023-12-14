@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for i in $(seq 1 10); do
+for i in $(seq 1 2); do
     echo "{
         \"name\": \"UBA$i\",
         \"Codigo de Registro da UBA\": \"123\",
@@ -12,6 +12,8 @@ for i in $(seq 1 10); do
         \"Endereco - Pais\": \"Pais Z\",
         \"wallet_config\": \"config_uba$i\",
         \"wallet_credentials\": \"credentials_uba$i\",
-        \"balance\": $((i * 1000))
+        \"balance\": $((i * 10)),
+        \"preco_fardinho\": $((i * 100)),
+        \"quant_fardinho\": $((i * 100000))
     },"
 done

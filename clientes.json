@@ -7,7 +7,9 @@
     "Endereco - Pais": "Pais Z",
     "wallet_config": "config_CLIENTE1",
     "wallet_credentials": "credentials_CLIENTE1",
-    "balance": 10
+    "balance": 1000000,
+    "quero_fardinho": 10,
+    "quant_fardinho": 0
 },
 {
     "name": "CLIENTE2",
@@ -18,93 +20,7 @@
     "Endereco - Pais": "Pais Z",
     "wallet_config": "config_CLIENTE2",
     "wallet_credentials": "credentials_CLIENTE2",
-    "balance": 20
-},
-{
-    "name": "CLIENTE3",
-    "Endereco - Rua": "Rua 123",
-    "Endereco - Bairro": "Bairro A",
-    "Endereco - Cidade": "Cidade X",
-    "Endereco - Estado": "Estado Y",
-    "Endereco - Pais": "Pais Z",
-    "wallet_config": "config_CLIENTE3",
-    "wallet_credentials": "credentials_CLIENTE3",
-    "balance": 30
-},
-{
-    "name": "CLIENTE4",
-    "Endereco - Rua": "Rua 123",
-    "Endereco - Bairro": "Bairro A",
-    "Endereco - Cidade": "Cidade X",
-    "Endereco - Estado": "Estado Y",
-    "Endereco - Pais": "Pais Z",
-    "wallet_config": "config_CLIENTE4",
-    "wallet_credentials": "credentials_CLIENTE4",
-    "balance": 40
-},
-{
-    "name": "CLIENTE5",
-    "Endereco - Rua": "Rua 123",
-    "Endereco - Bairro": "Bairro A",
-    "Endereco - Cidade": "Cidade X",
-    "Endereco - Estado": "Estado Y",
-    "Endereco - Pais": "Pais Z",
-    "wallet_config": "config_CLIENTE5",
-    "wallet_credentials": "credentials_CLIENTE5",
-    "balance": 50
-},
-{
-    "name": "CLIENTE6",
-    "Endereco - Rua": "Rua 123",
-    "Endereco - Bairro": "Bairro A",
-    "Endereco - Cidade": "Cidade X",
-    "Endereco - Estado": "Estado Y",
-    "Endereco - Pais": "Pais Z",
-    "wallet_config": "config_CLIENTE6",
-    "wallet_credentials": "credentials_CLIENTE6",
-    "balance": 60
-},
-{
-    "name": "CLIENTE7",
-    "Endereco - Rua": "Rua 123",
-    "Endereco - Bairro": "Bairro A",
-    "Endereco - Cidade": "Cidade X",
-    "Endereco - Estado": "Estado Y",
-    "Endereco - Pais": "Pais Z",
-    "wallet_config": "config_CLIENTE7",
-    "wallet_credentials": "credentials_CLIENTE7",
-    "balance": 70
-},
-{
-    "name": "CLIENTE8",
-    "Endereco - Rua": "Rua 123",
-    "Endereco - Bairro": "Bairro A",
-    "Endereco - Cidade": "Cidade X",
-    "Endereco - Estado": "Estado Y",
-    "Endereco - Pais": "Pais Z",
-    "wallet_config": "config_CLIENTE8",
-    "wallet_credentials": "credentials_CLIENTE8",
-    "balance": 80
-},
-{
-    "name": "CLIENTE9",
-    "Endereco - Rua": "Rua 123",
-    "Endereco - Bairro": "Bairro A",
-    "Endereco - Cidade": "Cidade X",
-    "Endereco - Estado": "Estado Y",
-    "Endereco - Pais": "Pais Z",
-    "wallet_config": "config_CLIENTE9",
-    "wallet_credentials": "credentials_CLIENTE9",
-    "balance": 90
-},
-{
-    "name": "CLIENTE10",
-    "Endereco - Rua": "Rua 123",
-    "Endereco - Bairro": "Bairro A",
-    "Endereco - Cidade": "Cidade X",
-    "Endereco - Estado": "Estado Y",
-    "Endereco - Pais": "Pais Z",
-    "wallet_config": "config_CLIENTE10",
-    "wallet_credentials": "credentials_CLIENTE10",
-    "balance": 100
+    "balance": 2000000,
+    "quero_fardinho": 20,
+    "quant_fardinho": 0
 }]
