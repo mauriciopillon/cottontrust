@@ -1,18 +1,25 @@
 import asyncio
 import json
 import time
+
+
 import random
 from indy import pool, wallet, did, ledger
+
 from indy.error import ErrorCode, IndyError
 
 UBAs = []
 Fardinhos = []
 Clientes = []
+
+
 Tempos = []
+
 
 cont_Uba = 0
 cont_Far = 0
 cont_Cli = 0
+
 cont_Tran = 0
 
 async def setup_identity(identity, trustee):
@@ -25,6 +32,7 @@ async def setup_identity(identity, trustee):
       
 async def create_wallet(Entidade):
     print("\"{}\" -> Criando Carteira(wallet)".format(Entidade['name']))
+
     try:
         await wallet.create_wallet(Entidade['wallet_config'],
                                    Entidade['wallet_credentials'])
@@ -45,8 +53,9 @@ async def create_cliente(pool_, cliente_data):
     global cont_Cli
     cont_Cli += 1
     
-    
+
     print(f"\nCriando Clientes {cont_Cli} - Cadastre")
+
 
     CLIENTE = {
         'name': cliente_data['name'],
@@ -58,24 +67,29 @@ async def create_cliente(pool_, cliente_data):
         'wallet_config': json.dumps({'id': cliente_data['wallet_config']}),
         'wallet_credentials': json.dumps({'key': cliente_data['wallet_credentials']}),
         'pool': pool_['handle'],
+
         'seed': create_seed(cont_Cli, cliente_data['name']),
         "balance": cliente_data['balance'],
         "quero_fardinho": cliente_data['quero_fardinho'],
         "quant_fardinho": cliente_data['quant_fardinho']
+
     }
 
     await create_wallet(CLIENTE)
     CLIENTE["did_info"] = json.dumps({'seed': CLIENTE['seed']})
+
     CLIENTE['did'], CLIENTE['key'] = await did.create_and_store_my_did(CLIENTE['wallet'], CLIENTE['did_info']) 
 
     Clientes.append(CLIENTE)  
     
+
 async def create_fardinho(pool_, fardinho_data):
     global cont_Far
     cont_Far += 1
     
 
     print(f"Criando Fardinho {cont_Far} - Cadastre")
+
 
     FARDINHO = {
         'name': fardinho_data['name'],
@@ -91,13 +105,16 @@ async def create_fardinho(pool_, fardinho_data):
         'wallet_config': json.dumps({'id': fardinho_data['wallet_config']}),
         'wallet_credentials': json.dumps({'key': fardinho_data['wallet_credentials']}),
         'pool': pool_['handle'],
+
         'seed': create_seed(cont_Far, fardinho_data['name']),
         "balance": 1000
+
     }
 
     await create_wallet(FARDINHO)
     FARDINHO["did_info"] = json.dumps({'seed': FARDINHO['seed']})
     FARDINHO['did'], FARDINHO['key'] = await did.create_and_store_my_did(FARDINHO['wallet'], FARDINHO['did_info'])
+
     Fardinhos.append(FARDINHO) 
 
 async def create_uba(pool_, uba_data, trustee):
@@ -107,6 +124,7 @@ async def create_uba(pool_, uba_data, trustee):
 
     print(f"\nCriando UBA {cont_Uba} - Cadastre")
     
+
 
     UBA = {
         'name': uba_data['name'],
@@ -120,6 +138,7 @@ async def create_uba(pool_, uba_data, trustee):
         'wallet_config': json.dumps({'id': uba_data['wallet_config']}),
         'wallet_credentials': json.dumps({'key': uba_data['wallet_credentials']}),
         'pool': pool_['handle'],
+
         'seed': create_seed(cont_Uba, uba_data['name']),
         "balance": uba_data['balance'],
         "preco_fardinho": uba_data['preco_fardinho'],#add
@@ -193,11 +212,13 @@ async def create_transaction(sender, receiver, custo_far, quant_far):
 
 async def run():
 
+
     pool_ = {
         'name': 'pool1'
     }
 
     print("Open Pool Ledger: {}".format(pool_['name']))
+
     pool_['genesis_txn_path'] = "/home/indy/sandbox/cottontrust/genesis.txn"
     pool_['config'] = json.dumps({"genesis_txn": str(pool_['genesis_txn_path'])})
 
@@ -209,6 +230,7 @@ async def run():
         if ex.error_code == ErrorCode.PoolLedgerConfigAlreadyExistsError:
             pass
     pool_['handle'] = await pool.open_pool_ledger(pool_['name'], None)
+
 
     with open('teste.json', 'r') as file
         teste_data = json.load(file)
@@ -297,6 +319,7 @@ async def run():
     # TEMPOS --------------------------------------------------------------------------------------------
 
     print(f"\nTempos de transacao: {Tempos}")
+
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(run())
