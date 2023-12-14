@@ -8,11 +8,12 @@ from indy.error import ErrorCode, IndyError
 UBAs = []
 Fardinhos = []
 Clientes = []
+Tempos = []
 
 cont_Uba = 0
 cont_Far = 0
 cont_Cli = 0
-
+cont_Tran = 0
 
 async def setup_identity(identity, trustee):
     print('cheguei no setup identity')
@@ -139,15 +140,20 @@ async def create_uba(pool_, uba_data, trustee):
     UBAs.append(UBA)
     
 async def create_transaction(sender, receiver, custo_far, quant_far):
-    amount = custo_far * quant_far
+    global cont_Tran
+    cont_Tran += 1
 
-    print(f"\nIniciando trasacao:")
+    amount = custo_far * quant_far
+    print("--------------------------------------------")
+    print(f"Iniciando trasacao {cont_Tran}:")
     print(f"Saldo atual de {sender['name']}: R${sender['balance']},00")
     print(f"Saldo atual de {receiver['name']}: R${receiver['balance']},00")
     print(f"Quantidade de Fardinhos disponiveis em {receiver['name']}: {receiver['quant_fardinho']}")
     print(f"Quantidade de Fardinhos que {sender['name']} quer comprar: {quant_far}")
     print(f"Preco de cada Fardinho: R${custo_far},00")
     print(f"Valor total da transacao: R${amount},00")
+
+    start_time = time.time()
 
     # Verifique se o remetente tem saldo suficiente
     if sender['balance'] < amount:
@@ -178,10 +184,15 @@ async def create_transaction(sender, receiver, custo_far, quant_far):
     # Assine e envie a solicitação de atributo para o destinatário
     await ledger.sign_and_submit_request(receiver['pool'], receiver['wallet'], receiver['did'], receiver_attr_req)
 
+    end_time = time.time()
+    duration = end_time - start_time
+    print(f"\nA transacao levou {duration} segundos para ser concluida\n")
+    Tempos.append(duration)
+
     print(f"Transacao concluida: {sender['name']} enviou R${amount},00 para {receiver['name']} e recebeu {quant_far} Fardinhos")
     print(f"Saldo atual de {sender['name']}: R${sender['balance']},00 e {sender['quant_fardinho']} Fardinhos")
     print(f"Saldo atual de {receiver['name']}: R${receiver['balance']},00 e {receiver['quant_fardinho']} Fardinhos")
-
+    print("--------------------------------------------")
 
 async def run():
 
@@ -272,7 +283,7 @@ async def run():
         for item in Clientes:
             print(f"{item}\n")
 
-    # FIM -----------------------------------------------------------------------------------------
+    # TRANSAÇÃO -----------------------------------------------------------------------------------------
 
     if UBAs and Clientes:
         num_transacoes = 2  # Quantidade de transações
@@ -286,6 +297,9 @@ async def run():
             await asyncio.sleep(10)  # Adiciona uma pausa para garantir que o pool esteja aberto
             await create_transaction(sender, receiver, custo_far, quant_far)
 
+    # TEMPOS --------------------------------------------------------------------------------------------
+
+    print(f"\nTempos de transacao: {Tempos}")
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(run())

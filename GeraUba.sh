@@ -13,7 +13,7 @@ for i in $(seq 1 2); do
         \"wallet_config\": \"config_uba$i\",
         \"wallet_credentials\": \"credentials_uba$i\",
         \"balance\": $((i * 10)),
-        \"preco_fardinho\": $((i * 10)),
-        \"quant_fardinho\": $((i * 1000000))
+        \"preco_fardinho\": $((i * 100)),
+        \"quant_fardinho\": $((i * 100000))
     },"
 done
