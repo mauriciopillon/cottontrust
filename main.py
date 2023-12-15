@@ -1,11 +1,10 @@
 import asyncio
 import json
 import time
-
-
+import csv
 import random
+import os
 from indy import pool, wallet, did, ledger
-
 from indy.error import ErrorCode, IndyError
 
 UBAs = []
@@ -13,7 +12,7 @@ Fardinhos = []
 Clientes = []
 
 
-Tempos = []
+tempos_transacao = []
 tempo_criacao = []
 
 
@@ -205,7 +204,7 @@ async def create_transaction(sender, receiver, custo_far, quant_far):
     end_time = time.time()
     duration = end_time - start_time
     print(f"\nA transacao levou {duration} segundos para ser concluida\n")
-    Tempos.append(duration)
+    tempos_transacao.append(duration)
 
     print(f"Transacao concluida: {sender['name']} enviou R${amount},00 para {receiver['name']} e recebeu {quant_far} Fardinhos")
     print(f"Saldo atual de {sender['name']}: R${sender['balance']},00 e {sender['quant_fardinho']} Fardinhos")
@@ -312,7 +311,7 @@ async def run():
     # TRANSAÇÃO -----------------------------------------------------------------------------------------
 
     if UBAs and Clientes:
-        num_transacoes = 1000  # Quantidade de transações
+        num_transacoes = 4 # Quantidade de transações
 
         for _ in range(num_transacoes):
 
@@ -324,10 +323,18 @@ async def run():
             await create_transaction(sender, receiver, custo_far, quant_far)
 
     # TEMPOS --------------------------------------------------------------------------------------------
-    tempo_medio = sum(Tempos)/len(Tempos)
-    tempo_medio_criacao = sum(tempo_criacao)/len(tempo_criacao)
-    print(f"\nTempos de transacao: {tempo_medio}")
-    print(f"\nTempos de criacao de entidade: {tempo_medio_criacao}")
+    print("Escrevendo no arquivo CSV...")
+    print(f"Tempos de transacao: {tempos_transacao}")
+    print(f"Tempos de criacao: {tempo_criacao}")
+
+    with open('tempos.csv', 'a', newline='') as file:  # Abrir arquivo no modo de anexação
+        writer = csv.writer(file)
+        if not os.path.exists('tempos.csv') or os.stat('tempos.csv').st_size == 0:  # Se o arquivo não existir ou estiver vazio
+            writer.writerow(["Quant. De Entidades:", "Tempo de Transacao:", "Tempo de Criacao:"])  # Escrever cabeçalho
+        for t, tc in zip(tempos_transacao, tempo_criacao):
+            writer.writerow(["100", t, tc])  # Escrever dados
+        writer.writerow([])
+print("Concluído.")
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(run())
