@@ -1,6 +1,6 @@
 #!/bin/bash
-
-for i in $(seq 1 2); do
+echo "["
+for i in $(seq 1 50); do
     echo "{
         \"name\": \"CLIENTE$i\",
         \"Endereco - Rua\": \"Rua 123\",
@@ -15,3 +15,4 @@ for i in $(seq 1 2); do
         \"quant_fardinho\": $((i * 0))
     },"
 done
+echo "]"

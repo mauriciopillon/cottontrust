@@ -14,6 +14,7 @@ Clientes = []
 
 
 Tempos = []
+tempo_criacao = []
 
 
 cont_Uba = 0
@@ -49,7 +50,7 @@ def create_seed(contador, nome):
         seed =  str(nome) + str(contador) + 'A0000000000000000000000000000000000' 
         return seed[:32]
 
-async def create_cliente(pool_, cliente_data):
+async def create_cliente(pool_, cliente_data, trustee):
     global cont_Cli
     cont_Cli += 1
     
@@ -79,7 +80,8 @@ async def create_cliente(pool_, cliente_data):
     CLIENTE["did_info"] = json.dumps({'seed': CLIENTE['seed']})
 
     CLIENTE['did'], CLIENTE['key'] = await did.create_and_store_my_did(CLIENTE['wallet'], CLIENTE['did_info']) 
-
+    # AQUI EH A FUNCAO DE SUBMETER PARA O LEDGER
+    await setup_identity(CLIENTE, trustee)
     Clientes.append(CLIENTE)  
     
 
@@ -232,7 +234,7 @@ async def run():
     pool_['handle'] = await pool.open_pool_ledger(pool_['name'], None)
 
 
-    with open('teste.json', 'r') as file
+    with open('teste.json', 'r') as file:
         teste_data = json.load(file)
 
     trustee = {
@@ -261,8 +263,10 @@ async def run():
 
     if ubas_data:
         for uba_data in ubas_data:
+            time_uba = time.time()
             await create_uba(pool_, uba_data, trustee)
-        
+            endtime_uba = time.time()
+            tempo_criacao.append(endtime_uba - time_uba)
 
         print("UBAs criados:\n")
         for item in UBAs:
@@ -296,7 +300,10 @@ async def run():
 
     if clientes_data:
         for cliente_data in clientes_data:
-            await create_cliente(pool_, cliente_data)
+            time_cli = time.time()
+            await create_cliente(pool_, cliente_data, trustee)
+            endtime_cli = time.time()
+            tempo_criacao.append(endtime_cli - time_cli)
 
         print("Clientes do mercado externo criados:\n")
         for item in Clientes:
@@ -305,7 +312,7 @@ async def run():
     # TRANSAÇÃO -----------------------------------------------------------------------------------------
 
     if UBAs and Clientes:
-        num_transacoes = 2  # Quantidade de transações
+        num_transacoes = 1000  # Quantidade de transações
 
         for _ in range(num_transacoes):
 
@@ -313,13 +320,14 @@ async def run():
             receiver = random.choice(UBAs)
             custo_far = receiver['preco_fardinho']
             quant_far = sender['quero_fardinho']
-            await asyncio.sleep(10)  # Adiciona uma pausa para garantir que o pool esteja aberto
+            
             await create_transaction(sender, receiver, custo_far, quant_far)
 
     # TEMPOS --------------------------------------------------------------------------------------------
-
-    print(f"\nTempos de transacao: {Tempos}")
-
+    tempo_medio = sum(Tempos)/len(Tempos)
+    tempo_medio_criacao = sum(tempo_criacao)/len(tempo_criacao)
+    print(f"\nTempos de transacao: {tempo_medio}")
+    print(f"\nTempos de criacao de entidade: {tempo_medio_criacao}")
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(run())
