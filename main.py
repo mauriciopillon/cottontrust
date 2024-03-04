@@ -245,7 +245,7 @@ async def run():
         'role': 'TRUSTEE'
     }
 
-    # CRIANDO O TRUSTEE CONFIA EM DEUS E VAI
+    # Criando Trustee
     await create_wallet(trustee)
     (trustee['did'], trustee['key']) = await did.create_and_store_my_did(trustee['wallet'], json.dumps({"seed": trustee['seed']}))
     await setup_identity(trustee,trustee)
