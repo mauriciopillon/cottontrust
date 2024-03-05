@@ -1,10 +1,10 @@
+from indy_vdr.bindings import Pool, Wallet, Did
+
 async def create_cliente(pool_, cliente_data, trustee):
     global cont_Cli
     cont_Cli += 1
-    
 
     print(f"\nCriando Clientes {cont_Cli} - Cadastre")
-
 
     CLIENTE = {
         'name': cliente_data['name'],
@@ -24,10 +24,10 @@ async def create_cliente(pool_, cliente_data, trustee):
 
     }
 
-    await create_wallet(CLIENTE)
+    CLIENTE['wallet'] = await Wallet.create(CLIENTE['wallet_config'], CLIENTE['wallet_credentials'])
     CLIENTE["did_info"] = json.dumps({'seed': CLIENTE['seed']})
 
-    CLIENTE['did'], CLIENTE['key'] = await did.create_and_store_my_did(CLIENTE['wallet'], CLIENTE['did_info']) 
+    CLIENTE['did'], CLIENTE['key'] = await Did.create_and_store_my_did(CLIENTE['wallet'], CLIENTE['did_info']) 
     # AQUI EH A FUNCAO DE SUBMETER PARA O LEDGER
     await setup_identity(CLIENTE, trustee)
     Clientes.append(CLIENTE) 

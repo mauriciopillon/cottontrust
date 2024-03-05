@@ -1,3 +1,5 @@
+from indy_vdr.bindings import Pool, Wallet, Did, RequestBuilder
+
 async def create_transaction(sender, receiver, custo_far, quant_far):
     global cont_Tran
     cont_Tran += 1
@@ -26,10 +28,11 @@ async def create_transaction(sender, receiver, custo_far, quant_far):
     sender['quant_fardinho'] += quant_far
 
     # Construa a solicitação de atributo para o remetente
-    sender_attr_req = await ledger.build_attrib_request(sender['did'], sender['did'], None, json.dumps({'balance': sender['balance'], 'quant_fardinho': sender['quant_fardinho']}), None)
+    sender_attr_req = RequestBuilder.build_attrib_request(sender['did'], sender['did'], None, json.dumps({'balance': sender['balance'], 'quant_fardinho': sender['quant_fardinho']}), None)
 
     # Assine e envie a solicitação de atributo para o remetente
-    await ledger.sign_and_submit_request(sender['pool'], sender['wallet'], sender['did'], sender_attr_req)
+    signed_request = await sender['wallet'].sign_request(sender['did'], sender_attr_req)
+    await sender['pool'].submit_request(signed_request)
 
     # Atualize o saldo do destinatário
     receiver['balance'] += amount
@@ -38,10 +41,11 @@ async def create_transaction(sender, receiver, custo_far, quant_far):
     receiver['quant_fardinho'] -= quant_far
 
     # Construa a solicitação de atributo para o destinatário
-    receiver_attr_req = await ledger.build_attrib_request(receiver['did'], receiver['did'], None, json.dumps({'balance': receiver['balance'], 'quant_fardinho': receiver['quant_fardinho']}), None)
+    receiver_attr_req = RequestBuilder.build_attrib_request(receiver['did'], receiver['did'], None, json.dumps({'balance': receiver['balance'], 'quant_fardinho': receiver['quant_fardinho']}), None)
 
     # Assine e envie a solicitação de atributo para o destinatário
-    await ledger.sign_and_submit_request(receiver['pool'], receiver['wallet'], receiver['did'], receiver_attr_req)
+    signed_request = await receiver['wallet'].sign_request(receiver['did'], receiver_attr_req)
+    await receiver['pool'].submit_request(signed_request)
 
     end_time = time.time()
     duration = end_time - start_time

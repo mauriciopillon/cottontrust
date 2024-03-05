@@ -1,11 +1,10 @@
+from indy_vdr.bindings import Pool, Wallet, Did
+
 async def create_uba(pool_, uba_data, trustee):
     global cont_Uba
     cont_Uba += 1
-    
 
     print(f"\nCriando UBA {cont_Uba} - Cadastre")
-    
-
 
     UBA = {
         'name': uba_data['name'],
@@ -26,11 +25,11 @@ async def create_uba(pool_, uba_data, trustee):
         "quant_fardinho": uba_data['quant_fardinho'] #add
     }
 
-    
-    await create_wallet(UBA)
+    # Create wallet using indy-vdr
+    UBA['wallet'] = await Wallet.create(UBA['wallet_config'], UBA['wallet_credentials'])
 
     UBA["did_info"] = json.dumps({'seed': UBA['seed']})
-    UBA['did'], UBA['key'] = await did.create_and_store_my_did(UBA['wallet'], UBA['did_info'])
+    UBA['did'], UBA['key'] = await Did.create_and_store_my_did(UBA['wallet'], UBA['did_info'])
 
     # AQUI EH A FUNCAO DE SUBMETER PARA O LEDGER
     await setup_identity(UBA, trustee)

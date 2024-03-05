@@ -5,8 +5,8 @@ import csv
 import random
 import os
 
-from indy import pool, wallet, did, ledger
-from indy.error import ErrorCode, IndyError
+from indy_ndr import pool, wallet, did, ledger
+from indy_ndr.error import ErrorCode, IndyError
 
 from identity import setup_identity
 from wallet import create_wallet, create_seed

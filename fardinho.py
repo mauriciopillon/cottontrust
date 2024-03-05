@@ -1,10 +1,10 @@
+from indy_vdr.bindings import Wallet, Did
+
 async def create_fardinho(pool_, fardinho_data):
     global cont_Far
     cont_Far += 1
-    
 
     print(f"Criando Fardinho {cont_Far} - Cadastre")
-
 
     FARDINHO = {
         'name': fardinho_data['name'],
@@ -23,11 +23,11 @@ async def create_fardinho(pool_, fardinho_data):
 
         'seed': create_seed(cont_Far, fardinho_data['name']),
         "balance": 1000
-
     }
 
-    await create_wallet(FARDINHO)
+    FARDINHO['wallet'] = await Wallet.create(FARDINHO['wallet_config'], FARDINHO['wallet_credentials'])
     FARDINHO["did_info"] = json.dumps({'seed': FARDINHO['seed']})
-    FARDINHO['did'], FARDINHO['key'] = await did.create_and_store_my_did(FARDINHO['wallet'], FARDINHO['did_info'])
+
+    FARDINHO['did'], FARDINHO['key'] = await Did.create_and_store_my_did(FARDINHO['wallet'], FARDINHO['did_info'])
 
     Fardinhos.append(FARDINHO) 
