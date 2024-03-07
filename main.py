@@ -289,17 +289,9 @@ async def run():
             await create_transaction(sender, receiver, custo_far, quant_far)
 
     # TEMPOS --------------------------------------------------------------------------------------------
-    print("Escrevendo no arquivo CSV...")
     print(f"Tempos de transacao: {tempos_transacao}")
     print(f"Tempos de criacao: {tempo_criacao}")
 
-    with open('tempos.csv', 'a', newline='') as file:  # Abrir arquivo no modo de anexação
-        writer = csv.writer(file)
-        if not os.path.exists('tempos.csv') or os.stat('tempos.csv').st_size == 0:  # Se o arquivo não existir ou estiver vazio
-            writer.writerow(["Quant. De Entidades:", "Tempo de Transacao:", "Tempo de Criacao:"])  # Escrever cabeçalho
-        for t, tc in zip(tempos_transacao, tempo_criacao):
-            writer.writerow(["100", t, tc])  # Escrever dados
-        writer.writerow([])
 print("Concluído.")
 
 loop = asyncio.get_event_loop()
