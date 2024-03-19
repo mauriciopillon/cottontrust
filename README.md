@@ -10,6 +10,8 @@ Architecture
 
 COTTONTRUST utilizes the SSI model, with each entity represented by a Decentralized Identifier (DID) registered on the Hyperledger Indy blockchain. The architecture incorporates components such as decentralized identifiers, digital agents, verifiable data registries, and verifiable credentials. These components enable entities to interact securely, exchange credentials, and verify information without the need for intermediaries.
 
+![Functional dynamic](https://github.com/mauriciopillon/cottontrust/tree/develop/read/cotton.png)
+
 Components
 
     Decentralized Identifiers (DIDs): Unique identifiers assigned to each entity on the blockchain, ensuring digital uniqueness and enabling secure interactions.
