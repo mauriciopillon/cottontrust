@@ -1,0 +1,28 @@
+[
+    {
+        "name": "CLIENT1",
+        "Address - Street": "123 Street",
+        "Address - Neighborhood": "Neighborhood A",
+        "Address - City": "City X",
+        "Address - State": "State Y",
+        "Address - Country": "Country Z",
+        "wallet_config": "config_CLIENT1",
+        "wallet_credentials": "credentials_CLIENT1",
+        "balance": 1000000,
+        "want_bale": 10,
+        "quant_bale": 0
+    },
+    {
+        "name": "CLIENT2",
+        "Address - Street": "123 Street",
+        "Address - Neighborhood": "Neighborhood A",
+        "Address - City": "City X",
+        "Address - State": "State Y",
+        "Address - Country": "Country Z",
+        "wallet_config": "config_CLIENT2",
+        "wallet_credentials": "credentials_CLIENT2",
+        "balance": 2000000,
+        "want_bale": 20,
+        "quant_bale": 0
+    }
+]

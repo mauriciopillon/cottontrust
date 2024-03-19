@@ -223,7 +223,7 @@ async def run():
     pool_['handle'] = await pool.open_pool_ledger(pool_['name'], None)
 
 
-    with open('models/teste.json', 'r') as file:
+    with open('models/test.json', 'r') as file:
         teste_data = json.load(file)
 
     trustee = {
@@ -263,7 +263,7 @@ async def run():
 
     # BALES -----------------------------------------------------------------------------------
 
-    with open('models/fardinhos.json', 'r') as file:
+    with open('models/bale.json', 'r') as file:
         try:
             bale_data = json.load(file)
         except json.JSONDecodeError:
@@ -280,7 +280,7 @@ async def run():
 
     # CLIENTS -----------------------------------------------------------------------------------
 
-    with open('models/clientes.json', 'r') as file:
+    with open('models/clients.json', 'r') as file:
         try:
             clients_data = json.load(file)
         except json.JSONDecodeError:
