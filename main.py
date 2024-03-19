@@ -23,27 +23,26 @@ cont_Cli = 0
 cont_Tran = 0
 
 async def setup_identity(identity, trustee):
-    print('cheguei no setup identity')
     did_safe = 'V4SGRU86Z58d6TV7PBUe6f'
     verkey_safe = '~CoRER63DVYnWZtK8uAzNbx'
     (identity['did'], identity['key']) = await did.create_and_store_my_did(identity['wallet'], "{}")
     nym_req = await ledger.build_nym_request(did_safe, identity['did'],identity['key'],None, None)
     await ledger.sign_and_submit_request(identity['pool'], trustee['wallet'], did_safe, nym_req)
       
-async def create_wallet(Entidade):
-    print("\"{}\" -> Criando Carteira(wallet)".format(Entidade['name']))
+async def create_wallet(Entity):
+    print("\"{}\" -> Creating  wallet(wallet)".format(Entity['name']))
 
     try:
-        await wallet.create_wallet(Entidade['wallet_config'],
-                                   Entidade['wallet_credentials'])
+        await wallet.create_wallet(Entity['wallet_config'],
+                                   Entity['wallet_credentials'])
     except IndyError as ex:
         if ex.error_code == ErrorCode.WalletAlreadyExistsError:
             pass
         else:
             raise ex
 
-    Entidade['wallet'] = await wallet.open_wallet(Entidade['wallet_config'],
-                                                  Entidade['wallet_credentials'])
+    Entity['wallet'] = await wallet.open_wallet(Entity['wallet_config'],
+                                                  Entity['wallet_credentials'])
     
 def create_seed(contador, nome):
         seed =  str(nome) + str(contador) + 'A0000000000000000000000000000000000' 
@@ -233,7 +232,7 @@ async def run():
     pool_['handle'] = await pool.open_pool_ledger(pool_['name'], None)
 
 
-    with open('teste.json', 'r') as file:
+    with open('models/teste.json', 'r') as file:
         teste_data = json.load(file)
 
     trustee = {
@@ -253,7 +252,7 @@ async def run():
 
     # UBAS -----------------------------------------------------------------------------------
 
-    with open('ubas.json', 'r') as file:
+    with open('models/ubas.json', 'r') as file:
         try:
             ubas_data = json.load(file)
         except json.JSONDecodeError:
@@ -273,7 +272,7 @@ async def run():
 
     # FARDINHOS -----------------------------------------------------------------------------------
 
-    with open('fardinhos.json', 'r') as file:
+    with open('models/fardinhos.json', 'r') as file:
         try:
             fardinhos_data = json.load(file)
         except json.JSONDecodeError:
@@ -290,7 +289,7 @@ async def run():
 
     # CLIENTES -----------------------------------------------------------------------------------
 
-    with open('clientes.json', 'r') as file:
+    with open('models/clientes.json', 'r') as file:
         try:
             clientes_data = json.load(file)
         except json.JSONDecodeError:
@@ -330,7 +329,7 @@ async def run():
     with open('tempos.csv', 'a', newline='') as file:  # Abrir arquivo no modo de anexação
         writer = csv.writer(file)
         if not os.path.exists('tempos.csv') or os.stat('tempos.csv').st_size == 0:  # Se o arquivo não existir ou estiver vazio
-            writer.writerow(["Quant. De Entidades:", "Tempo de Transacao:", "Tempo de Criacao:"])  # Escrever cabeçalho
+            writer.writerow(["Quant. De Entitys:", "Tempo de Transacao:", "Tempo de Criacao:"])  # Escrever cabeçalho
         for t, tc in zip(tempos_transacao, tempo_criacao):
             writer.writerow(["100", t, tc])  # Escrever dados
         writer.writerow([])
