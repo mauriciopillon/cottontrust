@@ -4,12 +4,28 @@ import time
 import csv
 import random
 import os
+import requests
 
+from aries_cloudagent.wallet.askar import AskarWallet
+from aries_cloudagent.wallet.models.wallet_record import WalletRecord
+from aries_cloudagent.config.injection_context import InjectionContext
+from aries_cloudagent.core.profile import Profile
+from aries_cloudagent.config.injection_context import InjectionContext
+from aries_cloudagent.core.profile import ProfileManager, Profile
+from aries_cloudagent.config.wallet import wallet_config
 from aries_cloudagent.wallet.base import BaseWallet
-from aries_cloudagent.wallet.indy import IndyWallet
 from aries_cloudagent.wallet.error import WalletError
-from aries_cloudagent.storage.basic import BasicStorage
-from aries_cloudagent.protocols.didcomm.v2_0.models.diddoc import DIDDoc, PublicKey, PublicKeyType, Service
+from aries_cloudagent.wallet.askar import AskarWallet
+from aries_cloudagent.protocols.issue_credential.v1_0.manager import CredentialManager
+from aries_cloudagent.protocols.issue_credential.v1_0.messages.credential_offer import CredentialOffer
+from aries_cloudagent.storage.askar import AskarStorage
+from aries_cloudagent.protocols.issue_credential.v1_0.models.credential_exchange import V10CredentialExchange
+from aries_cloudagent.protocols.issue_credential.v1_0.messages.credential_offer import CredentialOffer
+from aries_cloudagent.wallet.base import KeyInfo
+from aries_cloudagent.config.injection_context import InjectionContext
+from aries_cloudagent.core.profile import ProfileManager
+from aries_cloudagent.config.injection_context import InjectionContext
+
 
 UBAs = []
 Fardinhos = []
@@ -24,79 +40,83 @@ cont_Cli = 0
 
 cont_Tran = 0
 
-async def setup_identity(context, trustee, endorser):
-    wallet: BaseWallet = await context.inject(BaseWallet, required=False)
-    if not wallet:
-        wallet = IndyWallet(context.settings)
-        await wallet.open()
-    did_info = await wallet.get_local_did(trustee['did'])
-    did_doc = DIDDoc(did=did_info.did)
-    controller = did_info.did
-    ident = did_info.did
-    verkey = did_info.verkey
-    pk = PublicKey(
-        did_info.did,
-        "1",
-        PublicKeyType.ED25519_SIG_2018,
-        controller,
-        verkey,
-        True,
-    )
-    did_doc.set(pk)
-    service = Service(
-        did_info.did,
-        "indy",
-        "IndyAgent",
-        ["didcomm"],
-        "http://localhost:8000",
-        [pk],
-    )
-    did_doc.set(service)
-    await wallet.replace_local_did_metadata(did_info.did, {"endorser": endorser['did']})
-      
-async def create_wallet(context, trustee):
-    wallet: BaseWallet = await context.inject(BaseWallet, required=False)
-    if not wallet:
-        wallet = IndyWallet(context.settings)
-        await wallet.open()
-    try:
-        await wallet.create_local_did(seed=trustee['seed'])
-    except WalletError:
-        print(f"Wallet {trustee['name']} already exists")
+def create_connection():
+    response = requests.post('http://localhost:8001/connections/create-invitation')
 
-async def create_and_store_my_did(context, trustee):
-    wallet: BaseWallet = await context.inject(BaseWallet, required=False)
-    if not wallet:
-        wallet = IndyWallet(context.settings)
-        await wallet.open()
-    info = await wallet.create_local_did(seed=trustee['seed'])
-    return info.did, info.verkey
+    if response.status_code == 200:
+        invitation = response.json()
+        print("Convite criado com sucesso:", invitation)
+    else:
+        print("Erro ao criar convite:", response.status_code)
+
+create_connection()
+
+async def setup_identity(trustee, endorser):
+    # Defina o DID público
+    response = requests.post('http://localhost:8001/wallet/did/public', data=json.dumps({'did': trustee['did']}))
+
+    print(response.json())
+
+async def create_and_store_my_did(trustee):
+    response = requests.post('http://localhost:8001/wallet/did/create', data=json.dumps({'seed': trustee['seed']}))
+
+    if response.status_code == 200:
+        info = response.json()
+        return info['result']['did'], info['result']['verkey']
+    else:
+        print("Erro ao criar DID:", response.status_code)
     
-async def create_cliente(context, cliente_data, trustee):
+async def create_wallet(wallet_config, wallet_credentials):
+    response = requests.post('http://localhost:8001/wallet/create', data=json.dumps({
+        'wallet_config': wallet_config,
+        'wallet_credentials': wallet_credentials
+    }))
+
+    if response.status_code != 200:
+        print("Erro ao criar carteira:", response.status_code)
+
+async def create_cliente(cliente_data, trustee):
+
     # Criar uma nova carteira para o cliente
-    cliente_wallet_config = json.dumps({'id': cliente_data['wallet_config']})
-    cliente_wallet_credentials = json.dumps({'key': cliente_data['wallet_credentials']})
-    await create_wallet(context, cliente_wallet_config, cliente_wallet_credentials)
+    await create_wallet(cliente_data['wallet_config'], cliente_data['wallet_credentials'])
 
     # Criar um novo DID para o cliente
-    (cliente_did, cliente_key) = await create_and_store_my_did(context, {"seed": cliente_data['seed']})
+    (cliente_did, cliente_key) = await create_and_store_my_did(trustee)
 
     # Configurar a identidade do cliente
-    await setup_identity(context, cliente_did, cliente_key, trustee['did'])
+    await setup_identity(cliente_did, cliente_key, trustee['did'])
 
     # Emitir uma credencial para o cliente
-    credential_manager = CredentialManager(context)
-    offer = CredentialOffer(
-        credential_preview=cliente_data['credential_data'],
-        offer_request=cliente_data['offer_request']
-    )
-    exchange_record = V10CredentialExchange(
-        credential_offer_dict=offer.serialize(),
-        auto_issue=True
-    )
-    await credential_manager.create_offer(exchange_record) 
+    offer = {
+        'credential_preview': cliente_data['credential_data'],
+        'offer_request': cliente_data['offer_request']
+    }
+    response = requests.post('http://localhost:8001/issue-credential/send-offer', data=json.dumps(offer))
 
-async def create_fardinho(context, fardinho_data, trustee):
+    if response.status_code != 200:
+        print("Erro ao emitir credencial:", response.status_code) 
+
+
+    # Criar uma nova carteira para o fardinho
+    fardinho_wallet_config = json.dumps({'id': fardinho_data['wallet_config']})
+    fardinho_wallet_credentials = json.dumps({'key': fardinho_data['wallet_credentials']})
+    await create_wallet(fardinho_wallet_config, fardinho_wallet_credentials)
+
+    # Criar um novo DID para o fardinho
+    (fardinho_did, fardinho_key) = await create_and_store_my_did({"seed": fardinho_data['seed']})
+
+    # Configurar a identidade do fardinho
+    await setup_identity(fardinho_did, fardinho_key, trustee['did'])
+
+    # Emitir uma credencial para o fardinho
+    offer = {
+        'credential_preview': fardinho_data['credential_data'],
+        'offer_request': fardinho_data['offer_request']
+    }
+    response = requests.post('http://localhost:8001/issue-credential/send-offer', data=json.dumps(offer))
+
+    if response.status_code != 200:
+        print("Erro ao emitir credencial:", response.status_code)
     # Criar uma nova carteira para o fardinho
     fardinho_wallet_config = json.dumps({'id': fardinho_data['wallet_config']})
     fardinho_wallet_credentials = json.dumps({'key': fardinho_data['wallet_credentials']})
@@ -120,31 +140,51 @@ async def create_fardinho(context, fardinho_data, trustee):
     )
     await credential_manager.create_offer(exchange_record)
 
-async def create_uba(context, uba_data, trustee):
+async def create_fardinho(fardinho_data, trustee):
+    # Criar uma nova carteira para o fardinho
+    fardinho_wallet_config = json.dumps({'id': fardinho_data['wallet_config']})
+    fardinho_wallet_credentials = json.dumps({'key': fardinho_data['wallet_credentials']})
+    await create_wallet(fardinho_wallet_config, fardinho_wallet_credentials)
+
+    # Criar um novo DID para o fardinho
+    (fardinho_did, fardinho_key) = await create_and_store_my_did({"seed": fardinho_data['seed']})
+
+    # Configurar a identidade do fardinho
+    await setup_identity(fardinho_did, fardinho_key, trustee['did'])
+
+    # Emitir uma credencial para o fardinho
+    offer = {
+        'credential_preview': fardinho_data['credential_data'],
+        'offer_request': fardinho_data['offer_request']
+    }
+    response = requests.post('http://localhost:8001/issue-credential/send-offer', data=json.dumps(offer))
+
+    if response.status_code != 200:
+        print("Erro ao emitir credencial:", response.status_code)
+
+async def create_uba(uba_data, trustee):
     # Criar uma nova carteira para a UBA
     uba_wallet_config = json.dumps({'id': uba_data['wallet_config']})
     uba_wallet_credentials = json.dumps({'key': uba_data['wallet_credentials']})
-    await create_wallet(context, uba_wallet_config, uba_wallet_credentials)
+    await create_wallet(uba_wallet_config, uba_wallet_credentials)
 
     # Criar um novo DID para a UBA
-    (uba_did, uba_key) = await create_and_store_my_did(context, {"seed": uba_data['seed']})
+    (uba_did, uba_key) = await create_and_store_my_did({"seed": uba_data['seed']})
 
     # Configurar a identidade da UBA
-    await setup_identity(context, uba_did, uba_key, trustee['did'])
+    await setup_identity(uba_did, uba_key, trustee['did'])
 
     # Emitir uma credencial para a UBA
-    credential_manager = CredentialManager(context)
-    offer = CredentialOffer(
-        credential_preview=uba_data['credential_data'],
-        offer_request=uba_data['offer_request']
-    )
-    exchange_record = V10CredentialExchange(
-        credential_offer_dict=offer.serialize(),
-        auto_issue=True
-    )
-    await credential_manager.create_offer(exchange_record)
+    offer = {
+        'credential_preview': uba_data['credential_data'],
+        'offer_request': uba_data['offer_request']
+    }
+    response = requests.post('http://localhost:8001/issue-credential/send-offer', data=json.dumps(offer))
+
+    if response.status_code != 200:
+        print("Erro ao emitir credencial:", response.status_code)
     
-async def create_transaction(context, sender, receiver, custo_far, quant_far):
+async def create_transaction(sender, receiver, custo_far, quant_far):
     global cont_Tran
     cont_Tran += 1
 
@@ -178,27 +218,24 @@ async def create_transaction(context, sender, receiver, custo_far, quant_far):
     receiver['quant_fardinho'] -= quant_far
 
     # Emitir uma credencial para o remetente
-    credential_manager = CredentialManager(context)
-    sender_offer = CredentialOffer(
-        credential_preview={'balance': sender['balance'], 'quant_fardinho': sender['quant_fardinho']},
-        offer_request=sender['offer_request']
-    )
-    sender_exchange_record = V10CredentialExchange(
-        credential_offer_dict=sender_offer.serialize(),
-        auto_issue=True
-    )
-    await credential_manager.create_offer(sender_exchange_record)
+    sender_offer = {
+        'credential_preview': {'balance': sender['balance'], 'quant_fardinho': sender['quant_fardinho']},
+        'offer_request': sender['offer_request']
+    }
+    response = requests.post('http://localhost:8001/issue-credential/send-offer', data=json.dumps(sender_offer))
+
+    if response.status_code != 200:
+        print("Erro ao emitir credencial para o remetente:", response.status_code)
 
     # Emitir uma credencial para o destinatário
-    receiver_offer = CredentialOffer(
-        credential_preview={'balance': receiver['balance'], 'quant_fardinho': receiver['quant_fardinho']},
-        offer_request=receiver['offer_request']
-    )
-    receiver_exchange_record = V10CredentialExchange(
-        credential_offer_dict=receiver_offer.serialize(),
-        auto_issue=True
-    )
-    await credential_manager.create_offer(receiver_exchange_record)
+    receiver_offer = {
+        'credential_preview': {'balance': receiver['balance'], 'quant_fardinho': receiver['quant_fardinho']},
+        'offer_request': receiver['offer_request']
+    }
+    response = requests.post('http://localhost:8001/issue-credential/send-offer', data=json.dumps(receiver_offer))
+
+    if response.status_code != 200:
+        print("Erro ao emitir credencial para o destinatário:", response.status_code)
 
     end_time = time.time()
     duration = end_time - start_time
@@ -210,7 +247,7 @@ async def create_transaction(context, sender, receiver, custo_far, quant_far):
     print(f"Saldo atual de {receiver['name']}: R${receiver['balance']},00 e {receiver['quant_fardinho']} Fardinhos")
     print("--------------------------------------------")
 
-async def run(context):
+async def run():
     # Carregar dados de teste
     with open('teste.json', 'r') as file:
         teste_data = json.load(file)
@@ -225,13 +262,13 @@ async def run(context):
     }
 
     # Criar carteira para o trustee
-    await create_wallet(context, trustee)
+    await create_wallet(trustee)
 
     # Criar DIDs e configurar identidade
-    (trustee['did'], trustee['key']) = await create_and_store_my_did(context, {"seed": trustee['seed']})
-    await setup_identity(context, trustee, trustee)
+    (trustee['did'], trustee['key']) = await create_and_store_my_did({"seed": trustee['seed']})
+    await setup_identity(trustee, trustee)
 
-    # Carregar dados de UBAs
+    # UBAS ----------------------------------------------------------------------------------------
     with open('ubas.json', 'r') as file:
         try:
             ubas_data = json.load(file)
@@ -239,11 +276,10 @@ async def run(context):
             print("Arquivo UBA esta vazio.\n")
             ubas_data = []
 
-    # Criar UBAs
     if ubas_data:
         for uba_data in ubas_data:
             time_uba = time.time()
-            await create_uba(context, uba_data, trustee)
+            await create_uba(uba_data, trustee)
             endtime_uba = time.time()
             tempo_criacao.append(endtime_uba - time_uba)
 
@@ -262,7 +298,7 @@ async def run(context):
 
     if fardinhos_data:
         for fardinho_data in fardinhos_data:
-            await create_fardinho(context, fardinho_data)
+            await create_fardinho(fardinho_data)
 
         print("Fardinhos criados:\n")
         for item in Fardinhos:
@@ -280,7 +316,7 @@ async def run(context):
     if clientes_data:
         for cliente_data in clientes_data:
             time_cli = time.time()
-            await create_cliente(context, cliente_data, trustee)
+            await create_cliente(cliente_data, trustee)
             endtime_cli = time.time()
             tempo_criacao.append(endtime_cli - time_cli)
 
@@ -294,13 +330,15 @@ async def run(context):
         num_transacoes = 4 # Quantidade de transações
 
         for _ in range(num_transacoes):
-
             sender= random.choice(Clientes)
             receiver = random.choice(UBAs)
             custo_far = receiver['preco_fardinho']
             quant_far = sender['quero_fardinho']
             
             await create_transaction(sender, receiver, custo_far, quant_far)
+
+    response = requests.get('http://localhost:8001/status')
+    print(response.json())
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(run())
