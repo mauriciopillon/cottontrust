@@ -5,27 +5,21 @@ import csv
 import random
 import os
 import requests
+import secrets
+import aiohttp
 
 from aries_cloudagent.wallet.askar import AskarWallet
 from aries_cloudagent.wallet.models.wallet_record import WalletRecord
 from aries_cloudagent.config.injection_context import InjectionContext
-from aries_cloudagent.core.profile import Profile
-from aries_cloudagent.config.injection_context import InjectionContext
-from aries_cloudagent.core.profile import ProfileManager, Profile
+from aries_cloudagent.core.profile import Profile, ProfileManager
 from aries_cloudagent.config.wallet import wallet_config
-from aries_cloudagent.wallet.base import BaseWallet
+from aries_cloudagent.wallet.base import BaseWallet, KeyInfo
 from aries_cloudagent.wallet.error import WalletError
-from aries_cloudagent.wallet.askar import AskarWallet
 from aries_cloudagent.protocols.issue_credential.v1_0.manager import CredentialManager
 from aries_cloudagent.protocols.issue_credential.v1_0.messages.credential_offer import CredentialOffer
 from aries_cloudagent.storage.askar import AskarStorage
 from aries_cloudagent.protocols.issue_credential.v1_0.models.credential_exchange import V10CredentialExchange
-from aries_cloudagent.protocols.issue_credential.v1_0.messages.credential_offer import CredentialOffer
-from aries_cloudagent.wallet.base import KeyInfo
-from aries_cloudagent.config.injection_context import InjectionContext
-from aries_cloudagent.core.profile import ProfileManager
-from aries_cloudagent.config.injection_context import InjectionContext
-
+from aries_cloudcontroller import AriesAgentController
 
 UBAs = []
 Fardinhos = []
@@ -37,11 +31,14 @@ tempo_criacao = []
 cont_Uba = 0
 cont_Far = 0
 cont_Cli = 0
-
 cont_Tran = 0
 
+def generate_seed():
+    return secrets.token_hex(16)  # Gera uma string hexadecimal segura de 32 caracteres
+
 def create_connection():
-    response = requests.post('http://localhost:8001/connections/create-invitation')
+    #response = requests.post('http://localhost:8001/connections/create-invitation')
+    response = requests.post('http://localhost:9000/connections/create-invitation')
 
     if response.status_code == 200:
         invitation = response.json()
@@ -51,23 +48,44 @@ def create_connection():
 
 create_connection()
 
-async def setup_identity(trustee, endorser):
-    # Defina o DID público
-    response = requests.post('http://localhost:8001/wallet/did/public', data=json.dumps({'did': trustee['did']}))
+async def setup_identity(uba_did, uba_key, trustee_did):
+    # Crie uma instância do controlador Aries
+    controller = AriesAgentController(admin_url="http://localhost:9000")
 
-    print(response.json())
+    # Crie um novo DID
+    response = await controller.wallet.create_did()
+
+    # Verifique se a criação do DID foi bem-sucedida
+    if "did" in response:
+        print(f"DID criado com sucesso: {response['did']}")
+        uba_did = response['did']
+    else:
+        print("Erro ao criar DID")
+
+    # Atribua o DID criado ao agente
+    response = await controller.wallet.assign_public_did(uba_did)
+
+    # Verifique se a atribuição do DID foi bem-sucedida
+    if "did" in response:
+        print(f"DID atribuído com sucesso: {response['did']}")
+    else:
+        print("Erro ao atribuir DID")
+
+    # Feche a conexão com o controlador Aries
+    await controller.terminate()
 
 async def create_and_store_my_did(trustee):
-    response = requests.post('http://localhost:8001/wallet/did/create', data=json.dumps({'seed': trustee['seed']}))
+    response = requests.post('http://localhost:9000/wallet/did/create', data=json.dumps({'seed': trustee['seed']}))
 
     if response.status_code == 200:
         info = response.json()
         return info['result']['did'], info['result']['verkey']
     else:
         print("Erro ao criar DID:", response.status_code)
+        return None, None  # Retorne None para ambos os valores se a requisição falhar
     
 async def create_wallet(wallet_config, wallet_credentials):
-    response = requests.post('http://localhost:8001/wallet/create', data=json.dumps({
+    response = requests.post('http://localhost:9000/wallet/create', data=json.dumps({
         'wallet_config': wallet_config,
         'wallet_credentials': wallet_credentials
     }))
@@ -77,6 +95,9 @@ async def create_wallet(wallet_config, wallet_credentials):
 
 async def create_cliente(cliente_data, trustee):
 
+    # Gerar uma nova seed
+    cliente_data['seed'] = generate_seed()
+    
     # Criar uma nova carteira para o cliente
     await create_wallet(cliente_data['wallet_config'], cliente_data['wallet_credentials'])
 
@@ -91,7 +112,7 @@ async def create_cliente(cliente_data, trustee):
         'credential_preview': cliente_data['credential_data'],
         'offer_request': cliente_data['offer_request']
     }
-    response = requests.post('http://localhost:8001/issue-credential/send-offer', data=json.dumps(offer))
+    response = requests.post('http://localhost:9000/issue-credential/send-offer', data=json.dumps(offer))
 
     if response.status_code != 200:
         print("Erro ao emitir credencial:", response.status_code) 
@@ -141,6 +162,9 @@ async def create_cliente(cliente_data, trustee):
     await credential_manager.create_offer(exchange_record)
 
 async def create_fardinho(fardinho_data, trustee):
+    # Gerar uma nova seed
+    fardinho_data['seed'] = generate_seed()
+
     # Criar uma nova carteira para o fardinho
     fardinho_wallet_config = json.dumps({'id': fardinho_data['wallet_config']})
     fardinho_wallet_credentials = json.dumps({'key': fardinho_data['wallet_credentials']})
@@ -163,6 +187,9 @@ async def create_fardinho(fardinho_data, trustee):
         print("Erro ao emitir credencial:", response.status_code)
 
 async def create_uba(uba_data, trustee):
+    # Gerar uma nova seed
+    uba_data['seed'] = generate_seed()
+
     # Criar uma nova carteira para a UBA
     uba_wallet_config = json.dumps({'id': uba_data['wallet_config']})
     uba_wallet_credentials = json.dumps({'key': uba_data['wallet_credentials']})
@@ -179,7 +206,7 @@ async def create_uba(uba_data, trustee):
         'credential_preview': uba_data['credential_data'],
         'offer_request': uba_data['offer_request']
     }
-    response = requests.post('http://localhost:8001/issue-credential/send-offer', data=json.dumps(offer))
+    response = requests.post('http://localhost:9000/issue-credential/send-offer', data=json.dumps(offer))
 
     if response.status_code != 200:
         print("Erro ao emitir credencial:", response.status_code)
@@ -222,7 +249,7 @@ async def create_transaction(sender, receiver, custo_far, quant_far):
         'credential_preview': {'balance': sender['balance'], 'quant_fardinho': sender['quant_fardinho']},
         'offer_request': sender['offer_request']
     }
-    response = requests.post('http://localhost:8001/issue-credential/send-offer', data=json.dumps(sender_offer))
+    response = requests.post('http://localhost:9000/issue-credential/send-offer', data=json.dumps(sender_offer))
 
     if response.status_code != 200:
         print("Erro ao emitir credencial para o remetente:", response.status_code)
@@ -232,7 +259,7 @@ async def create_transaction(sender, receiver, custo_far, quant_far):
         'credential_preview': {'balance': receiver['balance'], 'quant_fardinho': receiver['quant_fardinho']},
         'offer_request': receiver['offer_request']
     }
-    response = requests.post('http://localhost:8001/issue-credential/send-offer', data=json.dumps(receiver_offer))
+    response = requests.post('http://localhost:9000/issue-credential/send-offer', data=json.dumps(receiver_offer))
 
     if response.status_code != 200:
         print("Erro ao emitir credencial para o destinatário:", response.status_code)
@@ -262,11 +289,11 @@ async def run():
     }
 
     # Criar carteira para o trustee
-    await create_wallet(trustee)
+    await create_wallet(trustee, trustee['wallet_credentials'])
 
     # Criar DIDs e configurar identidade
     (trustee['did'], trustee['key']) = await create_and_store_my_did({"seed": trustee['seed']})
-    await setup_identity(trustee, trustee)
+    await setup_identity(trustee['did'], trustee['key'], trustee)
 
     # UBAS ----------------------------------------------------------------------------------------
     with open('ubas.json', 'r') as file:
@@ -337,7 +364,7 @@ async def run():
             
             await create_transaction(sender, receiver, custo_far, quant_far)
 
-    response = requests.get('http://localhost:8001/status')
+    response = requests.get('http://localhost:9000/status')
     print(response.json())
 
 loop = asyncio.get_event_loop()
