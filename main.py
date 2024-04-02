@@ -1,5 +1,4 @@
 import requests
-import json
 
 # Inicie uma instância do ACA-Py
 ACA_PY_URL = "http://localhost:8151"
@@ -15,7 +14,7 @@ for _ in range(num_dids):
     response = requests.post(f"{ACA_PY_URL}/wallet/did/create", headers=headers)
     if response.status_code == 200:
         did_info = response.json()
-        print(f"Novo DID: {did_info['result']['did']}")
+        print(f"Novo DID: {did_info['result']['did']}, Verkey: {did_info['result']['verkey']}")
     else:
         print(f"Erro ao criar DID: {response.content}")
 
@@ -25,6 +24,6 @@ if response.status_code == 200:
     dids = response.json()
     print("Todos os DIDs:")
     for did_info in dids['results']:
-        print(f"DID: {did_info['did']}")
+        print(f"DID: {did_info['did']}, Verkey: {did_info['verkey']}")
 else:
     print(f"Erro ao recuperar DIDs: {response.content}")

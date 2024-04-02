@@ -10,5 +10,9 @@ export ACAPY_INBOUND_TRANSPORT_TYPE="http"
 export ACAPY_INBOUND_TRANSPORT_HOST="0.0.0.0"
 export ACAPY_INBOUND_TRANSPORT_PORT="8150"
 
+# Defina o nome e a chave da carteira
+export ACAPY_WALLET_NAME="carteira_gabas"
+export ACAPY_WALLET_KEY="chave_da_carteira_gabas"
+
 # Inicie o ACA-Py
-aca-py start -it $ACAPY_INBOUND_TRANSPORT_TYPE $ACAPY_INBOUND_TRANSPORT_HOST $ACAPY_INBOUND_TRANSPORT_PORT -ot http -e http://localhost:8151 --genesis-file /home/gabriel/HelloWorld/genesis.txn --admin 0.0.0.0 8151 --admin-api-key secretkey
+aca-py start -it $ACAPY_INBOUND_TRANSPORT_TYPE $ACAPY_INBOUND_TRANSPORT_HOST $ACAPY_INBOUND_TRANSPORT_PORT -ot http -e http://localhost:8151 --genesis-file /home/gabriel/HelloWorld/genesis.txn --admin 0.0.0.0 8151 --admin-api-key secretkey --wallet-name $ACAPY_WALLET_NAME --wallet-key $ACAPY_WALLET_KEY
