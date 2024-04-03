@@ -1,16 +1,16 @@
 import requests
 import random
 
-# Inicie uma instância do ACA-Py
+# Inicie uma instância do ACA-Py ----------------------------------------------------------------------------------
 ACA_PY_URL = "http://localhost:8151"
 
-# Defina as credenciais de autenticação da API
+# Defina as credenciais de autenticação da API --------------------------------------------------------------------
 headers = {"X-API-Key": "secretkey"}
 
-# Defina o número de DIDs que você deseja criar
+# Defina o número de DIDs que você deseja criar -------------------------------------------------------------------
 num_dids = 2
 
-# Crie as DIDs
+# Crie as DIDs ----------------------------------------------------------------------------------------------------
 for _ in range(num_dids):
     response = requests.post(f"{ACA_PY_URL}/wallet/did/create", headers=headers)
     if response.status_code == 200:
@@ -19,7 +19,7 @@ for _ in range(num_dids):
     else:
         print(f"Erro ao criar DID: {response.content}")
 
-# Imprima todos os DIDs
+# Imprima todos os DIDs disponíveis --------------------------------------------------------------------------------
 response = requests.get(f"{ACA_PY_URL}/wallet/did", headers=headers)
 if response.status_code == 200:
     dids = response.json()
@@ -29,7 +29,7 @@ if response.status_code == 200:
 else:
     print(f"Erro ao recuperar DIDs: {response.content}")
 
-# Obtenha todas as DIDs
+# Obtenha todas as DIDs disponíveis --------------------------------------------------------------------------------
 did_url = f"{ACA_PY_URL}/wallet/did"
 response = requests.get(did_url, headers=headers)
 if response.status_code == 200:
@@ -38,10 +38,10 @@ else:
     print(f"Erro ao obter DIDs: {response.content}")
     exit(1)
 
-# Escolha duas DIDs aleatoriamente
+# Escolha duas DIDs aleatoriamente ---------------------------------------------------------------------------------
 did1, did2 = random.sample(dids, 2)
 
-# Crie convites para cada DID
+# Crie convites para cada DID para estabelecer uma conexão ---------------------------------------------------------
 connection_ids = []
 for did in [did1, did2]:
     invite_url = f"{ACA_PY_URL}/connections/create-invitation"
@@ -53,11 +53,10 @@ for did in [did1, did2]:
     else:
         print(f"Erro ao criar convite para {did['did']}: {response.content}")
 
-# Aqui, você precisaria ter cada DID aceitar o convite do outro para estabelecer a conexão
-# Isso geralmente é feito fora do ACA-Py, por exemplo, através de um aplicativo de mensagens
-
+# Aqui, você precisaria que cada DID aceite o convite do outro para estabelecer a conexão
+# No entanto, para fins de demonstração, vamos aceitar automaticamente os convites
 # Uma vez que as conexões estejam estabelecidas, você pode realizar a transação
-# Por exemplo, você pode enviar uma mensagem de did1 para did2
+# Por exemplo, você pode enviar uma mensagem de did1 para did2 -----------------------------------------------------
 message_url = f"{ACA_PY_URL}/connections/{connection_ids[0]}/send-message"
 message_body = {"content": "Olá, esta é uma mensagem de teste."}
 response = requests.post(message_url, json=message_body, headers=headers)
@@ -66,7 +65,7 @@ if response.status_code == 200:
 else:
     print(f"Erro ao enviar mensagem: {response.content}")
 
-# Aceite o convite de conexão para cada DID
+# Aceite o convite de conexão para cada DID -----------------------------------------------------------------------
 for connection_id in connection_ids:
     # Obtenha o estado da conexão
     get_connection_url = f"{ACA_PY_URL}/connections/{connection_id}"
@@ -85,7 +84,7 @@ for connection_id in connection_ids:
     else:
         print(f"A conexão {connection_id} já está no estado {connection_state}.")
 
-# Obtenha informações sobre a conexão
+# Obtenha informações sobre a conexão ------------------------------------------------------------------------------
 connection_id = connection_ids[0]
 connection_url = f"{ACA_PY_URL}/connections/{connection_id}"
 response = requests.get(connection_url, headers=headers)
