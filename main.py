@@ -53,18 +53,6 @@ for did in [did1, did2]:
     else:
         print(f"Erro ao criar convite para {did['did']}: {response.content}")
 
-# Aqui, você precisaria que cada DID aceite o convite do outro para estabelecer a conexão
-# No entanto, para fins de demonstração, vamos aceitar automaticamente os convites
-# Uma vez que as conexões estejam estabelecidas, você pode realizar a transação
-# Por exemplo, você pode enviar uma mensagem de did1 para did2 -----------------------------------------------------
-message_url = f"{ACA_PY_URL}/connections/{connection_ids[0]}/send-message"
-message_body = {"content": "Olá, esta é uma mensagem de teste."}
-response = requests.post(message_url, json=message_body, headers=headers)
-if response.status_code == 200:
-    print("Mensagem enviada com sucesso")
-else:
-    print(f"Erro ao enviar mensagem: {response.content}")
-
 # Aceite o convite de conexão para cada DID -----------------------------------------------------------------------
 for connection_id in connection_ids:
     # Obtenha o estado da conexão
@@ -97,3 +85,13 @@ if response.status_code == 200:
         print(f"A conexão está no estado: {connection_info['state']}")
 else:
     print(f"Erro ao obter informações da conexão: {response.content}")
+
+# Por exemplo, você pode enviar uma mensagem de did1 para did2 -----------------------------------------------------
+message_url = f"{ACA_PY_URL}/connections/{connection_ids[0]}/send-message"
+message_body = {"content": "Olá, esta é uma mensagem de teste."}
+response = requests.post(message_url, json=message_body, headers=headers)
+if response.status_code == 200:
+    print("Mensagem enviada com sucesso")
+else:
+    print(f"Erro ao enviar mensagem: {response.content}")
+
