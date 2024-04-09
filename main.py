@@ -2,7 +2,7 @@ import requests
 import random
 
 # Inicie uma instância do ACA-Py ----------------------------------------------------------------------------------
-ACA_PY_URL = "http://localhost:8151"
+ACA_PY_URL = "http://localhost:8150"
 
 # Defina as credenciais de autenticação da API --------------------------------------------------------------------
 headers = {"X-API-Key": "secretkey"}
