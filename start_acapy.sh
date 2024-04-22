@@ -14,7 +14,7 @@ ps -edf | grep aca-py | awk '{print "kill -9 "$2'} | $SHELL
 initial_port=8150
 initial_admin_port=8150
 
-for i in `seq 1 1 5`; do
+for i in `seq 1 1 10`; do
 # Adicione o número da iteração ao número da porta inicial
 export ACAPY_INBOUND_TRANSPORT_PORT=$(($initial_port+$i))
 export ACAPY_ADMIN_PORT=$(($initial_admin_port+$i))
