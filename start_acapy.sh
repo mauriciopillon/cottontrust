@@ -10,13 +10,18 @@ export ACAPY_INBOUND_TRANSPORT_TYPE="http"
 export ACAPY_INBOUND_TRANSPORT_HOST="0.0.0.0"
 ps -edf | grep aca-py | awk '{print "kill -9 "$2'} | $SHELL
 
-for i in `seq 1 1 10`; do
-export ACAPY_INBOUND_TRANSPORT_PORT="815"$i
+# Defina o número da porta inicial
+initial_port=8150
+initial_admin_port=8150
 
-# Defina o nome e a chave da carteira
+for i in `seq 1 1 5`; do
+# Adicione o número da iteração ao número da porta inicial
+export ACAPY_INBOUND_TRANSPORT_PORT=$(($initial_port+$i))
+export ACAPY_ADMIN_PORT=$(($initial_admin_port+$i))
+
+# O restante do código permanece o mesmo
 export ACAPY_WALLET_NAME="carteira_gabas"$i
 export ACAPY_WALLET_KEY="chave_da_carteira_gabas"$i
 
-# Inicie o ACA-Py
-aca-py start -it $ACAPY_INBOUND_TRANSPORT_TYPE $ACAPY_INBOUND_TRANSPORT_HOST $ACAPY_INBOUND_TRANSPORT_PORT -ot http -e http://localhost:8150 --genesis-file /home/gabriel/cottontrust_ACA_lab/genesis.txn --admin 0.0.0.0 8150 --admin-api-key secretkey --wallet-name $ACAPY_WALLET_NAME --wallet-key $ACAPY_WALLET_KEY &
+aca-py start -it $ACAPY_INBOUND_TRANSPORT_TYPE $ACAPY_INBOUND_TRANSPORT_HOST $ACAPY_INBOUND_TRANSPORT_PORT -ot http -e http://localhost:8150 --genesis-file /home/gabriel/cottontrust_ACA/genesis.txn --admin 0.0.0.0 $ACAPY_ADMIN_PORT --admin-api-key secretkey --wallet-name $ACAPY_WALLET_NAME --wallet-key $ACAPY_WALLET_KEY &
 done

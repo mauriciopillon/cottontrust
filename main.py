@@ -2,96 +2,37 @@ import requests
 import random
 
 # Inicie uma instância do ACA-Py ----------------------------------------------------------------------------------
-ACA_PY_URL = "http://localhost:8150"
+#ACA_PY_URL = "http://localhost:8150"
 
 # Defina as credenciais de autenticação da API --------------------------------------------------------------------
 headers = {"X-API-Key": "secretkey"}
 
-# Defina o número de DIDs que você deseja criar -------------------------------------------------------------------
-num_dids = 2
+import requests
 
-# Crie as DIDs ----------------------------------------------------------------------------------------------------
-for _ in range(num_dids):
-    response = requests.post(f"{ACA_PY_URL}/wallet/did/create", headers=headers)
-    if response.status_code == 200:
-        did_info = response.json()
-        print(f"Novo DID: {did_info['result']['did']}, Verkey: {did_info['result']['verkey']}")
-    else:
-        print(f"Erro ao criar DID: {response.content}")
+# Defina o número da porta inicial
+initial_port = 8150
 
-# Imprima todos os DIDs disponíveis --------------------------------------------------------------------------------
-response = requests.get(f"{ACA_PY_URL}/wallet/did", headers=headers)
-if response.status_code == 200:
-    dids = response.json()
-    print("Todos os DIDs:")
-    for did_info in dids['results']:
-        print(f"DID: {did_info['did']}, Verkey: {did_info['verkey']}")
-else:
-    print(f"Erro ao recuperar DIDs: {response.content}")
+# Defina as credenciais de autenticação da API
+headers = {"X-API-Key": "secretkey"}
 
-# Obtenha todas as DIDs disponíveis --------------------------------------------------------------------------------
-did_url = f"{ACA_PY_URL}/wallet/did"
-response = requests.get(did_url, headers=headers)
-if response.status_code == 200:
-    dids = response.json()['results']
-else:
-    print(f"Erro ao obter DIDs: {response.content}")
-    exit(1)
+# Crie uma lista de instâncias do ACA-Py
+aca_py_instances = []
+for i in range(1, 5):
+    # Adicione o número da iteração ao número da porta inicial
+    port = initial_port + i
 
-# Escolha duas DIDs aleatoriamente ---------------------------------------------------------------------------------
-did1, did2 = random.sample(dids, 2)
+    # Crie a URL base para a instância do ACA-Py
+    url = f"http://localhost:{port}"
 
-# Crie convites para cada DID para estabelecer uma conexão ---------------------------------------------------------
-connection_ids = []
-for did in [did1, did2]:
-    invite_url = f"{ACA_PY_URL}/connections/create-invitation"
-    response = requests.post(invite_url, headers=headers, json={"alias": did['did']})
-    if response.status_code == 200:
-        invitation = response.json()
-        connection_ids.append(invitation['connection_id'])
-        print(f"Convite criado para {did['did']}: {invitation}")
-    else:
-        print(f"Erro ao criar convite para {did['did']}: {response.content}")
+    # Adicione a instância à lista
+    instance = {
+        "url": url,
+        "headers": headers
+    }
+    aca_py_instances.append(instance)
 
-# Aceite o convite de conexão para cada DID -----------------------------------------------------------------------
-for connection_id in connection_ids:
-    # Obtenha o estado da conexão
-    get_connection_url = f"{ACA_PY_URL}/connections/{connection_id}"
-    response = requests.get(get_connection_url, headers=headers)
-    connection_state = response.json()["state"]
-
-    # Se a conexão estiver no estado "invitation", tente aceitar o convite
-    if connection_state == "invitation":
-        accept_invitation_url = f"{ACA_PY_URL}/connections/{connection_id}/accept-invitation"
-        response = requests.post(accept_invitation_url, headers=headers)
-
-        if response.status_code == 200:
-            print(f"Convite de conexão aceito com sucesso para a conexão {connection_id}.")
-        else:
-            print(f"Erro ao aceitar o convite de conexão para a conexão {connection_id}: {response.content}")
-    else:
-        print(f"A conexão {connection_id} já está no estado {connection_state}.")
-
-# Obtenha informações sobre a conexão ------------------------------------------------------------------------------
-connection_id = connection_ids[0]
-connection_url = f"{ACA_PY_URL}/connections/{connection_id}"
-response = requests.get(connection_url, headers=headers)
-
-if response.status_code == 200:
-    connection_info = response.json()
-    if connection_info['state'] == 'active':
-        print("A conexão foi estabelecida.")
-    else:
-        print(f"A conexão está no estado: {connection_info['state']}")
-else:
-    print(f"Erro ao obter informações da conexão: {response.content}")
-
-# Por exemplo, você pode enviar uma mensagem de did1 para did2 -----------------------------------------------------
-message_url = f"{ACA_PY_URL}/connections/{connection_ids[0]}/send-message"
-message_body = {"content": "Olá, esta é uma mensagem de teste."}
-response = requests.post(message_url, json=message_body, headers=headers)
-if response.status_code == 200:
-    print("Mensagem enviada com sucesso")
-else:
-    print(f"Erro ao enviar mensagem: {response.content}")
-
+# Agora você tem uma lista de instâncias do ACA-Py que você pode manipular
+# Por exemplo, aqui está como você pode obter o status de cada instância
+for instance in aca_py_instances:
+    response = requests.get(f"{instance['url']}/status", headers=instance['headers'])
+    print(response.text)  # altere esta linha
