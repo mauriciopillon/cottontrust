@@ -48,4 +48,5 @@ while True:
 # Por exemplo, aqui está como você pode obter o status de cada instância
 for instance in aca_py_instances:
     response = requests.get(f"{instance['url']}/status", headers=instance['headers'])
-    print(response.text)  # altere esta linha
+    print(response.text)  # Imprime o status da instância
+    
