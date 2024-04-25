@@ -15,7 +15,7 @@ initial_port=8150
 initial_admin_port=8150
 
 # Ler os IDs do arquivo JSON usando jq
-ids=$(jq -r '.[].id' fardinhos.json)
+ids=$(jq -r '.[].id' fardinhos_menor.json)
 
 # Inicializar o contador
 counter=0
