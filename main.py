@@ -19,7 +19,7 @@ headers = {"X-API-Key": "secretkey"}
 aca_py_instances = []
 
 
-i = 1
+i = 0
 while True:
     # Adicione o número da iteração ao número da porta inicial
     port = initial_port + i
