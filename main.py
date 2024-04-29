@@ -20,6 +20,8 @@ aca_py_instances = []
 
 
 i = 0
+num_dids = 5  # Número de DIDs que você quer criar para cada instância
+
 while True:
     # Adicione o número da iteração ao número da porta inicial
     port = initial_port + i
@@ -38,19 +40,22 @@ while True:
     # Se a tentativa for bem-sucedida, adicione a instância à lista
     instance = {
         "url": url,
-        "headers": headers
+        "headers": headers,
+        "dids": []
     }
+
+    # Crie um número específico de DIDs para a instância
+    for _ in range(num_dids):
+        response = requests.post(f"{url}/wallet/did/create", headers=headers)
+        response.raise_for_status()
+        did = response.json()
+        instance['dids'].append(did)
+        print(f"=>Instância {i+1} criou DID {did}.")
+
     aca_py_instances.append(instance)
 
-    # Crie um DID para a instância
-    response = requests.post(f"{url}/wallet/did/create", headers=headers)
-    response.raise_for_status()
-    did = response.json()
-
-    # Adicione o DID à instância
-    print(f"Instância {i+1} criada com DID: {did}")
-    instance['did'] = did
-
+    print(f"Instância {i+1} criada com {num_dids} DIDs.")
+    print("--------------------------------------------")
     i += 1
 
 # Agora você tem uma lista de instâncias do ACA-Py que você pode manipular
