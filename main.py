@@ -1,6 +1,13 @@
 import requests
 import random
+import json
 
+# Carregue os dados do arquivo JSON
+with open('fardinhos_menor.json', 'r') as f:
+    fardinhos = json.load(f)
+
+#print(f"Carregados {fardinhos} fardinhos.")   
+ 
 # Inicie uma instância do ACA-Py ----------------------------------------------------------------------------------
 #ACA_PY_URL = "http://localhost:8150"
 
@@ -41,8 +48,20 @@ while True:
     instance = {
         "url": url,
         "headers": headers,
-        "dids": []
+        "dids": [],
+        "atributos": {
+            "id": fardinhos[i]["id"],
+            "descricao_safra": fardinhos[i]["descricao_safra"],
+            "etiqueta": fardinhos[i]["etiqueta"],
+            "id_produto": fardinhos[i]["id_produto"],
+            "descricao_algodao": fardinhos[i]["descricao_algodao"],
+            "peso_bruto": fardinhos[i]["peso_bruto"],
+            "peso_liquido": fardinhos[i]["peso_liquido"],
+            "descricao_origem": fardinhos[i]["descricao_origem"]
+        }
     }
+
+    print(f"{instance['atributos']}")
 
     # Crie um número específico de DIDs para a instância
     for _ in range(num_dids):
