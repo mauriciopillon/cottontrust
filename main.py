@@ -7,7 +7,7 @@ with open('fardinhos_menor.json', 'r') as f:
     fardinhos = json.load(f)
 
 #print(f"Carregados {fardinhos} fardinhos.")   
- 
+
 # Inicie uma instância do ACA-Py ----------------------------------------------------------------------------------
 #ACA_PY_URL = "http://localhost:8150"
 
@@ -61,7 +61,7 @@ while True:
         }
     }
 
-    print(f"{instance['atributos']}")
+    print(f"{instance['atributos']}\n")
 
     # Crie um número específico de DIDs para a instância
     for _ in range(num_dids):
@@ -82,32 +82,26 @@ while True:
 for instance in aca_py_instances:
     response = requests.get(f"{instance['url']}/status", headers=instance['headers'])
     print(response.text)  # Imprime o status da instância
-    
+    print("--------------------------------------------")
+
 # Escolha duas instâncias aleatórias
 instance1, instance2 = random.sample(aca_py_instances, 2)
 
-# Crie uma nova conexão na instância 1
+# Crie uma conexão entre as duas instâncias
 response = requests.post(
     f"{instance1['url']}/connections/create-invitation",
-    headers=instance1['headers']
+    headers=instance1['headers'],
+    json={"auto_accept": True},
 )
-response.raise_for_status()
+
 invitation = response.json()
+print(f"Convite de conexão criado pela instância 1: {invitation}")
 
-# Verifique se os campos necessários estão presentes
-assert 'invitation' in invitation
-assert 'serviceEndpoint' in invitation['invitation']
-assert 'recipientKeys' in invitation['invitation']
-
-# Use a instância 2 para aceitar o convite da instância 1
 response = requests.post(
     f"{instance2['url']}/connections/receive-invitation",
     headers=instance2['headers'],
-    json=invitation['invitation']
+    json=invitation,
 )
 
-# Verifique se a solicitação foi bem-sucedida
-if response.status_code != 200:
-    print(f"Erro ao receber convite: {response.status_code}, {response.text}")
-else:
-    response.raise_for_status()
+print(f"Conexão criada entre instância 1 e instância 2: {response.text}")
+
