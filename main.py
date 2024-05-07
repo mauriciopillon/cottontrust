@@ -97,11 +97,17 @@ response = requests.post(
 invitation = response.json()
 print(f"Convite de conexão criado pela instância 1: {invitation}")
 
-response = requests.post(
-    f"{instance2['url']}/connections/receive-invitation",
-    headers=instance2['headers'],
-    json=invitation,
-)
-
-print(f"Conexão criada entre instância 1 e instância 2: {response.text}")
+try:
+    response = requests.post(
+        f"{instance2['url']}/connections/receive-invitation",
+        headers=instance2['headers'],
+        json=invitation,
+    )
+    response.raise_for_status()
+except requests.exceptions.HTTPError as err:
+    print(f"Erro HTTP ao criar conexão: {err}")
+except requests.exceptions.RequestException as err:
+    print(f"Erro ao fazer a solicitação: {err}")
+else:
+    print(f"Conexão criada entre instância 1 e instância 2: {response.text}")
 
