@@ -95,13 +95,13 @@ response = requests.post(
 )
 
 invitation = response.json()
-print(f"Convite de conexão criado pela instância 1: {invitation}")
+print(f"Convite de conexão criado pela instância 1: {invitation}\n")
 
 try:
     response = requests.post(
         f"{instance2['url']}/connections/receive-invitation",
         headers=instance2['headers'],
-        json=invitation,
+        json=invitation['invitation'],
     )
     response.raise_for_status()
 except requests.exceptions.HTTPError as err:
