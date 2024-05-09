@@ -86,6 +86,10 @@ for instance in aca_py_instances:
 
 # Escolha duas instâncias aleatórias
 instance1, instance2 = random.sample(aca_py_instances, 2)
+print("Instâncias escolhidas aleatoriamente:")
+print(f"\nInstância A: {instance1}\n")
+print(f"Instância B: {instance2}\n")
+print("--------------------------------------------")
 
 # Crie uma conexão entre as duas instâncias
 response = requests.post(
@@ -95,7 +99,7 @@ response = requests.post(
 )
 
 invitation = response.json()
-print(f"Convite de conexão criado pela instância 1: {invitation}\n")
+print(f"Convite de conexão criado pela instância A: {invitation}\n")
 
 try:
     response = requests.post(
@@ -109,5 +113,5 @@ except requests.exceptions.HTTPError as err:
 except requests.exceptions.RequestException as err:
     print(f"Erro ao fazer a solicitação: {err}")
 else:
-    print(f"Conexão criada entre instância 1 e instância 2: {response.text}")
+    print(f"Conexão criada entre instância A e instância B: {response.text}")
 
