@@ -78,13 +78,13 @@ while True:
     i += 1
 
 # Agora você tem uma lista de instâncias do ACA-Py que você pode manipular
-# Por exemplo, aqui está como você pode obter o status de cada instância
+# Obter o status de cada instância
 for instance in aca_py_instances:
     response = requests.get(f"{instance['url']}/status", headers=instance['headers'])
     print(response.text)  # Imprime o status da instância
     print("--------------------------------------------")
 
-# Escolha duas instâncias aleatórias
+# Duas instâncias aleatórias
 instance1, instance2 = random.sample(aca_py_instances, 2)
 print("Instâncias escolhidas aleatoriamente:")
 print(f"\nInstância A: {instance1}\n")
@@ -101,6 +101,7 @@ response = requests.post(
 invitation = response.json()
 print(f"Convite de conexão criado pela instância A: {invitation}\n")
 
+# Receba o convite de conexão na instância B
 try:
     response = requests.post(
         f"{instance2['url']}/connections/receive-invitation",
@@ -109,9 +110,51 @@ try:
     )
     response.raise_for_status()
 except requests.exceptions.HTTPError as err:
-    print(f"Erro HTTP ao criar conexão: {err}")
+    print(f"Erro HTTP ao receber convite: {err}")
 except requests.exceptions.RequestException as err:
     print(f"Erro ao fazer a solicitação: {err}")
 else:
-    print(f"Conexão criada entre instância A e instância B: {response.text}")
+    print(f"Convite recebido pela instância B: {response.text}")
+    print("--------------------------------------------")
+
+    # Armazene o ID de conexão da instância B
+    connection_id_b = response.json()['connection_id']
+
+    # Obtenha o status da conexão
+    response = requests.get(
+        f"{instance1['url']}/connections/{invitation['connection_id']}",
+        headers=instance1['headers'],
+    )
+    connection = response.json()
+    print("Status da conexão:")
+    print(connection)
+    print("--------------------------------------------")
+
+    # Se a conexão estiver no estado 'invitation', aceite o convite
+    if connection['state'] == 'invitation':
+        try:
+            response = requests.post(
+                f"{instance2['url']}/connections/{connection_id_b}/accept-invitation",
+                headers=instance2['headers'],
+            )
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as err:
+            print(f"Erro HTTP ao aceitar convite: {err}")
+        except requests.exceptions.RequestException as err:
+            print(f"Erro ao fazer a solicitação: {err}")
+        else:
+            print(f"Convite aceito pela instância B: {response.text}")
+            print("--------------------------------------------")
+            # Verifique o status da conexão novamente
+            response = requests.get(
+                f"{instance1['url']}/connections/{invitation['connection_id']}",
+                headers=instance1['headers'],
+            )
+            connection = response.json()
+            print("Status da conexão após aceitação do convite:")
+            print(connection)
+            print("--------------------------------------------")
+
+        
+    
 
