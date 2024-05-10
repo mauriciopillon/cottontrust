@@ -6,28 +6,16 @@ import json
 with open('fardinhos_menor.json', 'r') as f:
     fardinhos = json.load(f)
 
-#print(f"Carregados {fardinhos} fardinhos.")   
-
-# Inicie uma instância do ACA-Py ----------------------------------------------------------------------------------
-#ACA_PY_URL = "http://localhost:8150"
-
-# Defina as credenciais de autenticação da API --------------------------------------------------------------------
-headers = {"X-API-Key": "secretkey"}
-
-import requests
-
 # Defina o número da porta inicial
 initial_port = 8150
 
-# Defina as credenciais de autenticação da API
+# Credenciais de autenticação da API
 headers = {"X-API-Key": "secretkey"}
 
-# Crie uma lista de instâncias do ACA-Py
+# Lista de instâncias do ACA-Py
 aca_py_instances = []
-
-
 i = 0
-num_dids = 5  # Número de DIDs que você quer criar para cada instância
+num_dids = 5  # Número de DIDs para cada instância
 
 while True:
     # Adicione o número da iteração ao número da porta inicial
@@ -81,14 +69,14 @@ while True:
 # Obter o status de cada instância
 for instance in aca_py_instances:
     response = requests.get(f"{instance['url']}/status", headers=instance['headers'])
-    print(response.text)  # Imprime o status da instância
+    print(response.text)  # Imprima o status da instância
     print("--------------------------------------------")
 
 # Duas instâncias aleatórias
 instance1, instance2 = random.sample(aca_py_instances, 2)
-print("Instâncias escolhidas aleatoriamente:")
-print(f"\nInstância A: {instance1}\n")
-print(f"Instância B: {instance2}\n")
+print("Instâncias escolhidas aleatoriamente:\n")
+print(f"Instância A: {instance1}\n")
+print(f"Instância B: {instance2}")
 print("--------------------------------------------")
 
 # Crie uma conexão entre as duas instâncias
@@ -133,6 +121,8 @@ except requests.exceptions.HTTPError as err:
 except requests.exceptions.RequestException as err:
     print(f"Erro ao fazer a solicitação: {err}")
 else:
-    print(f"Instância A aceitou o convite: {response.text}")    
+    print(f"Instância A aceitou o convite: {response.text}")   
+
+ 
     
 
