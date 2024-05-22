@@ -2,6 +2,7 @@ import requests
 import random
 import json
 
+
 # Carregue os dados do arquivo JSON
 with open('fardinhos_menor.json', 'r') as f:
     fardinhos = json.load(f)
@@ -122,7 +123,21 @@ except requests.exceptions.RequestException as err:
     print(f"Erro ao fazer a solicitação: {err}")
 else:
     print(f"Instância A aceitou o convite: {response.text}")   
+    print("--------------------------------------------")
 
- 
-    
+# Com a conexão estabelecida, você pode enviar mensagens entre as instâncias
+# Por exemplo, enviar uma mensagem da instância A para a instância B
+message = {"content": "Olá, Instância B!"}
+response = requests.post(
+    f"{instance1['url']}/connections/{connection_id_A}/send-message",
+    headers=instance1['headers'],
+    json=message,
+)
+if response.status_code == 200:
+    print("Instância A enviou mensagem para instância B com sucesso")
+    print("--------------------------------------------")
+else:
+    print("Falha ao enviar mensagem da Instância A para a Instância B")
+    print("--------------------------------------------")
+
 

@@ -26,6 +26,17 @@ for id in $ids; do
     export ACAPY_INBOUND_TRANSPORT_PORT=$(($initial_port+$counter))
     export ACAPY_ADMIN_PORT=$(($initial_admin_port+$counter))
 
+    # Verifique se a porta está em uso e, em caso afirmativo, mate o processo
+    if lsof -Pi :$ACAPY_INBOUND_TRANSPORT_PORT -sTCP:LISTEN -t >/dev/null ; then
+        echo "Port $ACAPY_INBOUND_TRANSPORT_PORT is in use. Attempting to kill process..."
+        kill -9 $(lsof -t -i:$ACAPY_INBOUND_TRANSPORT_PORT)
+    fi
+
+    if lsof -Pi :$ACAPY_ADMIN_PORT -sTCP:LISTEN -t >/dev/null ; then
+        echo "Admin port $ACAPY_ADMIN_PORT is in use. Attempting to kill process..."
+        kill -9 $(lsof -t -i:$ACAPY_ADMIN_PORT)
+    fi
+
     # O restante do código permanece o mesmo
     export ACAPY_WALLET_NAME="carteira_"$id
     export ACAPY_WALLET_KEY="chave_da_carteira_"$id
