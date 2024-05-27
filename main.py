@@ -70,15 +70,15 @@ while True:
         "pool": pool_  # Adicione o pool à instância
     }
 
-    print(f"{instance['atributos']}\n")
+    print(f"=>Instância {i+1}:{instance}\n")
 
     # Crie um número específico de DIDs para a instância
     for _ in range(num_dids):
         response = requests.post(f"{url}/wallet/did/create", headers=headers)
         response.raise_for_status()
         did = response.json()
-        instance['dids'].append(did)
-        print(f"=>Instância {i+1} criou DID {did}.")
+        instance['dids'].append(did['result'])
+        print(f"=>Instância {i+1} criou DID {did}.\n")
 
     aca_py_instances.append(instance)
 
@@ -94,3 +94,24 @@ for instance in aca_py_instances:
     print(response.text)  # Imprima o status da instância
     print("--------------------------------------------")
 
+# Enviar atributos para cada instância
+for instance in aca_py_instances:
+    for did in instance['dids']:
+        response = requests.post(f"{instance['url']}/issue-credential/send", headers=instance['headers'], json={
+            "connection_id": did['connection_id'],
+            "credential_definition_id": did['credential_definition_id'],
+            "credential_proposal": {
+                "attributes": [
+                    {"name": "id", "value": instance['atributos']['id']},
+                    {"name": "descricao_safra", "value": instance['atributos']['descricao_safra']},
+                    {"name": "etiqueta", "value": instance['atributos']['etiqueta']},
+                    {"name": "id_produto", "value": instance['atributos']['id_produto']},
+                    {"name": "descricao_algodao", "value": instance['atributos']['descricao_algodao']},
+                    {"name": "peso_bruto", "value": instance['atributos']['peso_bruto']},
+                    {"name": "peso_liquido", "value": instance['atributos']['peso_liquido']},
+                    {"name": "descricao_origem", "value": instance['atributos']['descricao_origem']}
+                ]
+            }
+        })
+        print(response.text)  # Imprima a resposta da instância
+        print("--------------------------------------------")
