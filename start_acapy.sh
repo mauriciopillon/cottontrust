@@ -41,7 +41,7 @@ for id in $ids; do
     export ACAPY_WALLET_NAME="carteira_"$id
     export ACAPY_WALLET_KEY="chave_da_carteira_"$id
 
-    aca-py start -it $ACAPY_INBOUND_TRANSPORT_TYPE $ACAPY_INBOUND_TRANSPORT_HOST $ACAPY_INBOUND_TRANSPORT_PORT -ot http -e http://localhost:8150 --genesis-file /home/gabriel/cottontrust_ACA/genesis.txn --admin 0.0.0.0 $ACAPY_ADMIN_PORT --admin-api-key secretkey --wallet-name $ACAPY_WALLET_NAME --wallet-key $ACAPY_WALLET_KEY &
+    aca-py start -it $ACAPY_INBOUND_TRANSPORT_TYPE $ACAPY_INBOUND_TRANSPORT_HOST $ACAPY_INBOUND_TRANSPORT_PORT -ot http -e http://localhost:8150 --genesis-file /home/gabriel/cottontrust_ACA_Blockchain/genesis.txn --admin 0.0.0.0 $ACAPY_ADMIN_PORT --admin-api-key secretkey --wallet-name $ACAPY_WALLET_NAME --wallet-key $ACAPY_WALLET_KEY &
 
     # Incrementar o contador
     counter=$(($counter+1))

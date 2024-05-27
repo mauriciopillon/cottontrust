@@ -5,13 +5,10 @@ import indy_vdr
 import asyncio
 
 # Configuração do pool
-genesis_path = '/home/gabriel/cottontrust_ACA/genesis.txn'
+genesis_path = '/home/gabriel/cottontrust_ACA_Blockchain/genesis.txn'
 
 async def main():
-    # Crie o pool
-    pool_ = {
-        'name': 'pool1'
-    }
+    global pool_
 
     try:
         pool_ = await indy_vdr.open_pool(genesis_path)
@@ -69,7 +66,8 @@ while True:
             "peso_bruto": fardinhos[i]["peso_bruto"],
             "peso_liquido": fardinhos[i]["peso_liquido"],
             "descricao_origem": fardinhos[i]["descricao_origem"]
-        }
+        },
+        "pool": pool_  # Adicione o pool à instância
     }
 
     print(f"{instance['atributos']}\n")
@@ -88,78 +86,11 @@ while True:
     print("--------------------------------------------")
     i += 1
 
+
 # Agora você tem uma lista de instâncias do ACA-Py que você pode manipular
 # Obter o status de cada instância
 for instance in aca_py_instances:
     response = requests.get(f"{instance['url']}/status", headers=instance['headers'])
     print(response.text)  # Imprima o status da instância
-    print("--------------------------------------------")
-
-# Duas instâncias aleatórias
-instance1, instance2 = random.sample(aca_py_instances, 2)
-print("Instâncias escolhidas aleatoriamente:\n")
-print(f"Instância A: {instance1}\n")
-print(f"Instância B: {instance2}")
-print("--------------------------------------------")
-
-# Crie uma conexão entre as duas instâncias
-response = requests.post(
-    f"{instance1['url']}/connections/create-invitation",
-    headers=instance1['headers'],
-    json={"auto_accept": True},
-)
-
-invitation = response.json()
-print(f"Convite de conexão criado pela instância A: {invitation}")
-print("--------------------------------------------")
-
-# Salve o ID de conexão da instância A
-connection_id_A = invitation['connection_id']
-
-# Instância B aceita o convite
-try:
-    response = requests.post(
-        f"{instance2['url']}/connections/receive-invitation",
-        headers=instance2['headers'],
-        json=invitation['invitation'],
-    )
-    response.raise_for_status()
-except requests.exceptions.HTTPError as err:
-    print(f"Erro HTTP ao criar conexão: {err}")
-except requests.exceptions.RequestException as err:
-    print(f"Erro ao fazer a solicitação: {err}")
-else:
-    print(f"Convite de Conexão aceito por instância B: {response.text}")
-    print("--------------------------------------------")
-
-# Instância A aceita o convite
-try:
-    response = requests.post(
-        f"{instance1['url']}/connections/{connection_id_A}/accept-invitation",
-        headers=instance1['headers'],
-    )
-    response.raise_for_status()
-except requests.exceptions.HTTPError as err:
-    print(f"Erro HTTP ao aceitar o convite: {err}")
-except requests.exceptions.RequestException as err:
-    print(f"Erro ao fazer a solicitação: {err}")
-else:
-    print(f"Instância A aceitou o convite: {response.text}")   
-    print("--------------------------------------------")
-
-# Com a conexão estabelecida, você pode enviar mensagens entre as instâncias
-# Por exemplo, enviar uma mensagem da instância A para a instância B
-message = {"content": "Olá, Instância B!"}
-response = requests.post(
-    f"{instance1['url']}/connections/{connection_id_A}/send-message",
-    headers=instance1['headers'],
-    json=message,
-)
-if response.status_code == 200:
-    print("Instância A enviou mensagem para instância B com sucesso")
-    print("--------------------------------------------")
-else:
-    print("Falha ao enviar mensagem da Instância A para a Instância B")
-    print(response.text)
     print("--------------------------------------------")
 
