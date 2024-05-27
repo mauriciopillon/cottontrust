@@ -1,8 +1,31 @@
 import requests
 import random
 import json
+import indy_vdr
+import asyncio
 
+# Configuração do pool
+genesis_path = '/home/gabriel/cottontrust_ACA/genesis.txn'
 
+async def main():
+    # Crie o pool
+    pool_ = {
+        'name': 'pool1'
+    }
+
+    try:
+        pool_ = await indy_vdr.open_pool(genesis_path)
+        print('Pool aberto com sucesso!')
+        print("--------------------------------------------")
+        
+    except indy_vdr.error.VdrError as e:
+        print(f'Erro ao abrir o pool: {e}')
+        raise
+
+# Chame a função main
+asyncio.run(main())
+
+# Agora você pode usar `pool` para enviar solicitações para a rede Indy
 # Carregue os dados do arquivo JSON
 with open('fardinhos_menor.json', 'r') as f:
     fardinhos = json.load(f)
@@ -30,7 +53,6 @@ while True:
         response = requests.get(f"{url}/status", headers=headers)
         response.raise_for_status()
     except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError):
-        # Se a tentativa falhar, saia do loop
         break
 
     # Se a tentativa for bem-sucedida, adicione a instância à lista
@@ -138,6 +160,6 @@ if response.status_code == 200:
     print("--------------------------------------------")
 else:
     print("Falha ao enviar mensagem da Instância A para a Instância B")
+    print(response.text)
     print("--------------------------------------------")
-
 
