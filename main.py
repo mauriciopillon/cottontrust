@@ -41,6 +41,8 @@ def envia_did_blockchain(
                     version_c,
                     byref(handle),
                 )
+                print(f"handle: {handle}")
+                print("--------------------------------------------")
                 return Request(handle)
 
 async def main():
@@ -125,9 +127,8 @@ async def main():
         print("--------------------------------------------")
 
         did_teste1= instance1['dids'][0]['result']['did']
-        did_teste2= instance2['dids'][0]['result']['did']
 
-        #envia_did_blockchain(did_teste1,did_teste2)
+        envia_did_blockchain(did_teste1, 'Gw6pDLhcBcoQesN72qfotTgFa7cbuqZpkX3Xo6pLhPhv')
 
         # Cria uma transação entre A e B ultilizando ACA-Py e o Indy VDR ( pool )
         # Construa a solicitação
