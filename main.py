@@ -3,7 +3,8 @@ import random
 import json
 import asyncio
 import indy_vdr
-from indy_vdr.ledger import build_get_nym_request
+from indy_vdr.ledger import *
+from indy_vdr.request import *
 
 # Configuração do pool
 genesis_path = '/home/gabriel/cottontrust_ACA_Blockchain/genesis.txn'
@@ -11,6 +12,36 @@ genesis_path = '/home/gabriel/cottontrust_ACA_Blockchain/genesis.txn'
 # Carregue os dados do arquivo JSON
 with open('fardinhos_menor.json', 'r') as f:
     fardinhos = json.load(f)
+
+def envia_did_blockchain(
+            submitter_did: str,
+            dest: str,
+            verkey: str = None,
+            alias: str = None,
+            role: str = None,
+            diddoc_content: str = None,
+            version: int = None,
+        ) -> Request: 
+                handle = RequestHandle()
+                did_p = encode_str(submitter_did)
+                dest_p = encode_str(dest)
+                verkey_p = encode_str(verkey)
+                alias_p = encode_str(alias)
+                role_p = encode_str(role)
+                diddoc_content_p = encode_str(diddoc_content)
+                version_c = c_int32(version if version is not None else -1)
+                do_call(
+                    "indy_vdr_build_nym_request",
+                    did_p,
+                    dest_p,
+                    verkey_p,
+                    alias_p,
+                    role_p,
+                    diddoc_content_p,
+                    version_c,
+                    byref(handle),
+                )
+                return Request(handle)
 
 async def main():
   
@@ -30,8 +61,8 @@ async def main():
 
         i = 0
 
-        num_dids = 2  # Número de DIDs para cada instância
-
+        num_dids = 1  # Número de DIDs para cada instância
+        
         while True:
             # Adicione o número da iteração ao número da porta inicial
             port = initial_port + i
@@ -92,6 +123,11 @@ async def main():
         print(f"Instância A: {instance1}\n")
         print(f"Instância B: {instance2}")
         print("--------------------------------------------")
+
+        did_teste1= instance1['dids'][0]['result']['did']
+        did_teste2= instance2['dids'][0]['result']['did']
+
+        #envia_did_blockchain(did_teste1,did_teste2)
 
         # Cria uma transação entre A e B ultilizando ACA-Py e o Indy VDR ( pool )
         # Construa a solicitação
