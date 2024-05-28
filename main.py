@@ -41,6 +41,7 @@ def envia_did_blockchain(
                     version_c,
                     byref(handle),
                 )
+                print('Transação enviada com sucesso! pela DID:',submitter_did)
                 print(f"handle: {handle}")
                 print("--------------------------------------------")
                 return Request(handle)
@@ -128,7 +129,11 @@ async def main():
 
         did_teste1= instance1['dids'][0]['result']['did']
 
-        envia_did_blockchain(did_teste1, 'Gw6pDLhcBcoQesN72qfotTgFa7cbuqZpkX3Xo6pLhPhv')
+        try:      
+            request = envia_did_blockchain(did_teste1, 'Gw6pDLhcBcoQesN72qfotTgFa7cbuqZpkX3Xo6pLhPhv')
+        except Exception as e:
+            print(f"Ocorreu um erro ao enviar o DID para a blockchain: {e}")
+            print("--------------------------------------------")        
 
         # Cria uma transação entre A e B ultilizando ACA-Py e o Indy VDR ( pool )
         # Construa a solicitação
