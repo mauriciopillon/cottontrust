@@ -3,8 +3,10 @@ import random
 import json
 import asyncio
 import indy_vdr
-from indy_vdr.ledger import *
-from indy_vdr.request import *
+import indy_vdr.bindings as bindings
+import indy_vdr.ledger as ledger
+import indy_vdr.request as vdr_req
+import indy_vdr.pool as pl
 
 # Configuração do pool
 genesis_path = '/home/gabriel/cottontrust_ACA_Blockchain/genesis.txn'
@@ -13,43 +15,10 @@ genesis_path = '/home/gabriel/cottontrust_ACA_Blockchain/genesis.txn'
 with open('fardinhos_menor.json', 'r') as f:
     fardinhos = json.load(f)
 
-def envia_did_blockchain(
-            submitter_did: str,
-            dest: str,
-            verkey: str = None,
-            alias: str = None,
-            role: str = None,
-            diddoc_content: str = None,
-            version: int = None,
-        ) -> Request: 
-                handle = RequestHandle()
-                did_p = encode_str(submitter_did)
-                dest_p = encode_str(dest)
-                verkey_p = encode_str(verkey)
-                alias_p = encode_str(alias)
-                role_p = encode_str(role)
-                diddoc_content_p = encode_str(diddoc_content)
-                version_c = c_int32(version if version is not None else -1)
-                do_call(
-                    "indy_vdr_build_nym_request",
-                    did_p,
-                    dest_p,
-                    verkey_p,
-                    alias_p,
-                    role_p,
-                    diddoc_content_p,
-                    version_c,
-                    byref(handle),
-                )
-                print('Transação enviada com sucesso! pela DID:',submitter_did)
-                print(f"handle: {handle}")
-                print("--------------------------------------------")
-                return Request(handle)
-
 async def main():
   
     try:
-        pool_ = await indy_vdr.open_pool(genesis_path)
+        pool_ = await pl.open_pool(genesis_path)
         print('Pool aberto com sucesso!')
         print("--------------------------------------------")
 
@@ -128,16 +97,20 @@ async def main():
         print("--------------------------------------------")
 
         did_teste1= instance1['dids'][0]['result']['did']
-
+        did_nodo = 'Gw6pDLhcBcoQesN72qfotTgFa7cbuqZpkX3Xo6pLhPhv'
         try:      
-            request = envia_did_blockchain(did_teste1, 'Gw6pDLhcBcoQesN72qfotTgFa7cbuqZpkX3Xo6pLhPhv')
+            request = ledger.build_nym_request(did_teste1, did_nodo, None, None, None)
+            print('o request eh: ',request)
+            response = await instance1['pool'].submit_request(request)
+            print('a resposta eh: ',response)
+            print("--------------------------------------------") 
         except Exception as e:
             print(f"Ocorreu um erro ao enviar o DID para a blockchain: {e}")
             print("--------------------------------------------")        
 
         # Cria uma transação entre A e B ultilizando ACA-Py e o Indy VDR ( pool )
         # Construa a solicitação
-        req = build_get_nym_request(
+        req = ledger.build_get_nym_request(
             submitter_did=instance1['dids'][0]['result']['did'],  # DID do remetente
             dest=instance2['dids'][0]['result']['did'],  # DID do destinatário
         )
