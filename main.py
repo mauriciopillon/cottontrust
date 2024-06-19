@@ -1,59 +1,107 @@
+import asyncio
+import json
 import requests
 import random
-import json
-import asyncio
+
+import base64
+import nacl.signing
+import nacl.encoding
+
 import indy_vdr
-import indy_vdr.bindings as bindings
-import indy_vdr.ledger as ledger
-import indy_vdr.request as vdr_req
-import indy_vdr.pool as pl
+from indy_vdr.ledger import build_nym_request, build_get_nym_request
+from indy_vdr.pool import open_pool, Pool
+from indy_vdr.error import VdrError
 
 # Configuração do pool
 genesis_path = '/home/gabriel/cottontrust_ACA_Blockchain/genesis.txn'
 
-# Carregue os dados do arquivo JSON
+# Carregar dados do arquivo JSON
 with open('fardinhos_menor.json', 'r') as f:
     fardinhos = json.load(f)
 
-async def main():
-  
+#def object_to_dict(obj):
+    #return obj.__dict__
+    
+# Função para gerar par de chaves
+def generate_keypair():
+    signing_key = nacl.signing.SigningKey.generate()
+    verify_key = signing_key.verify_key
+    return {
+        "private_key": signing_key.encode(encoder=nacl.encoding.HexEncoder).decode('utf-8'),
+        "public_key": verify_key.encode(encoder=nacl.encoding.HexEncoder).decode('utf-8')
+    }
+
+# Função para assinar o pedido
+def sign_request(request_json, signing_key):
+    signing_key = nacl.signing.SigningKey(signing_key, encoder=nacl.encoding.HexEncoder)
+    request_bytes = json.dumps(request_json).encode('utf-8')
+    signed_request = signing_key.sign(request_bytes)
+    signature = signed_request.signature
+    signature_base64 = base64.b64encode(signature).decode('utf-8')
+    request_json['signature'] = signature_base64
+    return request_json
+
+# Função para criar DID
+def create_did(url, headers, public_key):
+    did_doc = {
+        "method": "sov",
+        "options": {
+            "key_type": "ed25519",
+            "verkey": public_key
+        }
+    }
+    response = requests.post(f"{url}/wallet/did/create", headers=headers, json=did_doc)
+    response.raise_for_status()
+    return response.json()
+
+# Function to send the NYM transaction
+async def send_nym_transaction(pool_, submitter_did, target_did, verkey, signkey):
     try:
-        pool_ = await pl.open_pool(genesis_path)
+        nym_request = build_nym_request(submitter_did=submitter_did, dest=target_did, verkey=verkey)
+        
+        # Convert the request object to a dictionary
+        nym_request_dict = json.loads(nym_request.body)
+        
+        # Sign the request
+        signed_request = sign_request(nym_request_dict, signkey)
+        
+        # Send the request and get the response
+        response = await pool_.submit_request(signed_request)
+        print(f"Resposta da transação NYM: {response}")
+        print("--------------------------------------------")
+    except Exception as e:
+        print(f"Erro ao enviar transação NYM: {e}")
+        print("--------------------------------------------")
+
+# Main async function
+async def main():
+    try:
+        pool_ = await open_pool(transactions_path=genesis_path)
         print('Pool aberto com sucesso!')
         print("--------------------------------------------")
 
-        # Defina o número da porta inicial
         initial_port = 8150
-
-        # Credenciais de autenticação da API
         headers = {"X-API-Key": "secretkey"}
-
-        # Lista de instâncias do ACA-Py
         aca_py_instances = []
 
         i = 0
-
-        num_dids = 1  # Número de DIDs para cada instância
+        num_dids = 1
         
         while True:
-            # Adicione o número da iteração ao número da porta inicial
             port = initial_port + i
-
-            # Crie a URL base para a instância do ACA-Py
             url = f"http://localhost:{port}"
 
-            # Tente obter o status da instância
             try:
                 response = requests.get(f"{url}/status", headers=headers)
                 response.raise_for_status()
             except (requests.exceptions.HTTPError, requests.exceptions.ConnectionError):
                 break
 
-            # Se a tentativa for bem-sucedida, adicione a instância à lista
             instance = {
                 "url": url,
                 "headers": headers,
                 "dids": [],
+                "private_keys": [],
                 "atributos": {
                     "id": fardinhos[i]["id"],
                     "descricao_safra": fardinhos[i]["descricao_safra"],
@@ -64,18 +112,17 @@ async def main():
                     "peso_liquido": fardinhos[i]["peso_liquido"],
                     "descricao_origem": fardinhos[i]["descricao_origem"]
                 },
-                "pool": pool_  # Adicione o pool à instância
+                "pool": pool_
             }
 
             print(f"=>Instância {i+1}:{instance}\n")
 
-            # Crie um número específico de DIDs para a instância
             for _ in range(num_dids):
-                response = requests.post(f"{url}/wallet/did/create", headers=headers)
-                response.raise_for_status()
-                did = response.json()
+                keypair = generate_keypair()
+                did = create_did(url, headers, keypair['public_key'])
                 instance['dids'].append(did)
-                print(f"=>Instância {i+1} criou DID {did}.\n")
+                instance['private_keys'].append(keypair['private_key'])
+                print(f"=>Instância {i+1} criou DID {did} com chave privada {keypair['private_key']}.\n")
 
             aca_py_instances.append(instance)
 
@@ -83,11 +130,9 @@ async def main():
             print("--------------------------------------------")
             i += 1
 
-        # Agora você tem uma lista de instâncias do ACA-Py que você pode manipular
-        # Obter o status de cada instância
         for instance in aca_py_instances:
             response = requests.get(f"{instance['url']}/status", headers=instance['headers'])
-            print(response.text)  # Imprima o status da instância
+            print(response.text)
             print("--------------------------------------------")
         
         instance1, instance2 = random.sample(aca_py_instances, 2)
@@ -96,35 +141,34 @@ async def main():
         print(f"Instância B: {instance2}")
         print("--------------------------------------------")
 
-        did_teste1= instance1['dids'][0]['result']['did']
-        did_nodo = 'Gw6pDLhcBcoQesN72qfotTgFa7cbuqZpkX3Xo6pLhPhv'
+        did_teste1 = instance1['dids'][0]['result']['did']
+        did_teste1_verkey = instance1['dids'][0]['result']['verkey']
+        did_teste1_signkey = instance1['private_keys'][0]
+
+        did_teste2 = instance2['dids'][0]['result']['did']
+        did_teste2_verkey = instance2['dids'][0]['result']['verkey']
+        did_teste2_signkey = instance2['private_keys'][0]
+
         try:      
-            request = ledger.build_nym_request(did_teste1, did_nodo, None, None, None)
-            print('o request eh: ',request)
-            response = await instance1['pool'].submit_request(request)
-            print('a resposta eh: ',response)
-            print("--------------------------------------------") 
+            await send_nym_transaction(pool_, did_teste1, did_teste1, did_teste1_verkey, did_teste1_signkey)
+            await send_nym_transaction(pool_, did_teste2, did_teste2, did_teste2_verkey, did_teste2_signkey)
+
         except Exception as e:
             print(f"Ocorreu um erro ao enviar o DID para a blockchain: {e}")
             print("--------------------------------------------")        
 
-        # Cria uma transação entre A e B ultilizando ACA-Py e o Indy VDR ( pool )
-        # Construa a solicitação
-        req = ledger.build_get_nym_request(
-            submitter_did=instance1['dids'][0]['result']['did'],  # DID do remetente
-            dest=instance2['dids'][0]['result']['did'],  # DID do destinatário
+        req = build_get_nym_request(
+            submitter_did=instance1['dids'][0]['result']['did'],
+            dest=instance2['dids'][0]['result']['did'],
         )
 
-        # Agora você pode enviar a solicitação para o pool
-        resp = await instance1['pool'].submit_request(req)
+        resp = await pool_.submit_request(req)
         print(f"Resposta da solicitação: {resp}")
 
-    except indy_vdr.error.VdrError as e:
+        pool_.close()
+
+    except VdrError as e:
         print(f'Erro ao abrir o pool: {e}')
         raise
 
-# Chame a função main
 asyncio.run(main())
-
-
-
