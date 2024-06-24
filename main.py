@@ -33,14 +33,22 @@ def generate_keypair():
 
 # Função para assinar o pedido
 def sign_request(request_json, signing_key):
+    # Converte a chave de assinatura de hexadecimal para o objeto SigningKey
     signing_key = nacl.signing.SigningKey(signing_key, encoder=nacl.encoding.HexEncoder)
+    # Serializa o JSON e converte para bytes
     request_bytes = json.dumps(request_json).encode('utf-8')
+    # Assina a requisição
     signed_request = signing_key.sign(request_bytes)
+    # Extrai a assinatura
     signature = signed_request.signature
+    # Codifica a assinatura em base64
     signature_base64 = base64.b64encode(signature).decode('utf-8')
+    
+    # Verifique se este é o formato esperado pela blockchain
+    # Exemplo: se a blockchain espera um campo 'signature' como string
     request_json['signature'] = signature_base64
+    
     return request_json
-
 # Função para criar DID
 def create_did(url, headers, public_key):
     did_doc = {
