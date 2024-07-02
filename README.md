@@ -3,4 +3,3 @@ Hello world! This is COTTONTRUST's main repository and we're glad to share it to
 
 The technology that lies under our project is powered by Hyperledger Indy and the Von Network environment provided by them for our PoC.
 
-Also check the master's thesis that came up with the Cottontrust architecture: [(link da dissertacao)]
