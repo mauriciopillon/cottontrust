@@ -26,4 +26,3 @@ An example scenario illustrates the process of obtaining the 'SouABR' sustainabi
 For further details regarding the architecture, components, and functioning of COTTONTRUST, refer to the provided documentation and specifications.
 
 This README provides an overview of COTTONTRUST, outlining its architecture, components, functioning, and an example scenario. For detailed technical specifications and implementation guidelines, please refer to the accompanying documentation. Contributions, feedback, and collaboration are welcome.
-=======
