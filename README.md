@@ -1,8 +1,4 @@
-# COTTONTRUST
-
-COTTONTRUST is a decentralized architecture built upon the Self-Sovereign Identity (SSI) model, implemented using the Hyperledger Indy blockchain. It aims to address the challenges of traceability, reliability, and verifiability within the cotton production chain comprehensively. This project proposes a solution to the existing problems and offers a comprehensive approach to achieving traceability, reliability, and verifiability in the cotton production chain.
-
-Overview
+Overviews
 
 The cotton production chain is conceptualized as an interconnected network of nodes, with each phase represented by entities participating in the chain. The entities involved include seed producers, farms, cotton processing units, traders, international and national markets, certifying bodies, and cotton classifiers. Each entity plays a crucial role in ensuring the integrity and transparency of the cotton production chain.
 
@@ -30,3 +26,4 @@ An example scenario illustrates the process of obtaining the 'SouABR' sustainabi
 For further details regarding the architecture, components, and functioning of COTTONTRUST, refer to the provided documentation and specifications.
 
 This README provides an overview of COTTONTRUST, outlining its architecture, components, functioning, and an example scenario. For detailed technical specifications and implementation guidelines, please refer to the accompanying documentation. Contributions, feedback, and collaboration are welcome.
+=======
