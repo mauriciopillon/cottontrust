@@ -1,4 +1,5 @@
 import asyncio
+import requests
 import json
 import time
 import csv
@@ -24,13 +25,54 @@ cont_Tran = 0
 
 async def setup_identity(identity, trustee):
     did_safe = 'V4SGRU86Z58d6TV7PBUe6f'
-    verkey_safe = '~CoRER63DVYnWZtK8uAzNbx'
+    verkey_safe = '~CoRER63DVYnWZtK8uAzNbx' 
     (identity['did'], identity['key']) = await did.create_and_store_my_did(identity['wallet'], "{}")
-    nym_req = await ledger.build_nym_request(did_safe, identity['did'],identity['key'],None, None)
-    await ledger.sign_and_submit_request(identity['pool'], trustee['wallet'], did_safe, nym_req)
+    
+    nym_req = await ledger.build_nym_request(
+        did_safe,
+        identity['did'],
+        identity['key'],
+        None,
+        None
+    )
+    
+    response = await ledger.sign_and_submit_request(identity['pool'], trustee['wallet'], did_safe, nym_req)
+    response_dict = json.loads(response)
+    print(f'response found: {response_dict}\n')
+
+    
+    
+    # (4) Se quiser extrair reqId e txnId
+    # A resposta Indy costuma ter este formato:
+    # {
+    #   "op": "REPLY",
+    #   "result": {
+    #     "reqId": <numero>,
+    #     "txn": {...},
+    #     "txnMetadata": {"seqNo": <numero>, "txnId": <ID da transação>},
+    #     ...
+    #   }
+    # }
+    #
+    # Então, a gente pega:
+
+      
+async def delete_wallet(wallet_config, wallet_credentials):
+    try:
+        await wallet.delete_wallet(wallet_config, wallet_credentials)
+        print("Wallet cleanup successful.")
+    except IndyError as ex:
+        if ex.error_code == ErrorCode.WalletNotFoundError:
+            print("No wallet found for cleanup. Proceeding...")
+        else:
+            raise ex 
+      
       
 async def create_wallet(Entity):
     print("\"{}\" -> Creating  wallet(wallet)".format(Entity['name']))
+
+    await delete_wallet(Entity['wallet_config'], Entity['wallet_credentials'])
+
 
     try:
         await wallet.create_wallet(Entity['wallet_config'],
@@ -128,7 +170,7 @@ async def create_uba(pool_, uba_data, trustee):
 
     UBA = {
         'name': uba_data['name'],
-        'UBA registry code': uba_data['UBA registry code'],
+        'UBA registry code': uba_data['UBA Registry Code'],
         'CNPJ': uba_data['CNPJ'],
         'Address - Street': uba_data['Address - Street'],
         'Address - Neighborhood': uba_data['Address - Neighborhood'],
@@ -203,14 +245,23 @@ async def create_transaction(sender, receiver, bale_cost, quant_bale):
 
 async def run():
 
-
+    #FLUXO DO QUE O CÓDIGO FAZ:
+    #1: CRIAR OU ACESSAR UM POOL
+    #2: TER UMA DID "TRUSTEE" PARA VALIDAR NOSSAS TRANSAÇÕES
+    #3: LER OS DADOS (NO NOSSO CASO, AS UBAS) E CARREGAR EM MEMÓRIA
+    #   3.1: CRIAR UMA CARTEIRA PARA NOSSOS DADOS (UMA FORMA DE RECONHECER NA BLOCKCHAIN)
+    #   3.2: ENVIAR REQUISIÇÃO PARA SER ASSINADA (USAR DID TRUSTEE E DID DA CARTEIRA NOVA)
+    #4: INDY.LEDGER_BUILD_NYM_REQ E LEDGER.SIGN_AND_SUBMIT_REQUEST
+    #5: EM TEORIA, TUDO ISSO DANDO CERTO, TEMOS UMA ESCRITA NA BLOCKCHAIN
+    
+    
     pool_ = {
-        'name': 'pool1'
+        'name': 'TEST_NETWORK'
     }
 
     print("Open Pool Ledger: {}".format(pool_['name']))
 
-    pool_['genesis_txn_path'] = "/home/indy/sandbox/cottontrust/genesis.txn"
+    pool_['genesis_txn_path'] = "/home/indy/sandbox/cottontrust/genesis2.txn"
     pool_['config'] = json.dumps({"genesis_txn": str(pool_['genesis_txn_path'])})
 
     await pool.set_protocol_version(2)
@@ -242,7 +293,7 @@ async def run():
 
 
     # UBAS -----------------------------------------------------------------------------------
-
+    
     with open('models/ubas.json', 'r') as file:
         try:
             ubas_data = json.load(file)
