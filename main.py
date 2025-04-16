@@ -96,7 +96,6 @@ async def create_pools(pools_config):
                 print(f"Pool '{config['name']}' já existe.")
             else:
                 raise ex
-        print("Foda, pica.\n")
         handle = await pool.open_pool_ledger(config["name"], None)
         pools[config["name"]] = handle
         print(f"Configuracao do pool '{config['name']}' aberta com sucesso\n")
@@ -121,7 +120,7 @@ async def reenviar_transacao_para_outro_pool(transacao, novo_pool_handle, wallet
     )
     response = await ledger.sign_and_submit_request(novo_pool_handle, wallet_assinante, transacao["did_assinante"], nym_req)
     response_dict = json.loads(response)
-    print(f'[NOVO POOL] Response: {response_dict}\n')
+    print(f'[NOVO POOL: ] Response: {response_dict}\n')
     return response_dict
 
 
