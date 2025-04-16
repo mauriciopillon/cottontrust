@@ -34,7 +34,8 @@
             "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
-            "axisLabel": "",
+            "axisGridShow": true,
+            "axisLabel": "Bytes",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "barWidthFactor": 0.6,
@@ -48,6 +49,9 @@
             },
             "insertNulls": false,
             "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -109,7 +113,7 @@
           "refId": "A"
         }
       ],
-      "title": "Network Receive Rate",
+      "title": "Network TX",
       "type": "timeseries"
     },
     {
@@ -323,7 +327,7 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "Memory",
-            "axisPlacement": "hidden",
+            "axisPlacement": "auto",
             "barAlignment": 0,
             "barWidthFactor": 0.6,
             "drawStyle": "line",
@@ -336,6 +340,9 @@
             },
             "insertNulls": false,
             "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -408,15 +415,11 @@
     }
   ],
   "preload": false,
-  "refresh": "5s",
+  "refresh": "10s",
   "schemaVersion": 41,
   "tags": [],
   "templating": {
     "list": []
-  },
-  "time": {
-    "from": "now-5m",
-    "to": "now"
   },
   "timepicker": {},
   "timezone": "",
