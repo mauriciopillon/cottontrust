@@ -5,6 +5,7 @@ import time
 import csv
 import random
 import os
+from datetime import datetime
 from indy import pool, wallet, did, ledger
 from indy.error import ErrorCode, IndyError
 
@@ -15,6 +16,7 @@ Clients = []
 
 time_transaction = []
 time_create = []
+raw_tx_metrics = []
 
 transacoes_enviadas = []
 
@@ -23,6 +25,22 @@ cont_Bale = 0
 cont_Cli = 0
 
 cont_Tran = 0
+
+def save_metrics_to_csv(filename="raw_tx_metrics.csv"):
+    if not raw_tx_metrics:
+        print(" Nenhuma metrica registrada para salvar!")
+        return
+
+    headers = ["pool", "operation", "tx_time_sec", "tx_size_bytes", "timestamp"]
+    with open(filename, 'w', newline='') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=headers)
+        writer.writeheader()
+        for record in raw_tx_metrics:
+            writer.writerow(record)
+
+    print(f"Metricas salvas com sucesso em {filename}")
+
+
 
 async def setup_identity(identity, trustee):
     did_safe = 'V4SGRU86Z58d6TV7PBUe6f'
@@ -38,6 +56,8 @@ async def setup_identity(identity, trustee):
         None
     )
 
+    tx_size_bytes = len(nym_req.encode('utf-8'))
+    
     # Envia a transação
     response = await ledger.sign_and_submit_request(identity['pool'], trustee['wallet'], did_safe, nym_req)
     response_dict = json.loads(response)
@@ -54,6 +74,8 @@ async def setup_identity(identity, trustee):
         "did_assinante": did_safe
     })
     
+
+    return tx_size_bytes
     
     # A resposta Indy costuma ter este formato:
     # {
@@ -102,15 +124,18 @@ async def create_pools(pools_config):
 
     return pools
 
-async def reenviar_transacao_para_outro_pool(transacao, novo_pool_handle, wallet_assinante):
+async def reenviar_transacao_para_outro_pool(transacao, novo_pool_handle, wallet_assinante, pool_name):
     """
-    Reenvia a transação registrada (NYM request) para um novo pool.
+    Reenvia a transação registrada (NYM request) para um novo pool e registra
+    métricas "cruas" (tempo de execução e tamanho do payload).
 
     :param transacao: Dicionário com chaves "did_enviada", "verkey_enviada" e "did_assinante".
     :param novo_pool_handle: Handle do novo pool.
     :param wallet_assinante: Wallet que contém a identidade que vai assinar a transação.
+    :param pool_name: Nome do pool para registro na métrica.
     :return: Resposta do ledger em formato de dicionário.
     """
+    # Constrói o NYM request completo
     nym_req = await ledger.build_nym_request(
         transacao["did_assinante"],
         transacao["did_enviada"],
@@ -118,9 +143,27 @@ async def reenviar_transacao_para_outro_pool(transacao, novo_pool_handle, wallet
         None,
         None
     )
+    # Calcula o tamanho do payload da transação
+    tx_size_bytes = len(nym_req.encode('utf-8'))
+    
+    # Mede o tempo para enviar a transação ao novo pool
+    start = time.time()
     response = await ledger.sign_and_submit_request(novo_pool_handle, wallet_assinante, transacao["did_assinante"], nym_req)
+    end = time.time()
+    duration = end - start
+    
     response_dict = json.loads(response)
-    print(f'[NOVO POOL: ] Response: {response_dict}\n')
+    print(f'[NOVO POOL: {pool_name}] Response: {response_dict}\n')
+    
+    # Registra as informações na lista global (raw_tx_metrics deve ter sido definida globalmente)
+    raw_tx_metrics.append({
+        "pool": pool_name,
+        "operation": "reenviar_transacao",
+        "tx_time_sec": duration,
+        "tx_size_bytes": tx_size_bytes,
+        "timestamp": datetime.now().isoformat()
+    })
+    
     return response_dict
 
 
@@ -176,21 +219,40 @@ async def create_client(pool_, client_data, trustee):
         'wallet_config': json.dumps({'id': client_data['wallet_config']}),
         'wallet_credentials': json.dumps({'key': client_data['wallet_credentials']}),
         'pool': pool_['handle'],
-
+        'pool_name': pool_['name'],
         'seed': create_seed(cont_Cli, client_data['name']),
         "balance": client_data['balance'],
         "req_bale": client_data['req_bale'],
         "quant_bale": client_data['quant_bale']
 
     }
-
+    start = time.time()
     await create_wallet(CLIENT)
     CLIENT["did_info"] = json.dumps({'seed': CLIENT['seed']})
 
     CLIENT['did'], CLIENT['key'] = await did.create_and_store_my_did(CLIENT['wallet'], CLIENT['did_info']) 
 
-    await setup_identity(CLIENT, trustee)
+    tx_size = await setup_identity(CLIENT, trustee)
     Clients.append(CLIENT)  
+
+    end = time.time()
+    duration = end - start
+    
+    
+    
+    # Registra um snapshot da data/hora
+    timestamp = datetime.now().isoformat()
+    
+    # Adiciona um registro à lista global
+    raw_tx_metrics.append({
+        "pool": CLIENT['pool_name'],
+        "operation": "create_client",
+        "tx_time_sec": duration,
+        "tx_size_bytes": tx_size,
+        "timestamp": timestamp
+    })
+    print(f"Cliente criado em {duration:.3f} s, payload size: {tx_size} bytes")
+
     
 
 async def create_bale(pool_, bale_data):
@@ -215,7 +277,6 @@ async def create_bale(pool_, bale_data):
         'wallet_config': json.dumps({'id': bale_data['wallet_config']}),
         'wallet_credentials': json.dumps({'key': bale_data['wallet_credentials']}),
         'pool': pool_['handle'],
-
         'seed': create_seed(cont_Bale, bale_data['name']),
         "balance": 1000
 
@@ -230,12 +291,9 @@ async def create_bale(pool_, bale_data):
 async def create_uba(pool_, uba_data, trustee):
     global cont_Uba
     cont_Uba += 1
+
+    print(f"\nCreating UBA {cont_Uba} - Sign Up")
     
-
-    print(f"\Creating UBA {cont_Uba} - Sign Up")
-    
-
-
     UBA = {
         'name': uba_data['name'],
         'UBA registry code': uba_data['UBA Registry Code'],
@@ -248,21 +306,43 @@ async def create_uba(pool_, uba_data, trustee):
         'wallet_config': json.dumps({'id': uba_data['wallet_config']}),
         'wallet_credentials': json.dumps({'key': uba_data['wallet_credentials']}),
         'pool': pool_['handle'],
-
+        'pool_name': pool_['name'],   # Armazena o nome do pool para os registros
         'seed': create_seed(cont_Uba, uba_data['name']),
         "balance": uba_data['balance'],
-        "bale_price": uba_data['bale_price'],#add
-        "quant_bale": uba_data['quant_bale'] #add
+        "bale_price": uba_data['bale_price'],
+        "quant_bale": uba_data['quant_bale']
     }
-
+    
+    start = time.time()
     
     await create_wallet(UBA)
-
+    
     UBA["did_info"] = json.dumps({'seed': UBA['seed']})
     UBA['did'], UBA['key'] = await did.create_and_store_my_did(UBA['wallet'], UBA['did_info'])
-
-    await setup_identity(UBA, trustee)
+    
+    tx_size = await setup_identity(UBA, trustee)
     UBAs.append(UBA)
+    
+    end = time.time()
+    duration = end - start  # tempo da operação, em segundos
+    
+    # Calcula o tamanho do payload (ex: o JSON usado para did_info)
+    
+    # Registra um snapshot da data/hora
+    timestamp = datetime.now().isoformat()
+
+    print("Registrando metrica:", UBA['pool_name'], duration, tx_size)
+    
+    # Adiciona um registro à lista global
+    raw_tx_metrics.append({
+        "pool": UBA['pool_name'],
+        "operation": "create_uba",
+        "tx_time_sec": duration,
+        "tx_size_bytes": tx_size,
+        "timestamp": timestamp
+    })
+    
+    print(f"UBA criada em {duration:.3f} s, payload size: {tx_size} bytes")
     
 async def create_transaction(sender, receiver, bale_cost, quant_bale):
     global cont_Tran
@@ -438,22 +518,23 @@ async def run():
         print(f"Reenviando transacoes para {pool_name}...")
         # Se o mesmo trustee pode ser usado para assinar, passe o mesmo wallet
         for transacao in transacoes_enviadas:
-            await reenviar_transacao_para_outro_pool(transacao, pool_handle, trustee['wallet'])
+            await reenviar_transacao_para_outro_pool(transacao, pool_handle, trustee['wallet'], pool_name)
     
 
     # TIMES --------------------------------------------------------------------------------------------
-    print("Writing on CSV file...")
-    print(f"Transaction time: {time_transaction}")
-    print(f"Creation time: {time_create}")
-
-    with open('time_data.csv', 'a', newline='') as file: 
-        writer = csv.writer(file)
-        if not os.path.exists('time_data.csv') or os.stat('time_data.csv').st_size == 0:  
-            writer.writerow(["Quant. of Entitys:", "Transaction time:", "Creation time:"])  
-        for t, tc in zip(time_transaction, time_create):
-            writer.writerow(["100", t, tc])  
-        writer.writerow([])
-print("Done.")
+#    print("Writing on CSV file...")
+#    print(f"Transaction time: {time_transaction}")
+#    print(f"Creation time: {time_create}")
+#
+#    with open('time_data.csv', 'a', newline='') as file: 
+#        writer = csv.writer(file)
+#        if not os.path.exists('time_data.csv') or os.stat('time_data.csv').st_size == 0:  
+#            writer.writerow(["Quant. of Entitys:", "Transaction time:", "Creation time:"])  
+#        for t, tc in zip(time_transaction, time_create):
+#            writer.writerow(["100", t, tc])  
+#        writer.writerow([])
+    save_metrics_to_csv()
+    print("Done.")
 
 loop = asyncio.get_event_loop()
 loop.run_until_complete(run())

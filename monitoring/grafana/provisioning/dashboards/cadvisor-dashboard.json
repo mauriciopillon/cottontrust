@@ -107,7 +107,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum by (name) (\n  rate(container_network_receive_bytes_total{name!=\"\"}[5m])\n)\n",
+          "expr": "sum by (name) (\n  rate(container_network_receive_bytes_total{name!~\"^(|.*(cadvisor|prometheus|grafana).*)$\"}[5m])\n)\n",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -204,8 +204,8 @@
             "uid": "fej32en1pf11ca"
           },
           "editorMode": "code",
-          "expr": "sum by (name) (rate(container_network_receive_bytes_total[5m]))",
-          "legendFormat": "RX - {{ name }}",
+          "expr": "sum by (name) (rate(container_network_receive_bytes_total{name!~\"^(|.*(cadvisor|prometheus|grafana).*)$\"}[5m]))",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
@@ -302,7 +302,7 @@
             "uid": "fej32en1pf11ca"
           },
           "editorMode": "code",
-          "expr": "sum by (name) (rate(container_cpu_usage_seconds_total{name=~\".+\"}[5m]))",
+          "expr": "sum by (name) (rate(container_cpu_usage_seconds_total{name!~\"^(|.*(cadvisor|prometheus|grafana).*)$\"}[5m]))",
           "interval": "",
           "legendFormat": "{{ name }}",
           "range": true,
@@ -404,7 +404,7 @@
             "uid": "fej32en1pf11ca"
           },
           "editorMode": "code",
-          "expr": "sum by (name) (container_memory_usage_bytes{name=~\".+\"})",
+          "expr": "sum by (name) (container_memory_usage_bytes{name!~\"^(|.*(cadvisor|prometheus|grafana).*)$\"})",
           "legendFormat": "{{ name }}",
           "range": true,
           "refId": "A"
