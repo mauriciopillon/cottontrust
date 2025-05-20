@@ -23,7 +23,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fej32en1pf11ca"
+        "uid": "demdmohnvsnb4d"
       },
       "fieldConfig": {
         "defaults": {
@@ -35,12 +35,12 @@
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisGridShow": true,
-            "axisLabel": "Bytes",
+            "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
-            "barWidthFactor": 0.6,
+            "barWidthFactor": 0.5,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 6,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -49,9 +49,6 @@
             },
             "insertNulls": false,
             "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -89,7 +86,7 @@
         "x": 0,
         "y": 0
       },
-      "id": 4,
+      "id": 5,
       "options": {
         "legend": {
           "calcs": [],
@@ -103,23 +100,23 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.6.0",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "editorMode": "code",
-          "expr": "sum by (name) (\n  rate(container_network_receive_bytes_total{name!~\"^(|.*(cadvisor|prometheus|grafana).*)$\"}[5m])\n)\n",
-          "legendFormat": "__auto",
+          "expr": "sum by (machine, name) (\n  rate(container_cpu_usage_seconds_total{name!=\"\"} [5m])\n)\n  unless\nsum by (machine, name) (\n  rate(container_cpu_usage_seconds_total{name=~\"cadvisor|prometheus|grafana|von-webserver-1\"} [5m])\n)\n",
+          "legendFormat": "{{machine}} - {{name}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Network TX",
+      "title": "CPU usage (all machines)",
       "type": "timeseries"
     },
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fej32en1pf11ca"
+        "uid": "demdmohnvsnb4d"
       },
       "fieldConfig": {
         "defaults": {
@@ -196,7 +193,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.6.0",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -204,8 +201,8 @@
             "uid": "fej32en1pf11ca"
           },
           "editorMode": "code",
-          "expr": "sum by (name) (rate(container_network_receive_bytes_total{name!~\"^(|.*(cadvisor|prometheus|grafana).*)$\"}[5m]))",
-          "legendFormat": "__auto",
+          "expr": "sum by (machine, name) (rate(container_network_receive_bytes_total{name!~\"^(|.*(cadvisor|prometheus|grafana).*)$\"}[5m]))",
+          "legendFormat": "{{machine}} - {{name}}",
           "range": true,
           "refId": "A"
         }
@@ -216,7 +213,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fej32en1pf11ca"
+        "uid": "demdmohnvsnb4d"
       },
       "fieldConfig": {
         "defaults": {
@@ -227,7 +224,8 @@
             "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
-            "axisLabel": "CPU",
+            "axisGridShow": true,
+            "axisLabel": "Bytes/s",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "barWidthFactor": 0.6,
@@ -241,6 +239,9 @@
             },
             "insertNulls": false,
             "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -257,7 +258,6 @@
             }
           },
           "mappings": [],
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -269,8 +269,7 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "percent"
+          }
         },
         "overrides": []
       },
@@ -280,7 +279,7 @@
         "x": 0,
         "y": 8
       },
-      "id": 1,
+      "id": 4,
       "options": {
         "legend": {
           "calcs": [],
@@ -294,28 +293,23 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.6.0",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "fej32en1pf11ca"
-          },
           "editorMode": "code",
-          "expr": "sum by (name) (rate(container_cpu_usage_seconds_total{name!~\"^(|.*(cadvisor|prometheus|grafana).*)$\"}[5m]))",
-          "interval": "",
-          "legendFormat": "{{ name }}",
+          "expr": "sum by (machine, name) (\n  rate(container_network_receive_bytes_total{name!~\"^(|.*(cadvisor|prometheus|grafana).*)$\"}[5m])\n)\n",
+          "legendFormat": "{{machine}} - {{name}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Container CPU Usage",
+      "title": "Network TX",
       "type": "timeseries"
     },
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fej32en1pf11ca"
+        "uid": "demdmohnvsnb4d"
       },
       "fieldConfig": {
         "defaults": {
@@ -396,7 +390,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.6.0",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -404,13 +398,112 @@
             "uid": "fej32en1pf11ca"
           },
           "editorMode": "code",
-          "expr": "sum by (name) (container_memory_usage_bytes{name!~\"^(|.*(cadvisor|prometheus|grafana).*)$\"})",
-          "legendFormat": "{{ name }}",
+          "expr": "sum by (machine, name) (container_memory_usage_bytes{name!~\"^(|.*(cadvisor|prometheus|grafana).*)$\"})",
+          "legendFormat": "{{machine}} - {{name}}",
           "range": true,
           "refId": "A"
         }
       ],
       "title": "Container Memory Usage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "demdmohnvsnb4d"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "CPU",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "fej32en1pf11ca"
+          },
+          "editorMode": "code",
+          "expr": "sum by (machine, name) (rate(container_cpu_usage_seconds_total{name!~\"^(|.*(cadvisor|prometheus|grafana).*)$\"}[5m]))",
+          "interval": "",
+          "legendFormat": "{{machine}} - {{name}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Container CPU Usage",
       "type": "timeseries"
     }
   ],

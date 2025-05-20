@@ -5,12 +5,13 @@ import time
 import csv
 import random
 import os
+import uuid
 from datetime import datetime
 from indy import pool, wallet, did, ledger
 from indy.error import ErrorCode, IndyError
 
 UBAs = []
-Bale = []
+Bales = []
 Clients = []
 
 
@@ -89,38 +90,38 @@ async def setup_identity(identity, trustee):
     # }
     #
 
-async def create_pools(pools_config):
-    """
-    Cria e abre os pools com base nas configurações fornecidas.
-
-    :param pools_config: Lista de dicionários com as chaves "name" e "genesis_txn_path".
-    :return: Dicionário onde as chaves são os nomes dos pools e os valores são os handles abertos.
-    """
-    pools = {}
-    # Define a versão do protocolo para o Indy
-    await pool.set_protocol_version(2)
-    
+async def create_pools(pools_config: list):
+    pools = []
     for config in pools_config:
-        config_json = json.dumps({"genesis_txn": config["genesis_txn_path"]})
+        name = config["name"]
+        genesis_path = config["genesis_txn_path"]
+
+        # Indy wants exactly {"genesis_txn": "/path/to/file"}
+        pool_config = { "genesis_txn": genesis_path }
+        config_json = json.dumps(pool_config)
+
+        # Try deleting old config; ignore *all* IndyErrors here
         try:
-            # Apaga a configuração antiga, se existir
-            await pool.delete_pool_ledger_config(config["name"])
-            print(f"Configuracao do pool '{config['name']}' deletada com sucesso.")
-        except Exception as ex:
-            # Só avisa, não para a execução se o pool não existir
-            print(f"Nao foi possivel deletar o pool '{config['name']}': {ex}")
+            await pool.delete_pool_ledger_config(name)
+            print(f"Deleted existing pool config '{name}'")
+        except IndyError:
+            # Could not delete–either it never existed or
+            # some other Indy error happened. We ignore it.
+            pass
+
+        # Now create the new pool ledger config
         try:
-            print(f"Criando nova pool: '{config['name']}'")
-            await pool.create_pool_ledger_config(config["name"], config_json)
-        except Exception as ex:
-            from indy.error import ErrorCode, IndyError
-            if isinstance(ex, IndyError) and ex.error_code == ErrorCode.PoolLedgerConfigAlreadyExistsError:
-                print(f"Pool '{config['name']}' já existe.")
-            else:
-                raise ex
-        handle = await pool.open_pool_ledger(config["name"], None)
-        pools[config["name"]] = handle
-        print(f"Configuracao do pool '{config['name']}' aberta com sucesso\n")
+            await pool.create_pool_ledger_config(name, config_json)
+            print(f"Created pool config '{name}' with: {config_json}")
+        except IndyError as ex:
+            # Something really went wrong on create
+            print(f"Failed to create pool '{name}':", ex)
+            raise
+
+        # Finally open the pool
+        handle = await pool.open_pool_ledger(name, None)
+        print(f"Opened pool '{name}', handle={handle}")
+        pools.append({ "name": name, "handle": handle })
 
     return pools
 
@@ -168,34 +169,41 @@ async def reenviar_transacao_para_outro_pool(transacao, novo_pool_handle, wallet
 
 
       
-async def delete_wallet(wallet_config, wallet_credentials):
+async def delete_wallet(wallet_config: dict, wallet_credentials: dict):
+    # 1) JSON‑encode here:
+    cfg = json.dumps(wallet_config)
+    creds = json.dumps(wallet_credentials)
+    print(f"Deleting wallet with config={cfg} creds={creds}")
     try:
-        await wallet.delete_wallet(wallet_config, wallet_credentials)
+        await wallet.delete_wallet(cfg, creds)
         print("Wallet cleanup successful.")
     except IndyError as ex:
         if ex.error_code == ErrorCode.WalletNotFoundError:
-            print("No wallet found for cleanup. Proceeding...")
+            print("No wallet found for cleanup. Continuing.")
         else:
-            raise ex 
-      
-      
-async def create_wallet(Entity):
-    print("\"{}\" -> Creating  wallet(wallet)".format(Entity['name']))
+            print("delete_wallet failed:", ex)
+            raise
 
-    await delete_wallet(Entity['wallet_config'], Entity['wallet_credentials'])
-
+async def create_wallet(entity: dict):
+    config_json = json.dumps(entity['wallet_config'])
+    creds_json  = json.dumps(entity['wallet_credentials'])
 
     try:
-        await wallet.create_wallet(Entity['wallet_config'],
-                                   Entity['wallet_credentials'])
+        await delete_wallet(entity['wallet_config'], entity['wallet_credentials'])
+    except IndyError:
+        pass  # wallet not found — tudo bem
+
+    try:
+        await wallet.create_wallet(config_json, creds_json)
+        print("Wallet created.")
     except IndyError as ex:
         if ex.error_code == ErrorCode.WalletAlreadyExistsError:
-            pass
+            print("Wallet already exists.")
         else:
-            raise ex
+            raise
 
-    Entity['wallet'] = await wallet.open_wallet(Entity['wallet_config'],
-                                                  Entity['wallet_credentials'])
+    #atribui o handle no dicionário
+    entity['wallet'] = await wallet.open_wallet(config_json, creds_json)
     
 def create_seed(counter, name):
         seed =  str(name) + str(counter) + 'A0000000000000000000000000000000000' 
@@ -255,62 +263,89 @@ async def create_client(pool_, client_data, trustee):
 
     
 
-async def create_bale(pool_, bale_data):
+async def create_bale(pool_, bale_data, trustee):
     global cont_Bale
     cont_Bale += 1
-    
 
-    print(f"Creating bale {cont_Bale} - Sign up")
+    print(f"\nCreating Bale {cont_Bale} - Sign Up")
+    wallet_id = f"wallet_bale_{bale_data['id']}"
+    wallet_key = f"key_{bale_data['id']}"  # fixo por id
 
 
     BALE = {
-        'name': bale_data['name'],
-        'Bale Identifier': bale_data['Bale Identifier'],
-        'Farm Identifier': bale_data['Farm Identifier'],
-        'UBA Identifier': bale_data['UBA Identifier'],
-        'Harvest Season': bale_data['Harvest Season'],
-        'Plot': bale_data['Plot'],
-        'Harvest Date': bale_data['Harvest Date'],
-        'Seed Product': bale_data['Seed Product'],
-        'Seed Lot': bale_data['Seed Lot'],
-        'Weight': bale_data['Weight'],
-        'wallet_config': json.dumps({'id': bale_data['wallet_config']}),
-        'wallet_credentials': json.dumps({'key': bale_data['wallet_credentials']}),
+        'id':               bale_data['id'],
+        'beneficiamento_id': bale_data['id_beneficiamento'],
+        'product_id':       bale_data['id_produto'],
+        'description':      bale_data['produto_descricao'],
+        'gross_weight':     bale_data['peso_bruto'],
+        'net_weight':       bale_data['peso_liquido'],
+        'production_time':  bale_data['data_hora_producao'],
+        'wallet_config':       {'id': wallet_id},
+        'wallet_credentials':  {'key': wallet_key},
         'pool': pool_['handle'],
-        'seed': create_seed(cont_Bale, bale_data['name']),
-        "balance": 1000
-
+        'pool_name': pool_['name'],   # Armazena o nome do pool para os registros
+        'seed': create_seed(cont_Bale, bale_data['id_produto']),
     }
 
+    # Início da métrica de tempo
+    start = time.time()
+
+    # Cria a wallet
     await create_wallet(BALE)
+
+    # Gera DID
     BALE["did_info"] = json.dumps({'seed': BALE['seed']})
     BALE['did'], BALE['key'] = await did.create_and_store_my_did(BALE['wallet'], BALE['did_info'])
 
-    Bale.append(BALE) 
+    # Executa a transação de registro da bale e captura o tamanho do payload
+    tx_size = await setup_identity(BALE, trustee)
+
+    # Adiciona à lista global de bales
+    Bales.append(BALE)
+
+    # Fim da métrica de tempo
+    end = time.time()
+    duration = end - start  # tempo da operação, em segundos
+
+    # Timestamp ISO para o log
+    timestamp = datetime.now().isoformat()
+
+    # Registro da métrica
+    print("Registrando metrica:", BALE['pool_name'], duration, tx_size)
+    raw_tx_metrics.append({
+        "pool": BALE['pool_name'],
+        "operation": "create_bale",
+        "tx_time_sec": duration,
+        "tx_size_bytes": tx_size,
+        "timestamp": timestamp
+    })
+
+    print(f"Bale criada em {duration:.3f} s, payload size: {tx_size} bytes")
 
 async def create_uba(pool_, uba_data, trustee):
     global cont_Uba
     cont_Uba += 1
 
     print(f"\nCreating UBA {cont_Uba} - Sign Up")
+    wallet_id = f"wallet_uba_{uba_data['id']}"
+    wallet_key = f"key_{uba_data['id']}"  # fixo por id
     
     UBA = {
-        'name': uba_data['name'],
-        'UBA registry code': uba_data['UBA Registry Code'],
-        'CNPJ': uba_data['CNPJ'],
-        'Address - Street': uba_data['Address - Street'],
-        'Address - Neighborhood': uba_data['Address - Neighborhood'],
-        'Address - City': uba_data['Address - City'],
-        'Address - State': uba_data['Address - State'],
-        'Address - Country': uba_data['Address - Country'],
-        'wallet_config': json.dumps({'id': uba_data['wallet_config']}),
-        'wallet_credentials': json.dumps({'key': uba_data['wallet_credentials']}),
-        'pool': pool_['handle'],
-        'pool_name': pool_['name'],   # Armazena o nome do pool para os registros
-        'seed': create_seed(cont_Uba, uba_data['name']),
-        "balance": uba_data['balance'],
-        "bale_price": uba_data['bale_price'],
-        "quant_bale": uba_data['quant_bale']
+        'id':                  uba_data['id'],
+        'code':                uba_data['codigo'],
+        'description':         uba_data['descricao'],
+        'location':            uba_data['local'],
+        'company_id':          uba_data['id_empresa'],
+
+        
+        'wallet_config':       {'id':  wallet_id},
+        'wallet_credentials':  {'key': wallet_key},
+
+        'pool':                pool_['handle'],
+        'pool_name':           pool_['name'],
+
+        # use 'codigo' (or another existing field) for your seed
+        'seed':                create_seed(cont_Uba, uba_data['codigo']),
     }
     
     start = time.time()
@@ -343,7 +378,8 @@ async def create_uba(pool_, uba_data, trustee):
     })
     
     print(f"UBA criada em {duration:.3f} s, payload size: {tx_size} bytes")
-    
+
+# FUNCTION NOT BEING CURRENTLY USED
 async def create_transaction(sender, receiver, bale_cost, quant_bale):
     global cont_Tran
     cont_Tran += 1
@@ -428,22 +464,24 @@ async def run():
         {
             "name": "sandbox",
             "genesis_txn_path": "/home/indy/sandbox/cottontrust_milton/cottontrust/txn/genesis1.txn"
-        },
-        {
-            "name": "sandbox2",
-            "genesis_txn_path": "/home/indy/sandbox/cottontrust_milton/cottontrust/txn/genesis2.txn"
         }
     ]
     
-    
+    await pool.set_protocol_version(2)
+
     # Cria e abre os pools
-    #print("comecei a fazer a putaria\n")
     pools = await create_pools(pools_config)
-    #print("voltei pra ca, tentando abrir o pool de verdade agora -1 ainda\n")
-    # Define o pool principal para as operações iniciais.
-    main_pool_name = "sandbox"
-    pool_ = {"name": main_pool_name, "handle": pools[main_pool_name]}
-    #print("voltei pra ca, tentando abrir o pool de verdade agora\n")
+
+    # Transforma a lista em um dicionário: {'sandbox1': handle1, 'sandbox2': handle2, ...}
+    pool_map = {p["name"]: p["handle"] for p in pools}
+
+    # Define o nome do pool principal
+    main_pool_name = "sandbox"  # ou "sandbox2", etc. conforme definido no pools_config
+
+    # Usa o dicionário para obter o handle
+    pool_ = {"name": main_pool_name, "handle": pool_map[main_pool_name]}
+    
+    
     # --- Trecho referente à criação de Trustee, UBAs, Bale, Clients e transações ---
     # Exemplo: Trustee
     with open('models/test.json', 'r') as file:
@@ -452,11 +490,13 @@ async def run():
     trustee = {
         'name': 'trustworthy_agent',
         'seed': '000000000000000000000000Trustee1',
-        'wallet_config': json.dumps({'id': teste_data['wallet_config']}),
-        'wallet_credentials': json.dumps({'key': teste_data['wallet_credentials']}),
+        'wallet_config': {'id': teste_data['wallet_config']},
+        'wallet_credentials': {'key': teste_data['wallet_credentials']},
         'pool': pool_['handle'],
         'role': 'TRUSTEE'
     }
+    
+
     
     # Criação do trustee
     await create_wallet(trustee)
@@ -464,41 +504,49 @@ async def run():
     await setup_identity(trustee, trustee)
     
     # Processamento dos modelos (UBAs, Bale, Clients)
-    with open('models/ubas.json', 'r') as file:
-        try:
-            ubas_data = json.load(file)
-        except json.JSONDecodeError:
-            print("UBA file empty.\n")
-            ubas_data = []
+    ubas_data = []
+    with open('models/ubas.json', 'r', encoding='utf-8') as file:
+        for line in file:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                uba = json.loads(line)
+            except json.JSONDecodeError:
+                print("Skipping malformed line:", line)
+                continue
+            ubas_data.append(uba)
+            
     if ubas_data:
         for uba_data in ubas_data:
-            time_uba = time.time()
             await create_uba(pool_, uba_data, trustee)
-            endtime_uba = time.time()
-            time_create.append(endtime_uba - time_uba)
     
-    with open('models/bale.json', 'r') as file:
-        try:
-            bale_data = json.load(file)
-        except json.JSONDecodeError:
-            print("Bale file is empty.\n")
-            bale_data = []
-    if bale_data:
-        for bale_item in bale_data:
-            await create_bale(pool_, bale_item)
-    
-    with open('models/clients.json', 'r') as file:
-        try:
-            clients_data = json.load(file)
-        except json.JSONDecodeError:
-            print("Client file is empty.\n")
-            clients_data = []
-    if clients_data:
-        for client_data in clients_data:
-            time_cli = time.time()
-            await create_client(pool_, client_data, trustee)
-            endtime_cli = time.time()
-            time_create.append(endtime_cli - time_cli)
+    bales_data = []
+    with open('models/bales.json', 'r', encoding='utf-8') as file:
+        for line in file:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                bale = json.loads(line)
+            except json.JSONDecodeError:
+                print("Skipping malformed line:", line)
+                continue
+            bales_data.append(bale)
+
+    if bales_data:
+        for bale_data in bales_data:
+            await create_bale(pool_, bale_data, trustee)
+
+#    with open('models/clients.json', 'r') as file:
+#        try:
+#            clients_data = json.load(file)
+#        except json.JSONDecodeError:
+#            print("Client file is empty.\n")
+#            clients_data = []
+#    if clients_data:
+#        for client_data in clients_data:
+#            await create_client(pool_, client_data, trustee)
     
     # Processa transações, conforme o seu fluxo atual
     if UBAs and Clients:
@@ -512,14 +560,12 @@ async def run():
     
     # --- Replicação das Transações para os Demais Pools ---
     print("Replicando transacoes para os demais pools:")
-    for pool_name, pool_handle in pools.items():
+    for pool_name, pool_handle in pool_map.items():
         if pool_name == main_pool_name:
-            continue  # Pula o pool usado nas operações iniciais
+            continue
         print(f"Reenviando transacoes para {pool_name}...")
-        # Se o mesmo trustee pode ser usado para assinar, passe o mesmo wallet
         for transacao in transacoes_enviadas:
-            await reenviar_transacao_para_outro_pool(transacao, pool_handle, trustee['wallet'], pool_name)
-    
+            await reenviar_transacao_para_outro_pool(transacao, pool_handle, trustee['wallet'], pool_name)   
 
     # TIMES --------------------------------------------------------------------------------------------
 #    print("Writing on CSV file...")

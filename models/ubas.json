@@ -1,32 +1,100 @@
-[
-{
-        "name": "UBA1",
-        "Codigo de Registro da UBA": "123",
-        "CNPJ": "123456789",
-        "Endereco - Rua": "Rua 123",
-        "Endereco - Bairro": "Bairro A",
-        "Endereco - Cidade": "Cidade X",
-        "Endereco - Estado": "Estado Y",
-        "Endereco - Pais": "Pais Z",
-        "wallet_config": "config_uba1",
-        "wallet_credentials": "credentials_uba1",
-        "balance": 10,
-        "preco_fardinho": 100,
-        "quant_fardinho": 100000
-    },
-{
-        "name": "UBA2",
-        "Codigo de Registro da UBA": "123",
-        "CNPJ": "123456789",
-        "Endereco - Rua": "Rua 123",
-        "Endereco - Bairro": "Bairro A",
-        "Endereco - Cidade": "Cidade X",
-        "Endereco - Estado": "Estado Y",
-        "Endereco - Pais": "Pais Z",
-        "wallet_config": "config_uba2",
-        "wallet_credentials": "credentials_uba2",
-        "balance": 20,
-        "preco_fardinho": 200,
-        "quant_fardinho": 200000
-    }
-]
+{"id":"3741579355560165089","codigo":"2103209","descricao":"BIO FABRICA CACAU","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"4168029162952349515","codigo":"2200209","descricao":"BIO FABRICA CACAU","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"3373509784988370312","codigo":"2100209","descricao":"BIO FABRICA CACAU","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"2227458410163490819","codigo":"2100210","descricao":"BIO FAB. PRODUCAO CACAU","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"7208952273181797744","codigo":"2103210","descricao":"BIO FAB. PRODUCAO CACAU","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"4553591519976957112","codigo":"2200210","descricao":"BIO FAB. PRODUCAO CACAU","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"1649042494217453160","codigo":"2103215","descricao":"PAV003","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"4562827031374556437","codigo":"2100214","descricao":"PAV002","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"762519037148419370","codigo":"2200213","descricao":"PAV001","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"7059909053576953991","codigo":"2100215","descricao":"PAV003","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"1306826268580970623","codigo":"2100213","descricao":"PAV001","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"7766045394959700416","codigo":"2103214","descricao":"PAV002","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"6434211932676363777","codigo":"2200214","descricao":"PAV002","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"5223126962762668107","codigo":"2103213","descricao":"PAV001","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"29004482134957679","codigo":"2200215","descricao":"PAV003","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"558842297039389271","codigo":"2200216","descricao":"PAV004","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"3903099143410205797","codigo":"2103216","descricao":"PAV004","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"7518553818077722793","codigo":"2100216","descricao":"PAV004","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"6591685847846545469","codigo":"2200217","descricao":"Deposito de Semente Boa Safra","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"200957168992779056","codigo":"2103217","descricao":"Deposito de Semente Boa Safra","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"6623916928993683782","codigo":"2100217","descricao":"Deposito de Semente Boa Safra","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"6232246117365870012","codigo":"2150111","descricao":"Deposito Defensivos - Tabaco","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"1870656128156987019","codigo":"2150202","descricao":"Deposito Externo Luft - Agro","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"4623815616902061172","codigo":"2100128","descricao":"DEPOSITO EXTERNO DELTA","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"474194936559813255","codigo":"2103129","descricao":"DEPOSITO VIVEIRO CACAU","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"8359623571359356276","codigo":"2200129","descricao":"DEPOSITO VIVEIRO CACAU","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"1690720172021075917","codigo":"2103128","descricao":"DEPOSITO EXTERNO DELTA","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"2880484677704443643","codigo":"2103220","descricao":"PATIO DE ADUBOS TABACO","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"4419508719755247280","codigo":"2200111","descricao":"DEFENSIVOS TABACO","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"1673670815328005652","codigo":"2100221","descricao":"INSUMOS CACAU","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"207642636538082571","codigo":"2100111","descricao":"DEFENSIVOS TABACO","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"2792690204366561848","codigo":"2200202","descricao":"DEPOSITO EXTERNO LUFT - AGRO","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"8494692075679243576","codigo":"2103203","descricao":"DEPOSITO EXTERNO GOLDEN - AGRO","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"5733415328737884965","codigo":"2200203","descricao":"DEPOSITO EXTERNO GOLDEN - AGRO","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"4964280266988072547","codigo":"2100203","descricao":"DEPOSITO EXTERNO GOLDEN - AGRO","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"8493765989411915966","codigo":"2200218","descricao":"GALPAO INFLAVEL","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"6259187819265939071","codigo":"2103218","descricao":"GALPAO INFLAVEL","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"3777810521680092549","codigo":"9999202","descricao":"Deposito Externo Luft - Agro","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"6157949201615082707","codigo":"2100218","descricao":"GALPAO INFLAVEL","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"2296820913156932478","codigo":"2100","descricao":"DEPOSITO IRRIGACAO AGUA","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"1418311333738548594","codigo":"2150129","descricao":"Deposito Viveiro Cacau","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"244879250076450675","codigo":"9999129","descricao":"Deposito Viveiro Cacau","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"6570449979576828636","codigo":"2100219","descricao":"PATIO DE ADUBOS GRAOS","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"541288607491521791","codigo":"9999203","descricao":"Deposito Externo Golden - Agro","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"8152191996467730673","codigo":"2100220","descricao":"PATIO DE ADUBOS TABACO","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"7754720595572342623","codigo":"2200221","descricao":"INSUMOS CACAU","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"5210244119417305533","codigo":"2150203","descricao":"Deposito Externo Golden - Agro","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"8368248705774327990","codigo":"2200219","descricao":"PATIO DE ADUBOS GRAOS","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"7654707682520486559","codigo":"9999128","descricao":"Deposito Externo Delta","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"2671342800703376376","codigo":"2100109","descricao":"PROCESSO","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"5465768050266646286","codigo":"2100110","descricao":"PRODUTO ACABADO","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"8685113964577931886","codigo":"2150128","descricao":"Deposito Externo Delta","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"2550916302490519304","codigo":"2150125","descricao":"Deposito de Bio Fabrica","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"7616167422619523709","codigo":"2100202","descricao":"DEPOSITO EXTERNO LUFT - AGRO","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"6665897740170167017","codigo":"2100125","descricao":"BIO FABRICA","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"9004527760845039204","codigo":"2100129","descricao":"DEPOSITO VIVEIRO CACAU","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"7525560881481988129","codigo":"2200128","descricao":"DEPOSITO EXTERNO DELTA","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"4032775164140959134","codigo":"2103202","descricao":"DEPOSITO EXTERNO LUFT - AGRO","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"6444916770544210392","codigo":"2103126","descricao":"DEPOSITO PAV [ NaO ULTILIZAR]","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"8255047006685656928","codigo":"9999125","descricao":"Deposito de Bio Fabrica","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"7540337142653127912","codigo":"2150127","descricao":"Deposito Externo Bravo - Taba","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"6652755284991592717","codigo":"9999127","descricao":"Deposito Externo Bravo - Taba","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"1491489935417264236","codigo":"9999201","descricao":"Deposito Externo Bravo - AGRO","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"4253401518192031033","codigo":"2150201","descricao":"Deposito Externo Bravo - AGRO","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"2819203177958897396","codigo":"2103219","descricao":"PATIO DE ADUBOS GRAOS","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"3599141480327788242","codigo":"2103131","descricao":"FERTILIZANTES CAMPO AGRO","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"8625281845420348426","codigo":"9999111","descricao":"Deposito Defensivos - Tabaco","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"1066039008439091439","codigo":"2200133","descricao":"DEFENSIVOS CACAU","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"1758391430945869771","codigo":"2103101","descricao":"TRANSACOES DEBITO DIRETO","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"1480782340050224609","codigo":"2100223","descricao":"TRANSITORIO FERTIRRIGACAO TAB","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"3491090497364162377","codigo":"2103223","descricao":"TRANSITORIO FERTIRRIGACAO TAB","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"5608915756876991924","codigo":"2100224","descricao":"TRANSITORIO FERTIRRIGACAO GRA","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"760080087974006935","codigo":"2103224","descricao":"TRANSITORIO FERTIRRIGACAO GRA","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"1606702181899671278","codigo":"2200103","descricao":"OLEO E LUBRIFICANTES TABACO","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"4894163701481438265","codigo":"2200101","descricao":"TRANSACOES DEBITO DIRETO","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"6543800598000600995","codigo":"2103121","descricao":"GREEN HOUSE","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"5229880979517036289","codigo":"2200204","descricao":"BIO FABRICA TABACO","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"3462140685373524403","codigo":"2200106","descricao":"FERTILIZANTES AGRO","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"8253292681564532308","codigo":"2100199","descricao":"DEPOSITO EXTERNO PORTO - SCA","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"5157817506951083959","codigo":"2200201","descricao":"DEPOSITO EXTERNO BRAVO - AGRO","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"8296797680198075726","codigo":"2100206","descricao":"BIO FAB. PRODUCAO TAB","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"2551324660581724259","codigo":"2200206","descricao":"BIO FAB. PRODUCAO TAB","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"4073720197706879164","codigo":"2100107","descricao":"DEFENSIVOS AGRO","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"8026446233837676224","codigo":"2100131","descricao":"FERTILIZANTES CAMPO AGRO","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"37091659178582297","codigo":"2103125","descricao":"BIO FABRICA","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"164145958241965962","codigo":"2100200","descricao":"DEPOSITO EXTERNO PORTO - SCC","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"8934454019065928297","codigo":"2200121","descricao":"GREEN HOUSE","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"5737934854210783368","codigo":"2200108","descricao":"PRODUTO MATERIA PRIMA","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"1998745880439326285","codigo":"2100134","descricao":"CONTAINER CURA TABACO","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"2982386934084515114","codigo":"2103134","descricao":"CONTAINER CURA TABACO","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"4947713675555752382","codigo":"2100101","descricao":"TRANSACOES DEBITO DIRETO","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"3950888590374832056","codigo":"2103133","descricao":"DEFENSIVOS CACAU","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"4302002236292294964","codigo":"2103221","descricao":"INSUMOS CACAU","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"3792833440526437018","codigo":"2200131","descricao":"FERTILIZANTES CAMPO AGRO","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"7263351516451984746","codigo":"2200220","descricao":"PATIO DE ADUBOS TABACO","local":"Integracao","id_empresa":"79d46d98-1e74-4e35-961f-7307686136b4"}
+{"id":"3054492950762898544","codigo":"2103103","descricao":"OLEO E LUBRIFICANTES TABACO","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"711940408087225198","codigo":"2100103","descricao":"OLEO E LUBRIFICANTES TABACO","local":"Integracao","id_empresa":"e3861b26-6376-486b-92c4-b8691028fb8f"}
+{"id":"2380910652077488274","codigo":"2103116","descricao":"REJEITOS","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"8243485949618069357","codigo":"2103109","descricao":"PROCESSO","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
+{"id":"1963670359048879758","codigo":"2103118","descricao":"TRANSITORIO TABACO PIMS","local":"Integracao","id_empresa":"37418272-825e-4363-9598-b1308b42cfea"}
